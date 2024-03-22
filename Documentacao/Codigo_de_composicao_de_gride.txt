@@ -1,0 +1,67 @@
+
+Código de composição de gride:
+
+As informações de cada gride, que permite a geração deles, estão armazenadas em uma matriz de 3 parametros (int[,,]). Os dois primeiros indicam de qual sala é aquelas informações, assim como o gride esses dois parametros formam um 5x5. O último parametro indica qual é a informação desejada da sala, são 3: TIPO (a função da sala), FORMA (quantas saidas a sala tem) e ROTACAO (para que sentido a sala deve ser girada para o caminho se encaixar no gride); nessa ordem
+
+Segue abaixo 3 tabelas indicando os valores possíveis para informação e explicando o que querem dizer:
+
+
+|-----------------------------|
+|          TIPO  [0]          |
+|-----------------------------|
+| valor |   o que significa   |
+|-------|---------------------|
+|   1   |        Saída        |
+|-------|---------------------|
+|   2   |        Vazio        |
+|-------|---------------------|
+|   3   |      Obstáculo      |
+|-------|---------------------|
+|   4   |         NPC         |
+|-------|---------------------|
+|   5   |         Baú         |
+|-------|---------------------|
+|   6   |       Trancado      |
+|-------|---------------------|
+|   7   |        Botão        |
+|-----------------------------|
+
+|-----------------------------|
+|          FORMA [1]          |
+|-----------------------------|
+| valor |   o que significa   |
+|-------|---------------------|
+|   1   |      uma saída      |
+|-------|---------------------|
+|   2   |   duas saídas reta  |
+|-------|---------------------|
+|   3   |    duas saídas L    |
+|-------|---------------------|
+|   4   |     três saídas     |
+|-------|---------------------|
+|   5   |    quatro saídas    |
+|-----------------------------|
+
+|-----------------------------|
+|         ROTACAO* [2]        |
+|-----------------------------|
+| valor |   o que significa   |
+|-------|---------------------|
+|   0   |   virado pra cima   |
+|-------|---------------------|
+|   1   |  virado pra direita |
+|-------|---------------------|
+|   2   |  vidado para baixo  |
+|-------|---------------------|
+|   3   | virado pra esquerda |
+|-----------------------------|
+*a baseia-se na posição padrão das salas(0), com a saída apontada para cima; porêm isso só se encaixa perfeitamente na FORMA de uma saida(1), portanto vou exemplificar cada caso para não haver dúvidas, a ROTACAO padrão(0) de cada FORMA
+FORMA(1): saida apontada para cima
+FORMA(2): a reta formada ao ligar as duas saídas é horizontal
+FORMA(3): o L fica na posição correta, virdo pra cima
+FORMA(4): a saída do meio fica virada para cima
+FORMA(5): num geral, não faz diferença
+
+a ROTACAO segue progressivamente no sentido horário de 90° em 90° (multiplique o valor da ROTACAO por 90 e terá a medida em graus do quanto a sala será girada, no sentido horário)
+
+
