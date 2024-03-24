@@ -85,19 +85,15 @@ public class Gride : MonoBehaviour
         switch(Random.Range(1, 5))
         {
             case 1:
-                Debug.Log("grid 1");
                 grid = grid1;
                 break;
             case 2:
-                Debug.Log("grid 2");
                 grid = grid2;
                 break;
             case 3:
-                Debug.Log("grid 3");
                 grid = grid3;
                 break;
             case 4:
-                Debug.Log("grid 4");
                 grid = grid4;
                 break;
         }
