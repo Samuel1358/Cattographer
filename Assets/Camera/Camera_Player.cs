@@ -28,17 +28,19 @@ public class Camera_Player : MonoBehaviour
     {
         player = FindObjectOfType<Mov_Player>();
 
-        for(int x = 0; x < POS.GetLength(0); x++)
+        for (int x = 0; x < POS.GetLength(0); x++)
         {
-            for(int y = 0; y < POS.GetLength(1); y++)
+            for (int y = 0; y < POS.GetLength(1); y++)
             {
                 if (ID[x, y] == player.sala)
                 {
+                    Debug.Log("oii");
                     transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1]);
                     registro = ID[x, y];
                 }
             }
         }
+        transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
     }
 
     // Update is called once per frame
