@@ -134,7 +134,6 @@ public class Sala_Controller : MonoBehaviour
         {
             if (timerSpawn <= 0)
             {
-                Debug.Log(salaSpaw);
                 player.transform.position = salaSpaw;
                 player.canMove = true;
                 player.caiuBuraco = false;
