@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5201281586023410161, guid: d5f5424d86c35dd4f8348226cb4f9d13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6493672723765628139, guid: d5f5424d86c35dd4f8348226cb4f9d13, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -540,6 +544,7 @@ GameObject:
   - component: {fileID: 1291736551}
   - component: {fileID: 1291736552}
   - component: {fileID: 1291736550}
+  - component: {fileID: 1291736553}
   m_Layer: 0
   m_Name: Gerador
   m_TagString: Untagged
@@ -604,6 +609,19 @@ MonoBehaviour:
   Bau_1: {fileID: 518767507180438506, guid: 26210cb14882bf244b4a4bd8201a622d, type: 3}
   Trancada_1: {fileID: 518767507180438506, guid: e92ae6fa4b9633e49bfc1ef58c16aea4, type: 3}
   Botao_1: {fileID: 4246153119085771358, guid: 0912e6429feda1b48ac9a01c50452f89, type: 3}
+--- !u!114 &1291736553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291736549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c59312281e2d3641bdcd0fd2c682e92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5201281586023410161, guid: d5f5424d86c35dd4f8348226cb4f9d13, type: 3}
 --- !u!1001 &1966047089
 PrefabInstance:
   m_ObjectHideFlags: 0
