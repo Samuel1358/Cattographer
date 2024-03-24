@@ -26,7 +26,7 @@ public class Camera_Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Mov_Player>();
+        /*player = FindObjectOfType<Mov_Player>();
 
         for (int x = 0; x < POS.GetLength(0); x++)
         {
@@ -40,22 +40,43 @@ public class Camera_Player : MonoBehaviour
                 }
             }
         }
-        transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(player.sala != registro)
+        if (player == null)
         {
+            player = FindObjectOfType<Mov_Player>();
+
             for (int x = 0; x < POS.GetLength(0); x++)
             {
                 for (int y = 0; y < POS.GetLength(1); y++)
                 {
                     if (ID[x, y] == player.sala)
                     {
+                        Debug.Log("oii");
                         transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1]);
                         registro = ID[x, y];
+                    }
+                }
+            }
+            transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        }
+        else
+        {
+            if (player.sala != registro)
+            {
+                for (int x = 0; x < POS.GetLength(0); x++)
+                {
+                    for (int y = 0; y < POS.GetLength(1); y++)
+                    {
+                        if (ID[x, y] == player.sala)
+                        {
+                            transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1]);
+                            registro = ID[x, y];
+                        }
                     }
                 }
             }

@@ -57,7 +57,8 @@ public class Spawn_Player : MonoBehaviour
 
         #endregion
 
-        Instantiate(player, new Vector3(posicao[0], 2f, posicao[1]), Quaternion.identity);
+        player.transform.position = new Vector3(posicao[0], 2f, posicao[1]);
+        //Instantiate(player, new Vector3(posicao[0], 2f, posicao[1]), Quaternion.identity);
     }
 
     // Update is called once per frame
