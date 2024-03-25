@@ -19,7 +19,8 @@ public class Timer_Dungeon : MonoBehaviour
     {
         if (timerDD <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(2);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (timerDD > 0)
         {

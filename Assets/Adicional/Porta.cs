@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Item_Coletavel : MonoBehaviour
+public class Porta : MonoBehaviour
 {
     Player_Finalizar player;
 
@@ -15,14 +16,21 @@ public class Item_Coletavel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (player.portas >= 2)
+        {
+            gameObject.layer = 0;
+        }
+        else
+        {
+            gameObject.layer = 7;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            player.portas += 1;
+            player.portas -= 2;
             Destroy(gameObject);
         }
     }

@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
-public class Item_Coletavel : MonoBehaviour
+public class TextoAdicional : MonoBehaviour
 {
     Player_Finalizar player;
+
+    public Text textoP;
+    public Text textoF;
 
     // Start is called before the first frame update
     void Start()
@@ -15,15 +20,8 @@ public class Item_Coletavel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        textoP.text = player.portas.ToString();
+        textoF.text = player.coletados.ToString() + " / 2";
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            player.portas += 1;
-            Destroy(gameObject);
-        }
-    }
 }

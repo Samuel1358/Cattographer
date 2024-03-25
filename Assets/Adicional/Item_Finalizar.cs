@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Item_Coletavel : MonoBehaviour
+public class Item_Finalizar : MonoBehaviour
 {
     Player_Finalizar player;
 
@@ -22,8 +23,15 @@ public class Item_Coletavel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            player.portas += 1;
-            Destroy(gameObject);
+            if (player.coletados >= 1)
+            {
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                player.coletados += 1;
+                Destroy(gameObject);
+            }
         }
     }
 }
