@@ -19,7 +19,8 @@ public class Timer_Sombra : MonoBehaviour
     {
         if (timerSombra <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(2);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (timerSombra > 0)
         {
