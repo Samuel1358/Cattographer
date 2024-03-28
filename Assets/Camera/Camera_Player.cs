@@ -57,12 +57,12 @@ public class Camera_Player : MonoBehaviour
                     if (ID[x, y] == player.sala)
                     {
                         Debug.Log("oii");
-                        transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1]);
+                        transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1] - 2.5f);
                         registro = ID[x, y];
                     }
                 }
             }
-            transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+            transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 2.5f);
         }
         else
         {
@@ -74,7 +74,8 @@ public class Camera_Player : MonoBehaviour
                     {
                         if (ID[x, y] == player.sala)
                         {
-                            transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1]);
+                            transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1] - 2.5f);
+                            //Debug.Log()
                             registro = ID[x, y];
                         }
                     }

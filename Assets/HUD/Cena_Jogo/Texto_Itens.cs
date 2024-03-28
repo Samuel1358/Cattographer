@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class TextoAdicional : MonoBehaviour
+public class Texto_Itens : MonoBehaviour
 {
     Player_Finalizar player;
 

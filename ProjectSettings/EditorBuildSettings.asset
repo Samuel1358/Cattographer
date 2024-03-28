@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Jogador.unity
     guid: 14c2cab9061b9534faf4104bd2730fe5
   - enabled: 1
-    path: Assets/Adicional/Finalizar.unity
+    path: Assets/Scenes/Win.unity
     guid: 6fa00e0c02df98c4d9485a7eb0ed75f8
   - enabled: 1
-    path: Assets/Adicional/Falha.unity
+    path: Assets/Scenes/Lose.unity
     guid: 78edc331d72101644a5f6b13128fb0fd
   m_configObjects: {}

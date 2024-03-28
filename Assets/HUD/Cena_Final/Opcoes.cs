@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Botao : MonoBehaviour
+public class Opcoes : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 55a8c08e56ae02c42a6854f44a2a15d5, type: 2}
+  - {fileID: 2100000, guid: beee90529d6837c43b3109d1486411cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3748487685890618713}
   - component: {fileID: 7452741648502637397}
   m_Layer: 0
-  m_Name: Porta
+  m_Name: Porta_Tesouro
   m_TagString: Parede
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

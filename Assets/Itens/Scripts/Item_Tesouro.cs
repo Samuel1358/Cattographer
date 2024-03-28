@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Porta : MonoBehaviour
+public class Item_Tesouro : MonoBehaviour
 {
     Player_Finalizar player;
 
@@ -16,22 +16,22 @@ public class Porta : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.portas >= 2)
-        {
-            gameObject.layer = 0;
-        }
-        else
-        {
-            gameObject.layer = 7;
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            player.portas -= 2;
-            Destroy(gameObject);
+            if (player.coletados >= 1)
+            {
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                player.coletados += 1;
+                Destroy(gameObject);
+            }
         }
     }
 }
