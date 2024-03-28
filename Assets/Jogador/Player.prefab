@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5533320999908718244}
   - component: {fileID: 7112915301561095715}
   - component: {fileID: 6395158248393600104}
+  - component: {fileID: 3610327696307722031}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
+  caiuBuraco: 0
   bloqueio:
     serializedVersion: 2
     m_Bits: 128
@@ -86,6 +88,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   sala: 0
+--- !u!114 &3610327696307722031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5201281586023410161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d696c698a1a84e941a4ed0c98349193d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dano: 10
 --- !u!1 &6500571310958020121
 GameObject:
   m_ObjectHideFlags: 0
