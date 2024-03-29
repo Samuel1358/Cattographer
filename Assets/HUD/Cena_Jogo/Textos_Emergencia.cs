@@ -11,8 +11,11 @@ public class Textos_Emergencia : MonoBehaviour
 
     public Text textoPortas;
     public Text textoTesouro;
-    //public Text textoBotao1;
-    //public Text textoBotao2;
+    public Text textoBotao;
+    public Text textoBotaoMensagem;
+    float timerBotao = 20f;
+    bool botao = true;
+
     public Text textoEmergencia;
     public Text textoEmergenciaAlerta;
     float timerAlerta = 0.5f, ttAlerta;
@@ -25,8 +28,8 @@ public class Textos_Emergencia : MonoBehaviour
 
         textoPortas.gameObject.SetActive(true);
         textoTesouro.gameObject.SetActive(true);
-        //textoBotao1.gameObject.SetActive(true);
-        //textoBotao2.gameObject.SetActive(false);
+        textoBotao.gameObject.SetActive(true);
+        textoBotaoMensagem.gameObject.SetActive(false);
         textoEmergencia.gameObject.SetActive(false);
         textoEmergenciaAlerta.gameObject.SetActive(false);
 
@@ -41,23 +44,24 @@ public class Textos_Emergencia : MonoBehaviour
         {
             textoPortas.gameObject.SetActive(true);
             textoTesouro.gameObject.SetActive(true);
-            //textoBotao1.gameObject.SetActive(true);
-            //textoBotao2.gameObject.SetActive(false);
+            textoBotao.rectTransform.position = new Vector3(550f, 518f, 0f);
             textoEmergencia.gameObject.SetActive(false);
             textoEmergenciaAlerta.gameObject.SetActive(false);
 
             textoPortas.text = player.portas.ToString();
             textoTesouro.text = player.coletados.ToString() + " / 2";
+            textoBotao.text = player.botoes.ToString() + " / 3";
         }
+
         if (player.fuga == true)
         {
             textoPortas.gameObject.SetActive(false);
             textoTesouro.gameObject.SetActive(false);
-            //textoBotao1.gameObject.SetActive(false);
-            //textoBotao2.gameObject.SetActive(true);
+            textoBotao.rectTransform.position = new Vector3(1010f, 518f, 0f);
             textoEmergencia.gameObject.SetActive(true);
 
             textoEmergencia.text = ((int)emer.timerFinal).ToString();
+            textoBotao.text = player.botoes.ToString() + " / 3";
 
             if (timerAlerta <= 0)
             {
@@ -77,6 +81,28 @@ public class Textos_Emergencia : MonoBehaviour
             if (timerAlerta > 0)
             {
                 timerAlerta -= Time.deltaTime;
+            }
+        }
+
+        if (player.aberto == true)
+        {
+            textoBotao.gameObject.SetActive(false);
+            if (botao)
+            {
+                textoBotaoMensagem.gameObject.SetActive(true);
+                if (timerBotao <= 0f)
+                {
+                    textoBotaoMensagem.gameObject.SetActive(false);
+                    botao = false;
+                }
+                if (timerBotao > 0f)
+                {
+                    timerBotao -= Time.deltaTime;
+                    if (timerBotao <= 15f)
+                    {
+                        textoBotaoMensagem.color = new Color(0.1568628f, 0.3921569f, 0.7058824f, (timerBotao * 17) / 255);
+                    }
+                }
             }
         }
     }
