@@ -8,6 +8,7 @@ TagManager:
   - Fundo
   - Buraco
   - Inimigo
+  - LimitadorSala
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,9 @@ public class Player_Final : MonoBehaviour
 {
     public int coletados = 0;
     public int portas = 0;
+    public int botoes = 0;
     public bool fuga = false;
+    public bool aberto = false;
 
     // Start is called before the first frame update
     void Start()

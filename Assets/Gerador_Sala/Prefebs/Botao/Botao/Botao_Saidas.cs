@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Tesouro : MonoBehaviour
+public class Botao_Saidas : MonoBehaviour
 {
     Player_Final player;
 
@@ -22,14 +22,14 @@ public class Item_Tesouro : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (player.coletados >= 1)
+            if (player.botoes >= 2)
             {
-                player.fuga = true;
-                player.coletados += 1;
+                player.aberto = true;
+                player.botoes += 1;
             }
             else
             {
-                player.coletados += 1;
+                player.botoes += 1;
             }
             Destroy(gameObject);
         }
