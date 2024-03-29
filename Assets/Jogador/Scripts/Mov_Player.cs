@@ -96,7 +96,14 @@ public class Mov_Player : MonoBehaviour
 
         if (Physics.RaycastAll(new Ray(transform.position, transform.forward), 2f, bloqueio, QueryTriggerInteraction.Collide).Length > 1)
         {
-
+            // (verifica se está passando por uma porta que conecta uma sala a outra)
+            if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
+            {
+                if (hit.collider.CompareTag("LimitadorSala"))
+                {
+                    transform.position = new Vector3(Mathf.Round(mover.x), mover.y, Mathf.Round(mover.z));
+                }
+            }
         }
         else
         {
