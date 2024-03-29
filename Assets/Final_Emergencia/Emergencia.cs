@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Item_Tesouro : MonoBehaviour
+public class Emergencia : MonoBehaviour
 {
     Player_Final player;
+    public float timerFinal = 40f;
 
     // Start is called before the first frame update
     void Start()
@@ -15,22 +17,16 @@ public class Item_Tesouro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        if (player.fuga == true)
         {
-            if (player.coletados >= 1)
+            if (timerFinal <= 0)
             {
-                player.fuga = true;
+                SceneManager.LoadScene(2);
             }
-            else
+            if (timerFinal > 0)
             {
-                player.coletados += 1;
+                timerFinal -= Time.deltaTime;
             }
-            Destroy(gameObject);
         }
     }
 }

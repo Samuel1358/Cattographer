@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7112915301561095715}
   - component: {fileID: 6395158248393600104}
   - component: {fileID: 3610327696307722031}
-  - component: {fileID: 5149138795929409862}
+  - component: {fileID: 5720864581750974270}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dano: 10
---- !u!114 &5149138795929409862
+--- !u!114 &5720864581750974270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Porta_Tesouro : MonoBehaviour
 {
-    Player_Finalizar player;
+    Player_Final player;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player_Finalizar>();
+        player = FindObjectOfType<Player_Final>();
     }
 
     // Update is called once per frame
