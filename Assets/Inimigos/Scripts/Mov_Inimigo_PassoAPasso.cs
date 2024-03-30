@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mov_Inimigo_PassoAPasso : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Mov_Inimigo_PassoAPasso : MonoBehaviour
     public float timerMov = 1f;
     private float ttMov;
     Quaternion inicial, dir;
+
+    RaycastHit hit;
 
     #region // INSTRUCOES
 
@@ -65,7 +68,7 @@ public class Mov_Inimigo_PassoAPasso : MonoBehaviour
             {
                 // (verifica o timer)
                 if (timerMov <= 0)
-                {
+                { 
                     // (verifica a diracao do passo)
                     switch (direcao)
                     {
@@ -91,13 +94,19 @@ public class Mov_Inimigo_PassoAPasso : MonoBehaviour
                         case 4:
                             dir = Quaternion.Euler(inicial.x, inicial.y + 270f, inicial.z);
                             transform.rotation = dir;
-                            
                             break;
                     }
-                    transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z)) + transform.forward;
+                    if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 1f, 128, QueryTriggerInteraction.Collide))
+                    {
+                        destino = 0;
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z)) + transform.forward;
 
-                    destino -= 1;
-                    timerMov = ttMov;
+                        destino -= 1;
+                        timerMov = ttMov;
+                    }
                 }
                 if (timerMov > 0)
                 {
