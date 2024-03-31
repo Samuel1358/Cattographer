@@ -16,7 +16,7 @@ public class Porta_Tesouro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.portas >= 2)
+        if (player.portas >= 3)
         {
             gameObject.layer = 0;
         }
@@ -30,7 +30,7 @@ public class Porta_Tesouro : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            player.portas -= 2;
+            player.portas -= 3;
             Destroy(gameObject);
         }
     }
