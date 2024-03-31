@@ -7,7 +7,7 @@ public class Teleporte : MonoBehaviour
     public Teleporte gemeo;
     
     RaycastHit hit;
-    public LayerMask mask;
+    public LayerMask bloqueio;
 
     public bool registro = false;
     public bool ocupado = false;
@@ -21,7 +21,7 @@ public class Teleporte : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Physics.Raycast(new Ray(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), transform.up), out hit, 1f, mask, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(new Ray(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), transform.up), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
         {
             registro = true;
             ocupado = true;
@@ -40,7 +40,7 @@ public class Teleporte : MonoBehaviour
     {
         if (ocupado == false)
         {
-            if (Physics.Raycast(new Ray(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), transform.up), out hit, 1f, mask, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(new Ray(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), transform.up), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
             {
                 if (gemeo.ocupado == false)
                 {

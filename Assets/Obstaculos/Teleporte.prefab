@@ -60,10 +60,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gemeo: {fileID: 0}
-  registro: 0
-  mask:
+  bloqueio:
     serializedVersion: 2
     m_Bits: 128
+  registro: 0
   ocupado: 0
 --- !u!1 &2956607052695480633
 GameObject:
