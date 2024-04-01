@@ -1,133 +1,155 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Mov_Inimigo_PassoAPasso : MonoBehaviour
 {
-    public int move = 0;
-    public int direcao;
+    public enum Direcao
+    {
+        PositiveZ,
+        PositiveX,
+        NegativeZ,
+        NegativeX,
+    }
+
+    public bool moving = false;
+    public Direcao direcao;
     public int destino;
-    private int dest;
+    private int passo;
     public float timerMov = 1f;
     private float ttMov;
-    Quaternion inicial, dir;
-
-    RaycastHit hit;
+    private Quaternion inicial;
 
     #region // INSTRUCOES
 
-    /* MOVE:
-     * 0 -> não ativo
-     * 1 -> ativo
-     * 2 -> concluido
+    /* MOVING:
+     * se está se movendo
      */
 
     /* DIRECAO:
-     * 1 -> frente ----- (+z)
-     * 2 -> direita -- (+x)
-     * 3 -> traz ---- (-z)
-     * 4 -> esquerda - (-x)
+     * PosZ -> frente
+     * PosX -> direita
+     * NegZ -> traz
+     * NegX -> esquerda
+     */
+
+    /* PASSO:
+     * numero de casas que já andou
      */
 
     /* DESTINO:
-     * numero de casas que a se andar
+     * numero de casas total do movimento
      */
 
     /* TIMER:
      * tempo entre cada passo
      */
 
-    /* CONNECT:
-     * ativado -> caso passe para outro movimento ao terminar
-     * desativado -> caso não 
-     */
-
     #endregion
 
     //public Sala_Controller controller;
     public Mov_Inimigo_PassoAPasso next;
-    public bool connect = false;
+    private Mov_Inimigo_PassoAPasso prev;
+    private bool forward;
 
     // Start is called before the first frame update
     void Start()
     {
-        inicial = new Quaternion(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z, 1f);
-        dest = destino;
+        inicial = transform.rotation;
+        passo = 0;
+        forward = true;
         ttMov = timerMov;
+        if (next != null)
+        {
+            next.prev = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         // (verifica se esta ativo)
-        if (move == 1)
+        if (moving)
         {
-            // (verifica se ainda deve andar)
-            if (destino > 0)
+            // (verifica o timer)
+            if (timerMov <= Time.deltaTime)
             {
-                // (verifica o timer)
-                if (timerMov <= 0)
-                { 
-                    // (verifica a diracao do passo)
-                    switch (direcao)
+                // (verifica se ainda deve andar)
+                if ((forward && passo < destino) || (!forward && passo > 0))
+                {
+                    // (verifica a direcao do passo)
+                    if (forward)
                     {
-                        // Frente
-                        case 1:
-                            dir = Quaternion.Euler(inicial.x, inicial.y, inicial.z);
-                            transform.rotation = dir;
-                            //transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z)) + transform.forward;
-                            break;
-                        // Direita
-                        case 2:
-                            dir = Quaternion.Euler(inicial.x, inicial.y + 90f, inicial.z);
-                            transform.rotation = dir;
-                            //transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z)) + transform.forward;
-                            break;
-                        // Traz
-                        case 3:
-                            dir = Quaternion.Euler(inicial.x, inicial.y + 180f, inicial.z);
-                            transform.rotation = dir;
-                            //transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z)) + transform.forward;
-                            break;
-                        // Esquerda
-                        case 4:
-                            dir = Quaternion.Euler(inicial.x, inicial.y + 270f, inicial.z);
-                            transform.rotation = dir;
-                            break;
+                        transform.rotation = direcao switch
+                        {
+                            // Frente
+                            Direcao.PositiveZ => Quaternion.Euler(inicial.eulerAngles + new Vector3(0f, 0f, 0f)),
+
+                            // Direita
+                            Direcao.PositiveX => Quaternion.Euler(inicial.eulerAngles + new Vector3(0f, 90f, 0f)),
+
+                            // Traz
+                            Direcao.NegativeZ => Quaternion.Euler(inicial.eulerAngles + new Vector3(0f, 180f, 0f)),
+
+                            // Esquerda
+                            Direcao.NegativeX => Quaternion.Euler(inicial.eulerAngles + new Vector3(0f, 270f, 0f)),
+
+                            _ => transform.rotation,
+                        };
                     }
-                    if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 1f, 128, QueryTriggerInteraction.Collide))
+                    else /* if (!forward) */
                     {
-                        destino = 0;
+                        transform.rotation = direcao switch
+                        {
+                            // Traz (Frente ao contrário)
+                            Direcao.PositiveZ => Quaternion.Euler(inicial.eulerAngles + new Vector3(0f, 180f, 0f)),
+
+                            // Esquerda (Direita ao contrário)
+                            Direcao.PositiveX => Quaternion.Euler(inicial.eulerAngles + new Vector3(0f, 270f, 0f)),
+
+                            // Frente (Traz ao contrário)
+                            Direcao.NegativeZ => Quaternion.Euler(inicial.eulerAngles + new Vector3(0f, 0f, 0f)),
+
+                            // Direita (Esquerda ao contrário)
+                            Direcao.NegativeX => Quaternion.Euler(inicial.eulerAngles + new Vector3(0f, 90f, 0f)),
+
+                            _ => transform.rotation,
+                        };
+                    }
+
+                    // (verifica se há um obstáculo na frente)
+                    if (Physics.Raycast(new Ray(transform.position, transform.forward), 1f, 128, QueryTriggerInteraction.Collide))
+                    {
+                        forward = !forward;
                     }
                     else
                     {
                         transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z)) + transform.forward;
 
-                        destino -= 1;
-                        timerMov = ttMov;
+                        passo += forward ? 1 : -1;
                     }
                 }
-                if (timerMov > 0)
+                else
                 {
-                    timerMov -= Time.deltaTime;
+                    moving = false;
+
+                    // (verifica se esta conectado a outro movimento, e ativa-o se positivo)
+                    Mov_Inimigo_PassoAPasso continuacao = forward ? next : prev;
+                    if (continuacao != null)
+                    {
+                        continuacao.passo = forward ? 0 : continuacao.destino;
+                        continuacao.forward = forward;
+                        continuacao.moving = true;
+                        continuacao.timerMov = 0;
+                    }
                 }
+
+                timerMov = ttMov;
             }
-            if (destino <= 0)
+            else /* if (timerMov > Time.deltaTime) */
             {
-                move = 2;
+                timerMov -= Time.deltaTime;
             }
-        }
-        if (move == 2)
-        {
-            // (verifica se esta conectado a outro movimento, e ativa-o se positivo)
-            if (connect == true)
-            {
-                next.destino = next.dest;
-                next.move = 1;
-            }
-            move = 0;
         }
     }
-
 }

@@ -2869,12 +2869,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 1
-  direcao: 1
+  moving: 1
+  direcao: 0
   destino: 8
   timerMov: 0.5
   next: {fileID: 4680481170328463895}
-  connect: 1
 --- !u!114 &4680481170328463895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2887,9 +2886,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 0
-  direcao: 3
+  moving: 0
+  direcao: 2
   destino: 8
   timerMov: 0.5
   next: {fileID: 262614324947583035}
-  connect: 1

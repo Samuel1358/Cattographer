@@ -1818,15 +1818,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 0
-  direcao: 3
+  moving: 1
+  direcao: 0
   destino: 5
   timerMov: 0.5
-  mask:
-    serializedVersion: 2
-    m_Bits: 128
   next: {fileID: 5285373783277716646}
-  connect: 1
 --- !u!114 &5285373783277716646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,15 +1835,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 1
-  direcao: 1
+  moving: 0
+  direcao: 2
   destino: 5
   timerMov: 0.5
-  mask:
-    serializedVersion: 2
-    m_Bits: 128
   next: {fileID: 2011496380444797980}
-  connect: 1
 --- !u!4 &8109723082231466788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7553766093501452641, guid: 0b951870085f7754c8e8edb8531aec92, type: 3}
@@ -2991,15 +2983,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 1
-  direcao: 1
+  moving: 1
+  direcao: 0
   destino: 5
   timerMov: 0.5
-  mask:
-    serializedVersion: 2
-    m_Bits: 128
   next: {fileID: 6003050630796300080}
-  connect: 1
 --- !u!114 &6003050630796300080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3012,15 +3000,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 0
-  direcao: 3
+  moving: 0
+  direcao: 2
   destino: 5
   timerMov: 0.5
-  mask:
-    serializedVersion: 2
-    m_Bits: 128
   next: {fileID: 273064380243948882}
-  connect: 1
 --- !u!1001 &7692491056967250261
 PrefabInstance:
   m_ObjectHideFlags: 0
