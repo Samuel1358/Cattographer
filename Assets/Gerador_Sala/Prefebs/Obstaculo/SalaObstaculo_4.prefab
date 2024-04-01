@@ -1141,24 +1141,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1291147307884651715, guid: 0b951870085f7754c8e8edb8531aec92, type: 3}
   m_PrefabInstance: {fileID: 883291984183539768}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1032602691656307434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137246935052918011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  move: 0
-  direcao: 2
-  destino: 2
-  timerMov: 0.5
-  next: {fileID: 4715259106588405081}
-  connect: 1
 --- !u!114 &3713642131161733104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,12 +1153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 1
-  direcao: 1
+  moving: 1
+  direcao: 0
   destino: 2
   timerMov: 0.5
-  next: {fileID: 1032602691656307434}
-  connect: 1
+  next: {fileID: 4715259106588405081}
 --- !u!114 &4715259106588405081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,12 +1170,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 0
-  direcao: 3
+  moving: 0
+  direcao: 1
+  destino: 2
+  timerMov: 0.5
+  next: {fileID: 1032602691656307434}
+--- !u!114 &1032602691656307434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137246935052918011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moving: 0
+  direcao: 2
   destino: 2
   timerMov: 0.5
   next: {fileID: 8343733894433014155}
-  connect: 1
 --- !u!114 &8343733894433014155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,12 +1204,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a82b3320f021d4aab15f0699a9ae77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 0
-  direcao: 4
+  moving: 0
+  direcao: 3
   destino: 2
   timerMov: 0.5
   next: {fileID: 3713642131161733104}
-  connect: 1
 --- !u!4 &7248063511924762969 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7553766093501452641, guid: 0b951870085f7754c8e8edb8531aec92, type: 3}
