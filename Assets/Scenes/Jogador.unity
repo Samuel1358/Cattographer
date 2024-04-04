@@ -676,7 +676,8 @@ MonoBehaviour:
   Obsc_1: {fileID: 518767507180438506, guid: 074d77090da85d94bae2aed099f709e8, type: 3}
   Obsc_2: {fileID: 518767507180438506, guid: bf2a68e9344091a4f8cdcf83ff016510, type: 3}
   Obsc_3: {fileID: 518767507180438506, guid: 52da5cf75ec83c8418662b8745670e45, type: 3}
-  Obsc_4: {fileID: 518767507180438506, guid: 730af411694106443bc0ca1beeaeedd2, type: 3}
+  Obsc_4_1: {fileID: 518767507180438506, guid: 730af411694106443bc0ca1beeaeedd2, type: 3}
+  Obsc_4_2: {fileID: 518767507180438506, guid: 172630e528ef05c48a5231d164831de8, type: 3}
   Obsc_5: {fileID: 518767507180438506, guid: c1fafb44f017ae943b4fea8e18ca4536, type: 3}
   NPC_2: {fileID: 8122952100028466212, guid: 625924385dc43d44f87e87f340a3cd1c, type: 3}
   NPC_3: {fileID: 8122952100028466212, guid: c4fa05f9e21a34040a7dad985ed346cf, type: 3}
