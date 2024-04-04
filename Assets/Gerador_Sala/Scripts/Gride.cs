@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +24,8 @@ public class Gride : MonoBehaviour
     public GameObject Obsc_1;
     public GameObject Obsc_2;
     public GameObject Obsc_3;
-    public GameObject Obsc_4;
+    public GameObject Obsc_4_1;
+    public GameObject Obsc_4_2;
     public GameObject Obsc_5;
 
     // NPC
@@ -80,9 +80,11 @@ public class Gride : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        
+
         // Randomizer
         // (aleatoriza qual gride será usada)
-        switch(Random.Range(1, 5))
+        switch (Random.Range(1, 5))
         {
             case 1:
                 grid = grid1;
@@ -107,7 +109,7 @@ public class Gride : MonoBehaviour
                 switch(grid[i, j, 0])
                 {
                     // Saida
-                    case 1:
+                    case 1:                      
                         switch(grid[i, j, 1])
                         {
                             case 2:
@@ -150,7 +152,21 @@ public class Gride : MonoBehaviour
                                 obj[i, j] = Obsc_3;
                                 break;
                             case 4:
-                                obj[i, j] = Obsc_4;
+
+                                //GameObject[] Obsc_4 = { Obsc_4_1, Obsc_4_2 };
+                                //obj[i, j] = Obsc_4[Random.Range(0, 2)];
+
+                                // obsc_4
+                                switch (Random.Range(1, 3))
+                                {
+                                    case 1:
+                                        obj[i, j] = Obsc_4_1;
+                                        break;
+                                    case 2:
+                                        obj[i, j] = Obsc_4_2;
+                                        break;
+                                }
+
                                 break;
                             case 5:
                                 obj[i, j] = Obsc_5;

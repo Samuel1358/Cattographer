@@ -1113,7 +1113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "o prt\xF3tipo de Cattographer"
+  m_Text: "o prot\xF3tipo de Cattographer"
 --- !u!222 &1650990249
 CanvasRenderer:
   m_ObjectHideFlags: 0
