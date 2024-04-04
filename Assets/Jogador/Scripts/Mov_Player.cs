@@ -81,7 +81,11 @@ public class Mov_Player : MonoBehaviour
         if (other.CompareTag("Buraco"))
         {
             // (não pode se mexer se cair no buraco)
-            if (Physics.Raycast(new Ray(transform.position, transform.up * -1f), 1f, fundo, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(new Ray(transform.position, transform.up * -1f), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
+            {
+               
+            }
+            else
             {
                 canMove = false;
                 caiuBuraco = true;

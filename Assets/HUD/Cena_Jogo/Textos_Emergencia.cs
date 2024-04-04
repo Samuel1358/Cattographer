@@ -8,13 +8,15 @@ public class Textos_Emergencia : MonoBehaviour
 {
     Player_Final player;
     Emergencia emer;
+    public RectTransform canvas;
 
     public Text textoPortas;
     public Text textoTesouro;
     public Text textoBotao;
     public Text textoBotaoMensagem;
     float timerBotao = 20f;
-    bool botao = true;
+    bool botao = true, posBotao = true;
+    
 
     public Text textoEmergencia;
     public Text textoEmergenciaAlerta;
@@ -44,7 +46,16 @@ public class Textos_Emergencia : MonoBehaviour
         {
             textoPortas.gameObject.SetActive(true);
             textoTesouro.gameObject.SetActive(true);
-            textoBotao.rectTransform.position = new Vector3(550f, 518f, 0f);
+
+            if (posBotao == true)
+            {
+                textoBotao.rectTransform.anchorMin = new Vector2(0.5f, 1f);
+                textoBotao.rectTransform.anchorMax = new Vector2(0.5f, 1f);
+            
+                textoBotao.rectTransform.position = new Vector3(canvas.rect.width / 2, canvas.rect.height -40f, 0f);
+                posBotao = false;
+            }           
+
             textoEmergencia.gameObject.SetActive(false);
             textoEmergenciaAlerta.gameObject.SetActive(false);
 
@@ -57,7 +68,16 @@ public class Textos_Emergencia : MonoBehaviour
         {
             textoPortas.gameObject.SetActive(false);
             textoTesouro.gameObject.SetActive(false);
-            textoBotao.rectTransform.position = new Vector3(1010f, 518f, 0f);
+
+            if (posBotao == false)
+            {
+                textoBotao.rectTransform.anchorMin = new Vector2(1f, 1f);
+                textoBotao.rectTransform.anchorMax = new Vector2(1f, 1f);
+                //
+                textoBotao.rectTransform.position = new Vector3(canvas.rect.width - 55f, canvas.rect.height -40f, 0f);
+                posBotao = true;
+            }
+
             textoEmergencia.gameObject.SetActive(true);
 
             textoEmergencia.text = ((int)emer.timerFinal).ToString();
