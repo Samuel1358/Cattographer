@@ -676,7 +676,7 @@ MonoBehaviour:
   Vazio_4: {fileID: 518767507180438506, guid: 17d1c9034676c134ca92a6ba9b907c76, type: 3}
   Obsc_1: {fileID: 518767507180438506, guid: 074d77090da85d94bae2aed099f709e8, type: 3}
   Obsc_2: {fileID: 518767507180438506, guid: bf2a68e9344091a4f8cdcf83ff016510, type: 3}
-  Obsc_3: {fileID: 518767507180438506, guid: 52da5cf75ec83c8418662b8745670e45, type: 3}
+  Obsc_3: {fileID: 518767507180438506, guid: 9344a51b7f77b3c478247ba44158b3ef, type: 3}
   Obsc_4_1: {fileID: 518767507180438506, guid: 730af411694106443bc0ca1beeaeedd2, type: 3}
   Obsc_4_2: {fileID: 518767507180438506, guid: 172630e528ef05c48a5231d164831de8, type: 3}
   Obsc_5: {fileID: 518767507180438506, guid: c1fafb44f017ae943b4fea8e18ca4536, type: 3}
