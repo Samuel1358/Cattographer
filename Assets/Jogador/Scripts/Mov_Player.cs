@@ -10,11 +10,13 @@ public class Mov_Player : MonoBehaviour
 {
     // MOVE
     //Rigidbody rb;
-    private float spd = 1f;
+    //private float spd = 1f;
     public bool canMove = true;
     public bool caiuBuraco = false;
     private float timerMove;
     static private readonly float moveCooldown = 0.16f;
+
+    private int movX = 0, movZ = 0;
 
     // RAY
     RaycastHit hit;
@@ -41,9 +43,13 @@ public class Mov_Player : MonoBehaviour
         {
             if (timerMove <= 0f)
             {
-                float xInput = Input.GetAxisRaw("Horizontal");
-                float zInput = Input.GetAxisRaw("Vertical");
-
+                /*float xInput = Input.GetAxisRaw("Horizontal");
+                float zInput = Input.GetAxisRaw("Vertical");*/
+                float xInput = movX;
+                float zInput = movZ;
+                movX = 0;
+                movZ = 0;          
+                
                 if (xInput != 0 || zInput != 0)
                 {
                     // Prioriza o eixo X para movimentar somente em um eixo por vez
@@ -144,4 +150,25 @@ public class Mov_Player : MonoBehaviour
 
         canMove = true;
     }
+
+    #region // GET - botoes
+
+    public void Cima()
+    {
+        movZ = 1;
+    }
+    public void Direita()
+    {
+        movX = 1;
+    }
+    public void Baixo()
+    {
+        movZ = -1;
+    }
+    public void Esquerda()
+    {
+        movX = -1;
+    }
+
+    #endregion
 }

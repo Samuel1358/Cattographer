@@ -5,6 +5,7 @@ using UnityEngine;
 public class Camera_Player : MonoBehaviour
 {
     Mov_Player player;
+    public float dis = 2.5f;
 
     // Lista de IDs
     int[,] ID = new int[5, 5] { { 1,  2,  3,  4,  5},
@@ -26,6 +27,8 @@ public class Camera_Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dis = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).y / 2;
+
         /*player = FindObjectOfType<Mov_Player>();
 
         for (int x = 0; x < POS.GetLength(0); x++)
@@ -57,12 +60,12 @@ public class Camera_Player : MonoBehaviour
                     if (ID[x, y] == player.sala)
                     {
                         Debug.Log("oii");
-                        transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1] - 2.5f);
+                        transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1] - dis);
                         registro = ID[x, y];
                     }
                 }
             }
-            transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 2.5f);
+            transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - dis);
         }
         else
         {
@@ -74,7 +77,7 @@ public class Camera_Player : MonoBehaviour
                     {
                         if (ID[x, y] == player.sala)
                         {
-                            transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1] - 2.5f);
+                            transform.position = new Vector3(POS[x, y, 0], transform.position.y, POS[x, y, 1] - dis);
                             //Debug.Log()
                             registro = ID[x, y];
                         }
