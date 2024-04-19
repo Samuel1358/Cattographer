@@ -1,34 +1,36 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using static Mov_Inimigo_PassoAPasso;
 
 public class Mov_Player : MonoBehaviour
 {
     // MOVE
     //Rigidbody rb;
-    float spd = 1f;
-    Quaternion dir;
-    public bool canMove = true, caiuBuraco = false;
-    float timerMove = 0.2f, ttMove;
+    private float spd = 1f;
+    public bool canMove = true;
+    public bool caiuBuraco = false;
+    private float timerMove;
+    static private readonly float moveCooldown = 0.16f;
 
     // RAY
     RaycastHit hit;
     public LayerMask bloqueio;
     public LayerMask fundo;
+    public LayerMask chao;
 
     public int sala;
 
-    // Start is called before the first frame update
     void Start()
     {
         //rb = GetComponent<Rigidbody>();
 
-        ttMove = timerMove;
+        timerMove = moveCooldown;
     }
 
-    // Update is called once per frame
     void Update()
     {
         #region // MOVE
@@ -37,34 +39,23 @@ public class Mov_Player : MonoBehaviour
 
         if (canMove == true)
         {
-            if (Input.GetKey(KeyCode.UpArrow) && timerMove <= 0f)
+            if (timerMove <= 0f)
             {
-                dir = Quaternion.Euler(0f, 0f, 0f);
-                transform.rotation = dir;
-                Mover(new Vector3(transform.position.x, transform.position.y, transform.position.z + spd));
-                timerMove = ttMove;
-                //transform.position = new Vector3(0f, 2f, -7f);
-            }
-            if (Input.GetKey(KeyCode.RightArrow) && timerMove <= 0f)
-            {
-                dir = Quaternion.Euler(0f, 90f, 0f);
-                transform.rotation = dir;
-                Mover(new Vector3(transform.position.x + spd, transform.position.y, transform.position.z));
-                timerMove = ttMove;
-            }
-            if (Input.GetKey(KeyCode.DownArrow) && timerMove <= 0f)
-            {
-                dir = Quaternion.Euler(0f, 180f, 0f);
-                transform.rotation = dir;
-                Mover(new Vector3(transform.position.x, transform.position.y, transform.position.z - spd));
-                timerMove = ttMove;
-            }
-            if (Input.GetKey(KeyCode.LeftArrow) && timerMove <= 0f)
-            {
-                dir = Quaternion.Euler(0f, 270f, 0f);
-                transform.rotation = dir;
-                Mover(new Vector3(transform.position.x - spd, transform.position.y, transform.position.z));
-                timerMove = ttMove;
+                float xInput = Input.GetAxisRaw("Horizontal");
+                float zInput = Input.GetAxisRaw("Vertical");
+
+                if (xInput != 0 || zInput != 0)
+                {
+                    // Prioriza o eixo X para movimentar somente em um eixo por vez
+                    if (xInput != 0) { zInput = 0; }
+
+                    Vector3 direction = new Vector3(xInput, 0, zInput);
+                    Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
+
+                    transform.rotation = rotation;
+                    StartCoroutine(MovimentacaoCoroutine(direction));
+                    timerMove = moveCooldown;
+                }
             }
 
             if (timerMove > 0f)
@@ -83,7 +74,7 @@ public class Mov_Player : MonoBehaviour
             // (não pode se mexer se cair no buraco)
             if (Physics.Raycast(new Ray(transform.position, transform.up * -1f), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
             {
-               
+
             }
             else
             {
@@ -93,40 +84,64 @@ public class Mov_Player : MonoBehaviour
         }
     }
 
-    private void Mover(Vector3 mover)
+    private IEnumerator MovimentacaoCoroutine(Vector3 direcao)
     {
-        // (verifica se há um grupo de mais de um obstáculo a frente do jogador)
-        // (se houver, ele não anda)
+        canMove = false;
 
-        if (Physics.RaycastAll(new Ray(transform.position, transform.forward), 2f, bloqueio, QueryTriggerInteraction.Collide).Length > 1)
-        {
-            // (verifica se está passando por uma porta que conecta uma sala a outra)
-            if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
-            {
-                if (hit.collider.CompareTag("LimitadorSala"))
-                {
-                    transform.position = new Vector3(Mathf.Round(mover.x), mover.y, Mathf.Round(mover.z));
-                }
-            }
-        }
-        else
-        {
-            // (verifica se há uma pareda a frente do jogador)
-            if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
-            {
-                if (hit.collider.CompareTag("Parede"))
-                {
+        // Força a direção a ter magnitude 1
+        direcao.Normalize();
 
-                }
-                else
-                {
-                    transform.position = new Vector3(Mathf.Round(mover.x), mover.y, Mathf.Round(mover.z));
-                }
-            }
-            else
+        // Começa assumindo que o movimento não está obstruído
+        bool movimentoObstruido = false;
+
+        // Loop para caso o piso seja de gelo
+        do
+        {
+            // Verifica se existe um obstáculo na direção do movimento, uma casa a frente
+            if (Physics.Raycast(
+                ray: new Ray(transform.position, direcao),
+                hitInfo: out RaycastHit obstaculo,
+                maxDistance: 1f,
+                layerMask: bloqueio,
+                QueryTriggerInteraction.Collide
+            ))
             {
-                transform.position = new Vector3(Mathf.Round(mover.x), mover.y, Mathf.Round(mover.z));
+                // Se for uma parede, obstrui o movimento
+                if (obstaculo.collider.CompareTag("Parede"))
+                {
+                    movimentoObstruido = true;
+                }
+                // Se for um bloco, tenta empurrá-lo
+                else if (obstaculo.collider.CompareTag("Empurravel"))
+                {
+                    Empurrao bloco = obstaculo.collider.GetComponent<Empurrao>();
+                    bool conseguiuEmpurrar = bloco.Empurrar(direcao);
+
+                    // Se não conseguiu empurrar, obstrui o movimento
+                    movimentoObstruido = !conseguiuEmpurrar;
+                }
             }
-        }
+
+            // Se não for obstruído, movimenta
+            if (!movimentoObstruido)
+            {
+                transform.position += direcao;
+            }
+
+            yield return null;            
+
+        } while (
+            // Repete enquanto o piso for de gelo e o movimento não estiver obstruído
+            Physics.Raycast(
+                ray: new Ray(transform.position, -transform.up),
+                hitInfo: out RaycastHit piso,
+                maxDistance: 1f,
+                layerMask: chao,
+                QueryTriggerInteraction.Collide
+            ) && piso.collider.CompareTag("Gelo")
+            && !movimentoObstruido
+        );
+
+        canMove = true;
     }
 }

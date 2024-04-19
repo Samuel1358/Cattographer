@@ -87,6 +87,9 @@ MonoBehaviour:
   fundo:
     serializedVersion: 2
     m_Bits: 256
+  chao:
+    serializedVersion: 2
+    m_Bits: 512
   sala: 0
 --- !u!114 &3610327696307722031
 MonoBehaviour:
@@ -115,6 +118,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coletados: 0
   portas: 0
+  botoes: 0
+  fuga: 0
+  aberto: 0
 --- !u!1 &6500571310958020121
 GameObject:
   m_ObjectHideFlags: 0

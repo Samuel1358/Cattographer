@@ -9,6 +9,8 @@ TagManager:
   - Buraco
   - Inimigo
   - LimitadorSala
+  - Gelo
+  - Empurravel
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - 
   - Bloqueio
   - Fundo
-  - 
+  - Chao
   - 
   - 
   - 
