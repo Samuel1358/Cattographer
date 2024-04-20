@@ -846,6 +846,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1782231903}
+  timer: {fileID: 1794140606}
+  verdes: {fileID: 1954520452}
+  amarelos: {fileID: 2127356891}
   botoes_move: {fileID: 1232183848}
 --- !u!1 &1174366980
 GameObject:
