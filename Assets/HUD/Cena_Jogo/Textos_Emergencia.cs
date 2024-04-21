@@ -49,10 +49,10 @@ public class Textos_Emergencia : MonoBehaviour
 
             if (posBotao == true)
             {
-                textoBotao.rectTransform.anchorMin = new Vector2(0.5f, 1f);
-                textoBotao.rectTransform.anchorMax = new Vector2(0.5f, 1f);
+                //textoBotao.rectTransform.anchorMin = new Vector2(0.5f, 1f);
+                //textoBotao.rectTransform.anchorMax = new Vector2(0.5f, 1f);
             
-                textoBotao.rectTransform.position = new Vector3(canvas.rect.width / 2, canvas.rect.height -40f, 0f);
+                //textoBotao.rectTransform.position = new Vector3(canvas.rect.width / 2, canvas.rect.height -40f, 0f);
                 posBotao = false;
             }           
 
@@ -71,10 +71,10 @@ public class Textos_Emergencia : MonoBehaviour
 
             if (posBotao == false)
             {
-                textoBotao.rectTransform.anchorMin = new Vector2(1f, 1f);
-                textoBotao.rectTransform.anchorMax = new Vector2(1f, 1f);
+                //textoBotao.rectTransform.anchorMin = new Vector2(1f, 1f);
+                //textoBotao.rectTransform.anchorMax = new Vector2(1f, 1f);
                 //
-                textoBotao.rectTransform.position = new Vector3(canvas.rect.width - 55f, canvas.rect.height -40f, 0f);
+                //textoBotao.rectTransform.position = new Vector3(canvas.rect.width - 55f, canvas.rect.height -40f, 0f);
                 posBotao = true;
             }
 
