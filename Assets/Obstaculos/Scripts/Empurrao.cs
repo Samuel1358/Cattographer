@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -9,8 +10,8 @@ public class Empurrao : MonoBehaviour
     Mov_Player player;
 
     RaycastHit hit;
-    public LayerMask mask;
-    public bool verifique = false;
+    public LayerMask bloqueio;
+    public LayerMask chao;
     public Vector3 x = new Vector3(0, 0, 0);
 
     // QUEDA
@@ -42,28 +43,10 @@ public class Empurrao : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (player != null)
-        {
-            if (other.CompareTag("Player"))
-            {
-                // (verifica se há algo bloquiando o caminho)
-                if (Physics.Raycast(new Ray(transform.position, player.transform.forward), out hit, 1f, mask, QueryTriggerInteraction.Collide))
-                {
-
-                }
-                else
-                {
-                    verifique = true;
-                    x = player.transform.forward;
-                    transform.Translate(player.transform.forward);
-                }               
-            }
-        }
-
         // (gravidade é ativada quando empurado para um buraco)
         if (other.CompareTag("Buraco"))
         {
-            if (Physics.Raycast(new Ray(transform.position, Vector2.down), out hit, 1f, mask, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(new Ray(transform.position, Vector2.down), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
             {
 
             }
@@ -87,4 +70,44 @@ public class Empurrao : MonoBehaviour
         }
     }
 
+    public bool Empurrar(Vector3 direcao)
+    {
+        bool empurrou = false;
+
+        bool movimentoObstruido;
+        // Loop para caso o piso seja de gelo
+        do
+        {
+            // Verifica se tem um obstáculo
+            movimentoObstruido = Physics.Raycast(
+                ray: new Ray(transform.position, direcao),
+                // hitInfo: out RaycastHit obstaculo,
+                maxDistance: 1f,
+                layerMask: bloqueio,
+                QueryTriggerInteraction.Collide
+            );
+
+            // Se não tiver, movimenta o bloco
+            if (!movimentoObstruido)
+            {
+                transform.position += direcao;
+                // Marca que empurrou com sucesso
+                empurrou = true;
+            }
+
+        } while (
+            // Repete enquanto o piso for de gelo e o movimento não estiver obstruído
+            Physics.Raycast(
+                ray: new Ray(transform.position, -transform.up),
+                hitInfo: out RaycastHit piso,
+                maxDistance: 1f,
+                layerMask: chao,
+                QueryTriggerInteraction.Collide
+            ) && piso.collider.CompareTag("Gelo")
+            && !movimentoObstruido
+        );
+
+        // Retorna se empurrou o bloco com sucesso
+        return empurrou;
+    }
 }

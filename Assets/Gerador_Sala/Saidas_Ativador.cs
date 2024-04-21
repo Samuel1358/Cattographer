@@ -9,16 +9,20 @@ public class Saidas_Ativador : MonoBehaviour
 
     public bool playerPassed = false;
 
+    RaycastHit hit;
+    public LayerMask bloqueio;
+    float timerDestruir = 10f, ttDestruir;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        ttDestruir = timerDestruir;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), -transform.up, Color.red, 1f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,6 +31,26 @@ public class Saidas_Ativador : MonoBehaviour
         if (other.CompareTag("Player") && controller.spawnSeted == false)
         {
             playerPassed = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (Physics.Raycast(new Ray(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), -transform.up), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
+        {
+            if (timerDestruir <=0 )
+            {
+                Destroy(hit.collider.gameObject);
+                timerDestruir = ttDestruir;
+            }
+            if (timerDestruir > 0)
+            {
+                timerDestruir -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            timerDestruir = ttDestruir;
         }
     }
 }

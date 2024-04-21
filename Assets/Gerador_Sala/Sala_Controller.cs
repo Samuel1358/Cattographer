@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Sala_Controller : MonoBehaviour
 {
@@ -87,42 +86,44 @@ public class Sala_Controller : MonoBehaviour
         #region // SetSpawn
         // (verifica por qual saida o jogador entrou para setar o spaw, para caso ele caia em um buraco)
 
-        if (spawnSeted == false)
+        if (player.sala == id)
         {
+            if (spawnSeted == false)
+            {
 
-            if (saida1 != null)
-            {
-                if (saida1.playerPassed == true)
+                if (saida1 != null)
                 {
-                    spawnSeted = true;
-                    salaSpaw = new Vector3(saida1.transform.position.x, 2f, saida1.transform.position.z);
-                }                
-            }
-            if (saida2 != null)
-            {
-                if (saida2.playerPassed == true)
+                    if (saida1.playerPassed == true)
+                    {
+                        spawnSeted = true;
+                        salaSpaw = new Vector3(saida1.transform.position.x, 2f, saida1.transform.position.z);
+                    }
+                }
+                if (saida2 != null)
                 {
-                    spawnSeted = true;
-                    salaSpaw = new Vector3(saida2.transform.position.x, 1.5f, saida2.transform.position.z);
-                }                
-            }
-            if (saida3 != null)
-            {
-                if (saida3.playerPassed == true)
+                    if (saida2.playerPassed == true)
+                    {
+                        spawnSeted = true;
+                        salaSpaw = new Vector3(saida2.transform.position.x, 1.5f, saida2.transform.position.z);
+                    }
+                }
+                if (saida3 != null)
                 {
-                    spawnSeted = true;
-                    salaSpaw = new Vector3(saida3.transform.position.x, 1.5f, saida3.transform.position.z);
-                }                
-            }
-            if (saida4 != null)
-            {
-                if (saida4.playerPassed == true)
+                    if (saida3.playerPassed == true)
+                    {
+                        spawnSeted = true;
+                        salaSpaw = new Vector3(saida3.transform.position.x, 1.5f, saida3.transform.position.z);
+                    }
+                }
+                if (saida4 != null)
                 {
-                    spawnSeted = true;
-                    salaSpaw = new Vector3(saida4.transform.position.x, 1.5f, saida4.transform.position.z);
-                }                
+                    if (saida4.playerPassed == true)
+                    {
+                        spawnSeted = true;
+                        salaSpaw = new Vector3(saida4.transform.position.x, 1.5f, saida4.transform.position.z);
+                    }
+                }
             }
-            
         }
 
         #endregion
@@ -134,7 +135,6 @@ public class Sala_Controller : MonoBehaviour
         {
             if (timerSpawn <= 0)
             {
-                Debug.Log(salaSpaw);
                 player.transform.position = salaSpaw;
                 player.canMove = true;
                 player.caiuBuraco = false;
@@ -143,6 +143,31 @@ public class Sala_Controller : MonoBehaviour
             if (timerSpawn > 0)
             {
                 timerSpawn -= Time.deltaTime;
+            }
+        }
+
+        #endregion
+
+        #region // RESET
+
+        if (player.sala != id)
+        {
+            spawnSeted = false;
+            if (saida1 != null)
+            {
+                saida1.playerPassed = false;
+            }
+            if (saida2 != null)
+            {
+                saida2.playerPassed = false;
+            }
+            if (saida3 != null)
+            {
+                saida3.playerPassed = false;
+            }
+            if (saida4 != null)
+            {
+                saida4.playerPassed = false;
             }
         }
 

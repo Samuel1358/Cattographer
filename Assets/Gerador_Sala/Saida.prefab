@@ -58,3 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86329b288861f1d45a59fe855d693624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  playerPassed: 0
+  bloqueio:
+    serializedVersion: 2
+    m_Bits: 128

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8697797576363879243}
   m_Layer: 7
   m_Name: Empurravel
-  m_TagString: Untagged
+  m_TagString: Empurravel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,10 +76,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e472a1030daa3b44881cf4c77f9b4294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask:
+  bloqueio:
     serializedVersion: 2
     m_Bits: 128
-  verifique: 0
+  chao:
+    serializedVersion: 2
+    m_Bits: 512
   x: {x: 0, y: 0, z: 0}
 --- !u!1 &6888871896308627966
 GameObject:
