@@ -21,7 +21,7 @@ public class Emergencia : MonoBehaviour
         {
             if (timerFinal <= 0)
             {
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(3);
             }
             if (timerFinal > 0)
             {
