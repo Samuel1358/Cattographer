@@ -10,7 +10,7 @@ public class Bomba : MonoBehaviour
 
     public Slider marcador;
     GameObject bloco;
-    float explodir = 3f, ttx;
+    float explodir = 2f, ttx;
 
     // Start is called before the first frame update
     void Start()

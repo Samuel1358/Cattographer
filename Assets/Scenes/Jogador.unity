@@ -154,6 +154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listaItens: 000000000000000000000000
+  dir: 1
+  agir: 0
+  selecionado: 0
+  setas: 0
 --- !u!4 &226380236
 Transform:
   m_ObjectHideFlags: 0
@@ -181,6 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ccf9af3e22d08f4cbe202703b694a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bomba: {fileID: 1303248762645176447, guid: 901ee469ca3567140b1416367f36171d, type: 3}
 --- !u!1 &341380697
 GameObject:
   m_ObjectHideFlags: 0

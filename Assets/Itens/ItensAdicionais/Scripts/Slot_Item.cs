@@ -21,6 +21,11 @@ public class Slot_Item : MonoBehaviour
     public bool agir = false;
     bool botaoPrecionado = false;
 
+    [SerializeField] Image SetaCima;
+    [SerializeField] Image SetaDireita;
+    [SerializeField] Image SetaBaixo;
+    [SerializeField] Image SetaEsquerda;
+
     [SerializeField] Sprite bomba;
     [SerializeField] Sprite tabua;
     [SerializeField] Sprite kyrozene;
@@ -68,6 +73,46 @@ public class Slot_Item : MonoBehaviour
                 item.sprite = null;
                 break;
         }
+
+
+        SetaCima.color = invisivel;
+        SetaDireita.color = invisivel;
+        SetaBaixo.color = invisivel;
+        SetaEsquerda.color = invisivel;
+
+        SetaCima.sprite = null;
+        SetaDireita.sprite = null;
+        SetaBaixo.sprite = null;
+        SetaEsquerda.sprite = null;
+
+        /*if (lista.selecionado == true)
+        {
+            switch (lista.listaItens[slot])
+            {
+                case 1:
+                    SetaCima.color = visivel;
+                    SetaDireita.color = visivel;
+                    SetaBaixo.color = visivel;
+                    SetaEsquerda.color = visivel;
+
+                    SetaCima.sprite = bomba;
+                    SetaDireita.sprite = bomba;
+                    SetaBaixo.sprite = bomba;
+                    SetaEsquerda.sprite = bomba;
+                    break;
+                case 2:
+                    SetaCima.color = visivel;
+                    SetaDireita.color = visivel;
+                    SetaBaixo.color = visivel;
+                    SetaEsquerda.color = visivel;
+
+                    SetaCima.sprite = tabua;
+                    SetaDireita.sprite = tabua;
+                    SetaBaixo.sprite = tabua;
+                    SetaEsquerda.sprite = tabua;
+                    break;
+            }
+        }*/
 
         #endregion
 
