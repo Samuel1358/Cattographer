@@ -61,6 +61,7 @@ public class Mov_Player : MonoBehaviour
                     transform.rotation = rotation;
                     StartCoroutine(MovimentacaoCoroutine(direction));
                     timerMove = moveCooldown;
+
                 }
             }
 
@@ -71,23 +72,37 @@ public class Mov_Player : MonoBehaviour
         }
 
         #endregion
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Buraco"))
+        /*if (Physics.Raycast(new Ray(transform.position, -transform.up), out _, 1f, chao))
         {
-            // (não pode se mexer se cair no buraco)
-            if (Physics.Raycast(new Ray(transform.position, transform.up * -1f), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
-            {
-
-            }
-            else
-            {
-                canMove = false;
-                caiuBuraco = true;
-            }
+            canMove = true;
         }
+        else
+        {
+            canMove = false;
+        }*/
+
+        #region // TECLADO
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            Cima();
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Direita();
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            Baixo();
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Esquerda();
+        }
+        
+
+        #endregion
     }
 
     private IEnumerator MovimentacaoCoroutine(Vector3 direcao)
@@ -132,12 +147,31 @@ public class Mov_Player : MonoBehaviour
             if (!movimentoObstruido)
             {
                 transform.position += direcao;
+
+                // Queda no buraco
+                if (Physics.Raycast(new Ray(transform.position, -transform.up), out _, 23f, chao))
+                {
+                    
+                }
+                else
+                {
+                    if (Physics.Raycast(new Ray(transform.position, -transform.up), out _, 1f))
+                    {
+
+                    }
+                    else
+                    {
+                        canMove = false;
+                        caiuBuraco = true;
+                        yield break;
+                    }
+                }
             }
 
             yield return null;            
 
         } while (
-            // Repete enquanto o piso for de gelo e o movimento não estiver obstruído
+            // Repete enquanto o piso for de gelo e se o movimento não estiver obstruído
             Physics.Raycast(
                 ray: new Ray(transform.position, -transform.up),
                 hitInfo: out RaycastHit piso,

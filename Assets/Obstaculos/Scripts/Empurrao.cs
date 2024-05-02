@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
 
@@ -12,11 +14,13 @@ public class Empurrao : MonoBehaviour
     RaycastHit hit;
     public LayerMask bloqueio;
     public LayerMask chao;
-    public Vector3 x = new Vector3(0, 0, 0);
+    //public Vector3 x = new Vector3(0, 0, 0);
 
     // QUEDA
     Rigidbody rb;
     Collider box;
+
+    bool caindo = false;
 
     private void Awake()
     {
@@ -46,32 +50,38 @@ public class Empurrao : MonoBehaviour
         // (gravidade é ativada quando empurado para um buraco)
         if (other.CompareTag("Buraco"))
         {
-            if (Physics.Raycast(new Ray(transform.position, Vector2.down), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
+            //player.canMove = false;
+            if (Physics.Raycast(new Ray(transform.position, Vector2.down), out _, 1f, bloqueio, QueryTriggerInteraction.Collide))
             {
-
+                //player.canMove = true;
             }
             else
             {
+                caindo = true;
                 box.isTrigger = false;
                 rb.useGravity = true;
                 player.canMove = false;
             }            
         }
-
-        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Fundo"))
         {
-            //box.isTrigger = false;
+            //box.isTrigger = true;
+            //rb.useGravity = false;
+            gameObject.layer = LayerMask.NameToLayer("Chao");
             player.canMove = true;
         }
     }
 
     public bool Empurrar(Vector3 direcao)
     {
+        if (caindo)
+        {
+            return false;
+        }
         bool empurrou = false;
 
         bool movimentoObstruido;
