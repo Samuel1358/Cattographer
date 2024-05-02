@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class Slot_Item : MonoBehaviour
 
     //public int dir = 1;
     public GameObject selecionado;
+    bool selectInfo = false;
     public bool selecionadoControler = false;
     public bool agir = false;
     bool botaoPrecionado = false;
@@ -46,6 +48,10 @@ public class Slot_Item : MonoBehaviour
 
         item = GetComponent<Image>();
 
+        SetaCima.color = invisivel;
+        SetaDireita.color = invisivel;
+        SetaBaixo.color = invisivel;
+        SetaEsquerda.color = invisivel;
     }
 
     // Update is called once per frame
@@ -72,21 +78,11 @@ public class Slot_Item : MonoBehaviour
                 item.color = invisivel;
                 item.sprite = null;
                 break;
-        }
+        }        
 
-
-        SetaCima.color = invisivel;
-        SetaDireita.color = invisivel;
-        SetaBaixo.color = invisivel;
-        SetaEsquerda.color = invisivel;
-
-        SetaCima.sprite = null;
-        SetaDireita.sprite = null;
-        SetaBaixo.sprite = null;
-        SetaEsquerda.sprite = null;
-
-        /*if (lista.selecionado == true)
+        if (selecionadoControler == true)
         {
+            selectInfo = true;
             switch (lista.listaItens[slot])
             {
                 case 1:
@@ -111,11 +107,35 @@ public class Slot_Item : MonoBehaviour
                     SetaBaixo.sprite = tabua;
                     SetaEsquerda.sprite = tabua;
                     break;
+                default:
+                    SetaCima.color = invisivel;
+                    SetaDireita.color = invisivel;
+                    SetaBaixo.color = invisivel;
+                    SetaEsquerda.color = invisivel;
+
+                    SetaCima.sprite = null;
+                    SetaDireita.sprite = null;
+                    SetaBaixo.sprite = null;
+                    SetaEsquerda.sprite = null;
+                    break;
             }
-        }*/
+        }
+        else if (selectInfo == true)
+        {           
+            SetaCima.color = invisivel;
+            SetaDireita.color = invisivel;
+            SetaBaixo.color = invisivel;
+            SetaEsquerda.color = invisivel;
+
+            SetaCima.sprite = null;
+            SetaDireita.sprite = null;
+            SetaBaixo.sprite = null;
+            SetaEsquerda.sprite = null;
+
+            selectInfo = false;
+        }
 
         #endregion
-
 
         if (selecionadoControler == true && lista.setas == false)
         {
