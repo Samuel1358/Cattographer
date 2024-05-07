@@ -24,7 +24,7 @@ public class Mov_Botoes : MonoBehaviour
         itens.Precionado(true);
         if (itens.selecionado == false)
         {
-            player.Cima();
+            player.Movimentar(Vector3.forward);
         }
         else
         {
@@ -37,7 +37,7 @@ public class Mov_Botoes : MonoBehaviour
         itens.Precionado(true);
         if (itens.selecionado == false)
         {
-            player.Direita();
+            player.Movimentar(Vector3.right);
         }
         else
         {
@@ -50,7 +50,7 @@ public class Mov_Botoes : MonoBehaviour
         itens.Precionado(true);
         if (itens.selecionado == false)
         {
-            player.Baixo();
+            player.Movimentar(Vector3.back);
         }
         else
         {
@@ -63,7 +63,7 @@ public class Mov_Botoes : MonoBehaviour
         itens.Precionado(true);
         if (itens.selecionado == false)
         {
-            player.Esquerda();
+            player.Movimentar(Vector3.left);
         }
         else
         {

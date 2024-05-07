@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static Mov_Inimigo_PassoAPasso;
 
 public class Mov_Player : MonoBehaviour
 {
@@ -12,97 +11,37 @@ public class Mov_Player : MonoBehaviour
     //Rigidbody rb;
     //private float spd = 1f;
     public bool canMove = true;
-    public bool caiuBuraco = false;
-    private float timerMove;
-    static private readonly float moveCooldown = 0.16f;
-
-    private int movX = 0, movZ = 0;
 
     // RAY
-    RaycastHit hit;
     public LayerMask bloqueio;
     public LayerMask fundo;
     public LayerMask chao;
 
-    public int sala;
-
     void Start()
     {
         //rb = GetComponent<Rigidbody>();
-
-        timerMove = moveCooldown;
+        Sala_Controller.SetPlayer(this);
     }
 
     void Update()
     {
-        #region // MOVE
-        // (movimentacao em gride, quadrado por quadrado, com timer para movimentação [precionando o botão uma vez de cada ou segurando])
-        // (o player vira para a direção desejada e então se movimenta [importante para o sistema de colisão de Raycast])
+        float inputEixoZ = Input.GetAxisRaw("Vertical");
+        float inputEixoX = Input.GetAxisRaw("Horizontal");
 
-        if (canMove == true)
-        {
-            if (timerMove <= 0f)
-            {
-                /*float xInput = Input.GetAxisRaw("Horizontal");
-                float zInput = Input.GetAxisRaw("Vertical");*/
-                float xInput = movX;
-                float zInput = movZ;
-                movX = 0;
-                movZ = 0;          
-                
-                if (xInput != 0 || zInput != 0)
-                {
-                    // Prioriza o eixo X para movimentar somente em um eixo por vez
-                    if (xInput != 0) { zInput = 0; }
+        if (inputEixoZ != 0 && inputEixoX == 0)
+        { Movimentar(Vector3.forward * inputEixoZ); }
+        else if (inputEixoX != 0 && inputEixoZ == 0)
+        { Movimentar(Vector3.right * inputEixoX); }
+    }
 
-                    Vector3 direction = new Vector3(xInput, 0, zInput);
-                    Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
+    public void Movimentar(Vector3 direcao)
+    {
+        if (!canMove) return;
 
-                    transform.rotation = rotation;
-                    StartCoroutine(MovimentacaoCoroutine(direction));
-                    timerMove = moveCooldown;
+        Quaternion rotacao = Quaternion.LookRotation(direcao, Vector3.up);
+        transform.rotation = rotacao;
 
-                }
-            }
-
-            if (timerMove > 0f)
-            {
-                timerMove -= Time.deltaTime;
-            }
-        }
-
-        #endregion
-
-        /*if (Physics.Raycast(new Ray(transform.position, -transform.up), out _, 1f, chao))
-        {
-            canMove = true;
-        }
-        else
-        {
-            canMove = false;
-        }*/
-
-        #region // TECLADO
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            Cima();
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Direita();
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            Baixo();
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Esquerda();
-        }
-        
-
-        #endregion
+        StartCoroutine(MovimentacaoCoroutine(direcao));
     }
 
     private IEnumerator MovimentacaoCoroutine(Vector3 direcao)
@@ -127,7 +66,7 @@ public class Mov_Player : MonoBehaviour
                 QueryTriggerInteraction.Collide
             ))
             {
-                // Se for uma parede, obstrui o movimento
+                // Se for uma parede, só obstrui o movimento
                 if (obstaculo.collider.CompareTag("Parede"))
                 {
                     movimentoObstruido = true;
@@ -136,10 +75,9 @@ public class Mov_Player : MonoBehaviour
                 else if (obstaculo.collider.CompareTag("Empurravel"))
                 {
                     Empurrao bloco = obstaculo.collider.GetComponent<Empurrao>();
-                    bool conseguiuEmpurrar = bloco.Empurrar(direcao);
+                    yield return bloco.EmpurraoCoroutine(direcao);
 
-                    // Se não conseguiu empurrar, obstrui o movimento
-                    movimentoObstruido = !conseguiuEmpurrar;
+                    movimentoObstruido = true;
                 }
             }
 
@@ -149,26 +87,14 @@ public class Mov_Player : MonoBehaviour
                 transform.position += direcao;
 
                 // Queda no buraco
-                if (Physics.Raycast(new Ray(transform.position, -transform.up), out _, 23f, chao))
+                RaycastHit[] abaixo = Physics.RaycastAll(transform.position, -transform.up, 1f);
+                if (!abaixo.Any(hit => hit.collider.gameObject.layer == LayerMask.NameToLayer("Chao")))
                 {
-                    
-                }
-                else
-                {
-                    if (Physics.Raycast(new Ray(transform.position, -transform.up), out _, 1f))
-                    {
-
-                    }
-                    else
-                    {
-                        canMove = false;
-                        caiuBuraco = true;
-                        yield break;
-                    }
+                    yield return QuedaCoroutine();
                 }
             }
 
-            yield return null;            
+            yield return null;
 
         } while (
             // Repete enquanto o piso for de gelo e se o movimento não estiver obstruído
@@ -182,27 +108,19 @@ public class Mov_Player : MonoBehaviour
             && !movimentoObstruido
         );
 
+        const float cooldownMovimentacao = 0.16f;
+        yield return new WaitForSeconds(cooldownMovimentacao);
         canMove = true;
     }
 
-    #region // GET - botoes
+    private IEnumerator QuedaCoroutine()
+    {
+        const float tempoDaQueda = 1.5f;
+        yield return new WaitForSeconds(tempoDaQueda);
 
-    public void Cima()
-    {
-        movZ = 1;
-    }
-    public void Direita()
-    {
-        movX = 1;
-    }
-    public void Baixo()
-    {
-        movZ = -1;
-    }
-    public void Esquerda()
-    {
-        movX = -1;
-    }
+        Sala_Controller.RespawnPlayer();
 
-    #endregion
+        const float tempoDeRespawn = 0.5f;
+        yield return new WaitForSeconds(tempoDeRespawn);
+    }
 }

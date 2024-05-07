@@ -5,6 +5,7 @@ using System.Dynamic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
+using static Mov_Inimigo_PassoAPasso;
 
 public class Empurrao : MonoBehaviour
 {
@@ -19,8 +20,6 @@ public class Empurrao : MonoBehaviour
     // QUEDA
     Rigidbody rb;
     Collider box;
-
-    bool caindo = false;
 
     private void Awake()
     {
@@ -40,50 +39,18 @@ public class Empurrao : MonoBehaviour
         box = GetComponent<Collider>();
     }
 
-    private void Update()
-    {
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // (gravidade é ativada quando empurado para um buraco)
-        if (other.CompareTag("Buraco"))
-        {
-            //player.canMove = false;
-            if (Physics.Raycast(new Ray(transform.position, Vector2.down), out _, 1f, bloqueio, QueryTriggerInteraction.Collide))
-            {
-                //player.canMove = true;
-            }
-            else
-            {
-                caindo = true;
-                box.isTrigger = false;
-                rb.useGravity = true;
-                player.canMove = false;
-            }            
-        }
-    }
-
+    bool noFundo = false;
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Fundo"))
+        if (collision.collider.CompareTag("Fundo"))
         {
-            //box.isTrigger = true;
-            //rb.useGravity = false;
+            noFundo = true;
             gameObject.layer = LayerMask.NameToLayer("Chao");
-            player.canMove = true;
         }
     }
 
-    public bool Empurrar(Vector3 direcao)
+    public IEnumerator EmpurraoCoroutine(Vector3 direcao)
     {
-        if (caindo)
-        {
-            return false;
-        }
-        bool empurrou = false;
-
         bool movimentoObstruido;
         // Loop para caso o piso seja de gelo
         do
@@ -101,8 +68,12 @@ public class Empurrao : MonoBehaviour
             if (!movimentoObstruido)
             {
                 transform.position += direcao;
-                // Marca que empurrou com sucesso
-                empurrou = true;
+
+                // Queda no buraco
+                if (!Physics.Raycast(new Ray(transform.position, -transform.up), out _, 1f))
+                {
+                    yield return QuedaCoroutine();
+                }
             }
 
         } while (
@@ -117,7 +88,21 @@ public class Empurrao : MonoBehaviour
             && !movimentoObstruido
         );
 
-        // Retorna se empurrou o bloco com sucesso
-        return empurrou;
+        yield return !movimentoObstruido;
+    }
+
+    private IEnumerator QuedaCoroutine()
+    {
+        box.isTrigger = false;
+        rb.useGravity = true;
+
+        const float tempoMaximoDaQueda = 4f;
+
+        float timer = tempoMaximoDaQueda;
+        while (timer > Time.deltaTime && !noFundo)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
     }
 }

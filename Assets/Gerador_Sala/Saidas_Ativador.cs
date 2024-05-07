@@ -7,8 +7,6 @@ public class Saidas_Ativador : MonoBehaviour
 {
     public Sala_Controller controller;
 
-    public bool playerPassed = false;
-
     RaycastHit hit;
     public LayerMask bloqueio;
     float timerDestruir = 10f, ttDestruir;
@@ -28,9 +26,9 @@ public class Saidas_Ativador : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // (verifica se o player entrou por esta porta)
-        if (other.CompareTag("Player") && controller.spawnSeted == false)
+        if (other.CompareTag("Player"))
         {
-            playerPassed = true;
+            Sala_Controller.SetUltimaPorta(this);
         }
     }
 
@@ -38,7 +36,7 @@ public class Saidas_Ativador : MonoBehaviour
     {
         if (Physics.Raycast(new Ray(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), -transform.up), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
         {
-            if (timerDestruir <=0 )
+            if (timerDestruir <= 0)
             {
                 Destroy(hit.collider.gameObject);
                 timerDestruir = ttDestruir;
