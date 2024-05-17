@@ -47,6 +47,7 @@ public class Gride : MonoBehaviour
     public Sala_Prefab Vazio_2;
     public Sala_Prefab Vazio_3;
     public Sala_Prefab Vazio_4;
+    public Sala_Prefab Vazio_5;
 
     // Obstáculo
     public Sala_Prefab Obsc_1;
@@ -115,11 +116,11 @@ public class Gride : MonoBehaviour
         { new Sala_Def(7, 1, 3), new Sala_Def(1, 2, 0), new Sala_Def(5, 1, 3), new Sala_Def(1, 2, 0), new Sala_Def(7, 1, 3) }, }, // 5
         
         new[,] { //       1                      2                      3                      4                      5
-        { new Sala_Def(3, 3, 0), new Sala_Def(5, 1, 2), new Sala_Def(1, 4, 0), new Sala_Def(2, 2, 3), new Sala_Def(6, 1, 2) },    // 1
-        { new Sala_Def(3, 4, 0), new Sala_Def(3, 4, 1), new Sala_Def(3, 5, 3), new Sala_Def(4, 2, 3), new Sala_Def(7, 1, 2) },    // 2
-        { new Sala_Def(1, 3, 2), new Sala_Def(7, 1, 3), new Sala_Def(2, 4, 0), new Sala_Def(3, 4, 1), new Sala_Def(1, 4, 1) },    // 3
-        { new Sala_Def(6, 1, 0), new Sala_Def(2, 4, 1), new Sala_Def(3, 5, 3), new Sala_Def(3, 4, 2), new Sala_Def(3, 2, 3) },    // 4
-        { new Sala_Def(5, 1, 0), new Sala_Def(4, 3, 2), new Sala_Def(1, 2, 0), new Sala_Def(7, 1, 3), new Sala_Def(5, 1, 3) }, }, // 5
+        { new Sala_Def(5, 1, 1), new Sala_Def(6, 1, 1), new Sala_Def(1, 3, 3), new Sala_Def(2, 4, 1), new Sala_Def(3, 3, 1) },    // 1
+        { new Sala_Def(3, 3, 3), new Sala_Def(4, 4, 2), new Sala_Def(7, 1, 0), new Sala_Def(3, 4, 2), new Sala_Def(5, 1, 3) },    // 2
+        { new Sala_Def(1, 2, 1), new Sala_Def(3, 5, 0), new Sala_Def(3, 4, 1), new Sala_Def(2, 5, 0), new Sala_Def(1, 4, 1) },    // 3
+        { new Sala_Def(7, 1, 0), new Sala_Def(2, 4, 3), new Sala_Def(3, 4, 2), new Sala_Def(4, 2, 0), new Sala_Def(3, 2, 1) },    // 4
+        { new Sala_Def(5, 1, 0), new Sala_Def(3, 2, 0), new Sala_Def(1, 4, 2), new Sala_Def(7, 1, 3), new Sala_Def(6, 1, 3) }, }, // 5
         
         new[,] { //       1                      2                      3                      4                      5
         { new Sala_Def(1, 3, 3), new Sala_Def(3, 4, 1), new Sala_Def(4, 4, 1), new Sala_Def(3, 4, 1), new Sala_Def(1, 3, 2) },    // 1
@@ -178,6 +179,9 @@ public class Gride : MonoBehaviour
                                 break;
                             case Formato.T:
                                 Vazio_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                            case Formato.Cruz:
+                                Vazio_5.Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;

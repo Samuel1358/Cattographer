@@ -970,6 +970,7 @@ MonoBehaviour:
   Vazio_2: {fileID: 8312927758327134578, guid: 043ef5fdb00d79349aac84a97aaba53d, type: 3}
   Vazio_3: {fileID: 2460428749503124545, guid: fbcaea7cfdc04184bb6a4f3bdacde912, type: 3}
   Vazio_4: {fileID: 103834429888560491, guid: 17d1c9034676c134ca92a6ba9b907c76, type: 3}
+  Vazio_5: {fileID: 103834429888560491, guid: e13ab780326e469419dfbb755f86471f, type: 3}
   Obsc_1: {fileID: 8433991292214629530, guid: 074d77090da85d94bae2aed099f709e8, type: 3}
   Obsc_2: {fileID: 7889454781266075897, guid: bf2a68e9344091a4f8cdcf83ff016510, type: 3}
   Obsc_3: {fileID: 6707971882657769524, guid: 9344a51b7f77b3c478247ba44158b3ef, type: 3}
