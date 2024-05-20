@@ -253,7 +253,7 @@ public class Gride : MonoBehaviour
     }
 
     static public Vector3 PosicaoNoGrid(Vector3 posicao)
-    => new((int)(posicao.x / DistanciaEntreSalas), (int)(posicao.y / DistanciaEntreSalas), (int)(posicao.z / DistanciaEntreSalas));
+    => new(Mathf.Round(posicao.x / DistanciaEntreSalas), Mathf.Round(posicao.y / DistanciaEntreSalas), Mathf.Round(posicao.z / DistanciaEntreSalas));
     static public Vector3 PosicaoNoMundo(Vector3 posicao)
     => posicao * DistanciaEntreSalas;
     static public Vector3 PosicaoNoMundo(int linha, int coluna)

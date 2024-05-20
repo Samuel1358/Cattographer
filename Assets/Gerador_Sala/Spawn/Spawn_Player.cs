@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Spawn_Player : MonoBehaviour
 {
-    public GameObject player;
+    public Mov_Player player;
 
     private List<Vector3> posicaoSaidas = new();
 
-    // Start is called before the first frame update
     void Start()
+    {
+        StartCoroutine(SpawnPlayerCoroutine());
+    }
+
+    private IEnumerator SpawnPlayerCoroutine()
     {
         Gride grid = GetComponent<Gride>();
 
@@ -29,8 +33,8 @@ public class Spawn_Player : MonoBehaviour
 
         Vector3 spawn = posicaoSaidas[Random.Range(0, posicaoSaidas.Count)];
 
-        player.transform.position = new Vector3(spawn.x, 2f, spawn.z);
-        Camera_Player.Reposicionar(player.transform.position);
-        //Instantiate(player, new Vector3(posicao[0], 2f, posicao[1]), Quaternion.identity);
+        player.canMove = false;
+        yield return player.SpawnCoroutine(new Vector3(spawn.x, 2f, spawn.z));
+        player.canMove = true;
     }
 }

@@ -51,10 +51,10 @@ public class Sala_Controller : MonoBehaviour
         }
     }
 
-    static public void RespawnPlayer()
+    static public IEnumerator RespawnPlayerCoroutine()
     {
-        // (tira o player do buraco e spawna-o na saida pelo qual ele entrou)
-        player.transform.position = ultimaPorta.transform.position + new Vector3(0, spawnHeight, 0);
+        // (manda o player spawnar na saida pelo qual ele entrou)
+        yield return player.SpawnCoroutine(ultimaPorta.transform.position + new Vector3(0, spawnHeight, 0));
     }
 
     static public Sala_Controller SalaAtual => salaAtual;

@@ -1396,6 +1396,7 @@ GameObject:
   - component: {fileID: 7914447802872580451}
   - component: {fileID: 7914447802872580452}
   - component: {fileID: 7914447802872580453}
+  - component: {fileID: 7938400012139915401}
   m_Layer: 5
   m_Name: Button_Move(Cima)
   m_TagString: Untagged
@@ -1504,19 +1505,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7914447802872580452}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7914447803984495078}
-        m_TargetAssemblyTypeName: Mov_Botoes, Assembly-CSharp
-        m_MethodName: Cima
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &7938400012139915401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914447802872580455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1754a0938d359479e6af3dbb38fa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7914447802877876118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,6 +2237,7 @@ GameObject:
   - component: {fileID: 7914447803323763820}
   - component: {fileID: 7914447803323763821}
   - component: {fileID: 7914447803323763822}
+  - component: {fileID: 2833666701603775981}
   m_Layer: 5
   m_Name: Button_Move(Direita)
   m_TagString: Untagged
@@ -2344,19 +2346,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7914447803323763821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7914447803984495078}
-        m_TargetAssemblyTypeName: Mov_Botoes, Assembly-CSharp
-        m_MethodName: Direita
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &2833666701603775981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914447803323763792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1754a0938d359479e6af3dbb38fa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7914447803338271298
 GameObject:
   m_ObjectHideFlags: 0
@@ -3542,6 +3544,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39dc5fa66d39a5458d05ca998f9c01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  botaoCima: {fileID: 7938400012139915401}
+  botaoDireita: {fileID: 2833666701603775981}
+  botaoBaixo: {fileID: 2176741340206781195}
+  botaoEsquerda: {fileID: 2548959196050119834}
 --- !u!1 &7914447804034186830
 GameObject:
   m_ObjectHideFlags: 0
@@ -3856,6 +3862,7 @@ GameObject:
   - component: {fileID: 7914447804123119681}
   - component: {fileID: 7914447804123119682}
   - component: {fileID: 7914447804123119683}
+  - component: {fileID: 2176741340206781195}
   m_Layer: 5
   m_Name: Button_Move(Baixo)
   m_TagString: Untagged
@@ -3964,19 +3971,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7914447804123119682}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7914447803984495078}
-        m_TargetAssemblyTypeName: Mov_Botoes, Assembly-CSharp
-        m_MethodName: Baixo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &2176741340206781195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914447804123119685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1754a0938d359479e6af3dbb38fa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7914447804137300250
 GameObject:
   m_ObjectHideFlags: 0
@@ -4082,6 +4089,7 @@ GameObject:
   - component: {fileID: 7914447804176207550}
   - component: {fileID: 7914447804176207551}
   - component: {fileID: 7914447804176207520}
+  - component: {fileID: 2548959196050119834}
   m_Layer: 5
   m_Name: Button_Move(Esquerda)
   m_TagString: Untagged
@@ -4190,19 +4198,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7914447804176207551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7914447803984495078}
-        m_TargetAssemblyTypeName: Mov_Botoes, Assembly-CSharp
-        m_MethodName: Esquerda
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &2548959196050119834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914447804176207522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1754a0938d359479e6af3dbb38fa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7914447804187128519
 GameObject:
   m_ObjectHideFlags: 0

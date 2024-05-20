@@ -7,6 +7,13 @@ using UnityEngine.UI;
 
 public class Mov_Player : MonoBehaviour
 {
+    // CONSTANTES
+    const float cooldownMovimentacao = 0.16f;
+    const float movimentacaoBuffer = cooldownMovimentacao / 2;
+    public const float holdTimeMovimentacao = 0.4f;
+    const float tempoDaQueda = 1.5f;
+    const float tempoDeRespawn = 0.5f;
+
     // MOVE
     //Rigidbody rb;
     //private float spd = 1f;
@@ -23,30 +30,55 @@ public class Mov_Player : MonoBehaviour
         Sala_Controller.SetPlayer(this);
     }
 
+    private float holdTime = 0;
     void Update()
     {
-        float inputEixoZ = Input.GetAxisRaw("Vertical");
-        float inputEixoX = Input.GetAxisRaw("Horizontal");
+        bool inputCima = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+        bool inputDireita = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+        bool inputBaixo = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+        bool inputEsquerda = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
 
-        if (inputEixoZ != 0 && inputEixoX == 0)
-        { Movimentar(Vector3.forward * inputEixoZ); }
-        else if (inputEixoX != 0 && inputEixoZ == 0)
-        { Movimentar(Vector3.right * inputEixoX); }
+        Vector3 movimento = Vector3.zero;
+        if (inputCima && !(inputDireita || inputBaixo || inputEsquerda))
+        { movimento = Vector3.forward; }
+        else if (inputDireita && !(inputCima || inputBaixo || inputEsquerda))
+        { movimento = Vector3.right; }
+        if (inputBaixo && !(inputCima || inputDireita || inputEsquerda))
+        { movimento = Vector3.back; }
+        if (inputEsquerda && !(inputCima || inputDireita || inputBaixo))
+        { movimento = Vector3.left; }
+
+        if (inputCima || inputDireita || inputBaixo || inputEsquerda)
+        {
+            if (movimento != Vector3.zero
+            && (holdTime > holdTimeMovimentacao || holdTime == 0)
+            )
+            { Movimentar(movimento); }
+
+            holdTime += Time.deltaTime;
+        }
+        else
+        { holdTime = 0; }
     }
 
-    public void Movimentar(Vector3 direcao)
+    public void Movimentar(Vector3 direcao) => StartCoroutine(MovimentacaoCoroutine(direcao));
+
+    private float cooldownAtualMovimentacao = 0;
+    private IEnumerator MovimentacaoCoroutine(Vector3 direcao)
     {
-        if (!canMove) return;
+        if (!canMove) yield break;
+
+        // Só permite movimentos dentro de um tempo buffer
+        if (cooldownAtualMovimentacao > movimentacaoBuffer) yield break;
+
+        canMove = false;
+        // Para tratar o buffer, espera pelo fim do movimento atual
+        while (cooldownAtualMovimentacao > 0) yield return null;
+
+        cooldownAtualMovimentacao = cooldownMovimentacao;
 
         Quaternion rotacao = Quaternion.LookRotation(direcao, Vector3.up);
         transform.rotation = rotacao;
-
-        StartCoroutine(MovimentacaoCoroutine(direcao));
-    }
-
-    private IEnumerator MovimentacaoCoroutine(Vector3 direcao)
-    {
-        canMove = false;
 
         // Força a direção a ter magnitude 1
         direcao.Normalize();
@@ -75,9 +107,10 @@ public class Mov_Player : MonoBehaviour
                 else if (obstaculo.collider.CompareTag("Empurravel"))
                 {
                     Empurrao bloco = obstaculo.collider.GetComponent<Empurrao>();
-                    yield return bloco.EmpurraoCoroutine(direcao);
+                    var empurrao = bloco.EmpurraoCoroutine(direcao);
+                    yield return empurrao;
 
-                    movimentoObstruido = true;
+                    movimentoObstruido = !(bool)empurrao.Current;
                 }
             }
 
@@ -108,19 +141,27 @@ public class Mov_Player : MonoBehaviour
             && !movimentoObstruido
         );
 
-        const float cooldownMovimentacao = 0.16f;
-        yield return new WaitForSeconds(cooldownMovimentacao);
+        while (cooldownAtualMovimentacao > Time.deltaTime)
+        {
+            cooldownAtualMovimentacao -= Time.deltaTime;
+            yield return null;
+        }
+        cooldownAtualMovimentacao = 0f;
         canMove = true;
     }
 
     private IEnumerator QuedaCoroutine()
     {
-        const float tempoDaQueda = 1.5f;
         yield return new WaitForSeconds(tempoDaQueda);
 
-        Sala_Controller.RespawnPlayer();
+        yield return Sala_Controller.RespawnPlayerCoroutine();
+    }
 
-        const float tempoDeRespawn = 0.5f;
+    public IEnumerator SpawnCoroutine(Vector3 posicao)
+    {
+        transform.position = posicao;
+        Camera_Player.Reposicionar(transform.position);
+
         yield return new WaitForSeconds(tempoDeRespawn);
     }
 }
