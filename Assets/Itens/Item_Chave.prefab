@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7155989213822886172}
   - component: {fileID: 2619270007415851381}
   m_Layer: 0
-  m_Name: Item_Porta
+  m_Name: Item_Chave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

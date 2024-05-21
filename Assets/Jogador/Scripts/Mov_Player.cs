@@ -112,6 +112,13 @@ public class Mov_Player : MonoBehaviour
 
                     movimentoObstruido = !(bool)empurrao.Current;
                 }
+                else if (obstaculo.collider.CompareTag("Bau"))
+                {
+                    Bau_Radomizer bau = obstaculo.collider.GetComponent<Bau_Radomizer>();
+                    yield return bau.AbrirCoroutine(direcao);
+
+                    movimentoObstruido = true;
+                }
             }
 
             // Se não for obstruído, movimenta
