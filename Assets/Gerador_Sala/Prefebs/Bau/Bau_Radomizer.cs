@@ -6,7 +6,7 @@ public class Bau_Radomizer : MonoBehaviour
 {
     GameObject item;
 
-    [SerializeField] Baus_Controller controller;
+    Baus_Controller controller;
 
     [SerializeField] GameObject chave;
     [SerializeField] GameObject bomba;
@@ -16,7 +16,7 @@ public class Bau_Radomizer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        controller = FindObjectOfType<Baus_Controller>();
     }
 
     public IEnumerator AbrirCoroutine(Vector3 direcao)
