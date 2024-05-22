@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 8695674938620194963}
   - component: {fileID: 7913651490490606596}
   - component: {fileID: 7155989213822886172}
+  - component: {fileID: 4042347855981772177}
   m_Layer: 0
   m_Name: Item_Moeda
   m_TagString: Untagged
@@ -165,3 +166,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4042347855981772177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138704182242775112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf7a31d0e1710241a12762f216e0368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

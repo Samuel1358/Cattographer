@@ -893,6 +893,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8501738211541845609, guid: 0822f87556c6bce43958e632f21e61f6, type: 3}
+      propertyPath: descanco
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8953369385231930065, guid: 0822f87556c6bce43958e632f21e61f6, type: 3}
       propertyPath: m_Name
       value: Controller

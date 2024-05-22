@@ -5,7 +5,9 @@ using UnityEngine;
 public class Reset_Sombra : MonoBehaviour
 {
     Timer_Sombra sombra;
-    int count = 3;
+    [SerializeField] bool descanco = false;
+    [SerializeField] bool recarga = false;
+    [SerializeField] float taxaQueda = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -19,18 +21,24 @@ public class Reset_Sombra : MonoBehaviour
         
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (count <= 0)
+        if (other.CompareTag("Player"))
         {
-            if (other.CompareTag("Player"))
+            sombra.taxaQueda = taxaQueda;
+            if (descanco == true)
+            {
+                sombra.active = false;
+            }
+            else
+            {
+                sombra.active = true;
+            }
+
+            if (recarga == true)
             {
                 sombra.timerSombra = sombra.ttSombra;
-            }
-        }
-        if (count > 0)
-        {
-            count -= 1;
+            }            
         }
     }
 }

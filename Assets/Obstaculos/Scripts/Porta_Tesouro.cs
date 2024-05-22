@@ -40,5 +40,11 @@ public class Porta_Tesouro : MonoBehaviour
             player.portas -= 1;
             Destroy(gameObject);
         }
+        if (other.CompareTag("LimitadorSala"))
+        {
+            Destroy(other.gameObject);
+        }
     }
+
+    //private void OnTriger
 }
