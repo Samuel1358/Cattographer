@@ -9,7 +9,7 @@ public class Mov_Player : MonoBehaviour
 {
     // CONSTANTES
     const float cooldownMovimentacao = 0.16f;
-    const float movimentacaoBuffer = cooldownMovimentacao / 2;
+    const float movimentacaoBuffer = cooldownMovimentacao;
     public const float holdTimeMovimentacao = 0.4f;
     const float tempoDaQueda = 1.5f;
     const float tempoDeRespawn = 0.5f;
@@ -107,10 +107,10 @@ public class Mov_Player : MonoBehaviour
                 else if (obstaculo.collider.CompareTag("Empurravel"))
                 {
                     Empurrao bloco = obstaculo.collider.GetComponent<Empurrao>();
-                    var empurrao = bloco.EmpurraoCoroutine(direcao);
-                    yield return empurrao;
+                    movimentoObstruido = bloco.MovimentoObstruido(direcao);
 
-                    movimentoObstruido = !(bool)empurrao.Current;
+                    StartCoroutine(bloco.EmpurraoCoroutine(direcao));
+                    yield return null;
                 }
                 else if (obstaculo.collider.CompareTag("Bau"))
                 {
@@ -128,7 +128,9 @@ public class Mov_Player : MonoBehaviour
 
                 // Queda no buraco
                 RaycastHit[] abaixo = Physics.RaycastAll(transform.position, -transform.up, 1f);
-                if (!abaixo.Any(hit => hit.collider.gameObject.layer == LayerMask.NameToLayer("Chao")))
+                if (!abaixo.Any(hit => false // false só existe pras linhas de baixo ficarem alinhadas
+                    || hit.collider.gameObject.layer == LayerMask.NameToLayer("Chao")
+                    || hit.collider.gameObject.layer == LayerMask.NameToLayer("Bloqueio")))
                 {
                     yield return QuedaCoroutine();
                 }

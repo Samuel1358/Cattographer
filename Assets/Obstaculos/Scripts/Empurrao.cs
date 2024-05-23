@@ -9,10 +9,6 @@ using static Mov_Inimigo_PassoAPasso;
 
 public class Empurrao : MonoBehaviour
 {
-
-    Mov_Player player;
-
-    RaycastHit hit;
     public LayerMask bloqueio;
     public LayerMask chao;
     //public Vector3 x = new Vector3(0, 0, 0);
@@ -20,11 +16,8 @@ public class Empurrao : MonoBehaviour
     // QUEDA
     Rigidbody rb;
     Collider box;
-
-    private void Awake()
-    {
-        player = FindObjectOfType<Mov_Player>();
-    }
+    bool noFundo = false;
+    bool caindo = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +32,6 @@ public class Empurrao : MonoBehaviour
         box = GetComponent<Collider>();
     }
 
-    bool noFundo = false;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Fundo"))
@@ -49,6 +41,15 @@ public class Empurrao : MonoBehaviour
         }
     }
 
+    public bool MovimentoObstruido(Vector3 direcao)
+    {
+        return caindo || Physics.Raycast(
+            ray: new Ray(transform.position, direcao),
+            maxDistance: 1f,
+            layerMask: bloqueio,
+            QueryTriggerInteraction.Collide
+        );
+    }
     public IEnumerator EmpurraoCoroutine(Vector3 direcao)
     {
         bool movimentoObstruido;
@@ -56,13 +57,7 @@ public class Empurrao : MonoBehaviour
         do
         {
             // Verifica se tem um obstáculo
-            movimentoObstruido = Physics.Raycast(
-                ray: new Ray(transform.position, direcao),
-                // hitInfo: out RaycastHit obstaculo,
-                maxDistance: 1f,
-                layerMask: bloqueio,
-                QueryTriggerInteraction.Collide
-            );
+            movimentoObstruido = MovimentoObstruido(direcao);
 
             // Se não tiver, movimenta o bloco
             if (!movimentoObstruido)
@@ -93,6 +88,8 @@ public class Empurrao : MonoBehaviour
 
     private IEnumerator QuedaCoroutine()
     {
+        caindo = true;
+
         box.isTrigger = false;
         rb.useGravity = true;
 
@@ -104,5 +101,7 @@ public class Empurrao : MonoBehaviour
             timer -= Time.deltaTime;
             yield return null;
         }
+
+        caindo = false;
     }
 }
