@@ -140,8 +140,7 @@ public class Gride : MonoBehaviour
     {
         // Randomizer
         // (aleatoriza qual gride será usada)
-        //grid = grids[Random.Range(0, grids.Length)];
-        grid = grids[3];
+        grid = grids[Random.Range(0, grids.Length)];
 
         // Salas
         // (atribui os prevebs de cada salas à matriz 'obj')
