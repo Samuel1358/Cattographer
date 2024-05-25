@@ -7,6 +7,8 @@ public class ItensAdicionais : MonoBehaviour
     Lista_Itens lista;
     public int tipo;
 
+    public bool active = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,17 +23,20 @@ public class ItensAdicionais : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (active)
         {
-            for (int i = 0; i < lista.listaItens.Length; i++)
+            if (other.CompareTag("Player"))
             {
-                if (lista.listaItens[i] == 0)
+                for (int i = 0; i < lista.listaItens.Length; i++)
                 {
-                    lista.listaItens[i] = tipo;
-                    Destroy(gameObject);
-                    break;
+                    if (lista.listaItens[i] == 0)
+                    {
+                        lista.listaItens[i] = tipo;
+                        Destroy(gameObject);
+                        break;
+                    }
                 }
             }
-        }
+        }        
     }
 }

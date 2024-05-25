@@ -6,6 +6,8 @@ public class Item_Chave : MonoBehaviour
 {
     Player_Final player;
 
+    public bool active = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +16,13 @@ public class Item_Chave : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (active) 
         {
-            player.portas += 1;
-            Destroy(gameObject);
-        }
+            if (other.CompareTag("Player"))
+            {
+                player.portas += 1;
+                Destroy(gameObject);
+            }
+        }       
     }
 }
