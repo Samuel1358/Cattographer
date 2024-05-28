@@ -136,6 +136,13 @@ public class Gride : MonoBehaviour
 
     public Sala_Def[,] grid = new Sala_Def[nLinhas, nColunas];
 
+
+    // Shop NPC
+    bool shopSetted = false;
+    int countNPC = 0;
+
+    public GameObject ShopKeeper1;
+
     void Awake()
     {
         // Randomizer
@@ -224,18 +231,83 @@ public class Gride : MonoBehaviour
                         break;
                     // NPC
                     case Tipo.NPC:
-                        switch (definicao.Formato)
+                        if (!shopSetted)
                         {
-                            case Formato.Linha:
-                                NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                break;
-                            case Formato.L:
-                                NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                break;
-                            case Formato.T:
-                                NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                break;
+                            if (countNPC == 1)
+                            {
+                                // Spawn do shop como último NPC
+                                switch (definicao.Formato)
+                                {
+                                    case Formato.Linha:
+                                        NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                        break;
+                                    case Formato.L:
+                                        NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                        break;
+                                    case Formato.T:
+                                        NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                        break;
+                                }
+                                Instantiate(ShopKeeper1, posicaoNoMundo, Quaternion.identity);
+                                shopSetted = true;
+                            }
+                            else
+                            {
+                                // Spawn de um npc aleatório
+                                switch (Random.Range(0, 2))
+                                {
+                                    case 0:
+                                        // ShopKeeper
+                                        switch (definicao.Formato)
+                                        {
+                                            case Formato.Linha:
+                                                NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                                break;
+                                            case Formato.L:
+                                                NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                                break;
+                                            case Formato.T:
+                                                NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                                break;
+                                        }
+                                        Instantiate(ShopKeeper1, posicaoNoMundo, Quaternion.identity);
+                                        shopSetted = true;
+                                        break;
+                                    case 1:
+                                        // Outro npc
+                                        switch (definicao.Formato)
+                                        {
+                                            case Formato.Linha:
+                                                NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                                break;
+                                            case Formato.L:
+                                                NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                                break;
+                                            case Formato.T:
+                                                NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                                break;
+                                        }
+                                        break;
+                                }
+                            }
                         }
+                        else
+                        {
+                            // Shop já foi spawnado (spawn de um npc aleatório)
+                            switch (definicao.Formato)
+                            {
+                                case Formato.Linha:
+                                    NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                    break;
+                                case Formato.L:
+                                    NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                    break;
+                                case Formato.T:
+                                    NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                    break;
+                            }
+                        }
+                        countNPC += 1;
                         break;
                     // Bau
                     case Tipo.Bau:

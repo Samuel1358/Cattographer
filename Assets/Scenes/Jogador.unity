@@ -1035,6 +1035,7 @@ MonoBehaviour:
   Bau_1: {fileID: -5547470969812560218, guid: 26210cb14882bf244b4a4bd8201a622d, type: 3}
   Trancada_1: {fileID: 6539611974125032862, guid: e92ae6fa4b9633e49bfc1ef58c16aea4, type: 3}
   Botao_1: {fileID: 8349008977595912797, guid: 0912e6429feda1b48ac9a01c50452f89, type: 3}
+  ShopKeeper1: {fileID: 8506865051930871170, guid: 317a2dd7efa7f234a8cb8e9af467fe00, type: 3}
 --- !u!114 &1291736553
 MonoBehaviour:
   m_ObjectHideFlags: 0
