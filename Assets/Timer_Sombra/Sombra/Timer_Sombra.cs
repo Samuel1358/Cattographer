@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Timer_Sombra : MonoBehaviour
 {
-    public float timerSombra = 15f, ttSombra, taxaQueda = 1f;
+    public float timerSombra = 20f, ttSombra, taxaQueda = 1f;
     public bool active = true;
 
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class Timer_Sombra : MonoBehaviour
         {
             if (active == true)
             {
-                timerSombra -= Time.deltaTime * 1;
+                timerSombra -= Time.deltaTime * taxaQueda * 0.1f;
             }
         }
     }

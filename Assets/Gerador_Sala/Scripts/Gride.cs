@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Gride : MonoBehaviour
 {
-    public const int nLinhas = 5;
-    public const int nColunas = 5;
+    public const int nLinhas = 4;
+    public const int nColunas = 3;
 
     public const float DistanciaEntreSalas = 11f;
 
     public enum Tipo
     {
-        Saida = 1,
+        Saida = 1, // Entrada
         Vazia = 2,
         Obstaculo = 3,
         NPC = 4,
         Bau = 5,
-        Trancada = 6,
+        Unica = 6, // Sala Trancada + Shop
         Botao = 7,
+        SaidaReal = 8,
     }
     public enum Formato
     {
@@ -38,7 +39,7 @@ public class Gride : MonoBehaviour
     #region //Salas
     // (prefebs de todas as salas disponiveis)
 
-    // Saída
+    // saída(Entrada)
     public Sala_Prefab Saida_2;
     public Sala_Prefab Saida_3;
     public Sala_Prefab Saida_4;
@@ -65,11 +66,13 @@ public class Gride : MonoBehaviour
     // Baú
     public Sala_Prefab Bau_1;
 
-    // Trancada
+    // Unica
     public Sala_Prefab Trancada_1;
 
     // Botão
     public Sala_Prefab Botao_1;
+
+    // Saída
 
     #endregion
 
@@ -101,33 +104,37 @@ public class Gride : MonoBehaviour
     // (templats dos grides disponiveis)
     private readonly Sala_Def[][,] grids = new[]
     {
-        new[,] { //       1                      2                      3                      4                      5               
-        { new Sala_Def(3, 3, 1), new Sala_Def(7, 1, 3), new Sala_Def(5, 1, 2), new Sala_Def(1, 2, 1), new Sala_Def(7, 1, 2) },    // 1
-        { new Sala_Def(1, 4, 0), new Sala_Def(3, 2, 1), new Sala_Def(4, 4, 0), new Sala_Def(3, 5, 0), new Sala_Def(3, 4, 3) },    // 2
-        { new Sala_Def(3, 3, 1), new Sala_Def(4, 3, 2), new Sala_Def(5, 1, 1), new Sala_Def(2, 4, 3), new Sala_Def(1, 4, 1) },    // 3
-        { new Sala_Def(6, 1, 0), new Sala_Def(2, 4, 1), new Sala_Def(3, 4, 2), new Sala_Def(3, 4, 3), new Sala_Def(2, 2, 1) },    // 4
-        { new Sala_Def(1, 2, 0), new Sala_Def(3, 3, 3), new Sala_Def(7, 1, 0), new Sala_Def(5, 1, 0), new Sala_Def(6, 1, 0) }, }, // 5
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(3, 3, 1), new Sala_Def(3, 4, 2), new Sala_Def(5, 1, 3) },    // 1
+        { new Sala_Def(1, 3, 3), new Sala_Def(2, 2, 1), new Sala_Def(6, 1, 2) },    // 2
+        { new Sala_Def(4, 3, 1), new Sala_Def(3, 5, 0), new Sala_Def(3, 4, 3) },    // 3
+        { new Sala_Def(5, 1, 0), new Sala_Def(1, 2, 1), new Sala_Def(7, 1, 0) }, }, // 4
+
+
+
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(3, 3, 1), new Sala_Def(7, 1, 3), new Sala_Def(5, 1, 2) },    // 1
+        { new Sala_Def(1, 4, 0), new Sala_Def(3, 2, 1), new Sala_Def(4, 4, 0) },    // 2
+        { new Sala_Def(3, 3, 1), new Sala_Def(4, 3, 2), new Sala_Def(5, 1, 1) },    // 3
+        { new Sala_Def(6, 1, 0), new Sala_Def(2, 4, 1), new Sala_Def(3, 4, 2) }, }, // 4
         
-        new[,] { //       1                      2                      3                      4                      5
-        { new Sala_Def(2, 3, 1), new Sala_Def(6, 1, 3), new Sala_Def(7, 1, 2), new Sala_Def(5, 1, 1), new Sala_Def(3, 3, 2) },    // 1
-        { new Sala_Def(1, 4, 0), new Sala_Def(3, 4, 2), new Sala_Def(3, 4, 3), new Sala_Def(6, 1, 2), new Sala_Def(1, 4, 1) },    // 2
-        { new Sala_Def(5, 1, 1), new Sala_Def(4, 3, 3), new Sala_Def(2, 4, 1), new Sala_Def(3, 4, 0), new Sala_Def(3, 4, 3) },    // 3
-        { new Sala_Def(2, 3, 1), new Sala_Def(3, 4, 2), new Sala_Def(3, 5, 0), new Sala_Def(3, 4, 2), new Sala_Def(4, 4, 3) },    // 4
-        { new Sala_Def(7, 1, 0), new Sala_Def(1, 2, 1), new Sala_Def(5, 1, 0), new Sala_Def(1, 2, 1), new Sala_Def(7, 1, 0) }, }, // 5
+        new[,] { //       1                      2                      3
+        { new Sala_Def(2, 3, 1), new Sala_Def(6, 1, 3), new Sala_Def(7, 1, 2) },    // 1
+        { new Sala_Def(1, 4, 0), new Sala_Def(3, 4, 2), new Sala_Def(3, 4, 3) },    // 2
+        { new Sala_Def(5, 1, 1), new Sala_Def(4, 3, 3), new Sala_Def(2, 4, 1) },    // 3
+        { new Sala_Def(2, 3, 1), new Sala_Def(3, 4, 2), new Sala_Def(3, 5, 0) }, }, // 4
         
-        new[,] { //       1                      2                      3                      4                      5
-        { new Sala_Def(5, 1, 2), new Sala_Def(6, 1, 2), new Sala_Def(1, 3, 0), new Sala_Def(2, 4, 2), new Sala_Def(3, 3, 2) },    // 1
-        { new Sala_Def(3, 3, 0), new Sala_Def(4, 4, 3), new Sala_Def(7, 1, 1), new Sala_Def(3, 4, 3), new Sala_Def(5, 1, 0) },    // 2
-        { new Sala_Def(1, 2, 2), new Sala_Def(3, 5, 1), new Sala_Def(3, 4, 2), new Sala_Def(2, 5, 1), new Sala_Def(1, 4, 2) },    // 3
-        { new Sala_Def(7, 1, 1), new Sala_Def(2, 4, 0), new Sala_Def(3, 4, 3), new Sala_Def(4, 2, 1), new Sala_Def(3, 2, 2) },    // 4
-        { new Sala_Def(5, 1, 1), new Sala_Def(3, 2, 1), new Sala_Def(1, 4, 3), new Sala_Def(7, 1, 0), new Sala_Def(6, 1, 0) }, }, // 5
+        new[,] { //       1                      2                      3
+        { new Sala_Def(5, 1, 2), new Sala_Def(6, 1, 2), new Sala_Def(1, 3, 0) },    // 1
+        { new Sala_Def(3, 3, 0), new Sala_Def(4, 4, 3), new Sala_Def(7, 1, 1) },    // 2
+        { new Sala_Def(1, 2, 2), new Sala_Def(3, 5, 1), new Sala_Def(3, 4, 2) },    // 3
+        { new Sala_Def(7, 1, 1), new Sala_Def(2, 4, 0), new Sala_Def(3, 4, 3) }, }, // 4
         
-        new[,] { //       1                      2                      3                      4                      5
-        { new Sala_Def(1, 3, 0), new Sala_Def(3, 4, 2), new Sala_Def(4, 4, 2), new Sala_Def(3, 4, 2), new Sala_Def(1, 3, 3) },    // 1
-        { new Sala_Def(6, 1, 2), new Sala_Def(5, 1, 0), new Sala_Def(7, 1, 0), new Sala_Def(2, 2, 1), new Sala_Def(6, 1, 2) },    // 2
-        { new Sala_Def(2, 4, 1), new Sala_Def(4, 2, 0), new Sala_Def(3, 4, 2), new Sala_Def(3, 4, 0), new Sala_Def(2, 4, 3) },    // 3
-        { new Sala_Def(3, 2, 0), new Sala_Def(7, 1, 2), new Sala_Def(5, 1, 0), new Sala_Def(7, 1, 2), new Sala_Def(3, 2, 0) },    // 4
-        { new Sala_Def(1, 4, 1), new Sala_Def(3, 4, 0), new Sala_Def(5, 1, 3), new Sala_Def(3, 3, 0), new Sala_Def(1, 4, 3) }, }, // 5
+        new[,] { //       1                      2                      3
+        { new Sala_Def(1, 3, 0), new Sala_Def(3, 4, 2), new Sala_Def(4, 4, 2) },    // 1
+        { new Sala_Def(6, 1, 2), new Sala_Def(5, 1, 0), new Sala_Def(7, 1, 0) },    // 2
+        { new Sala_Def(2, 4, 1), new Sala_Def(4, 2, 0), new Sala_Def(3, 4, 2) },    // 3
+        { new Sala_Def(3, 2, 0), new Sala_Def(7, 1, 2), new Sala_Def(5, 1, 0) }, }, // 4
 
         // dedsculpa gatinho juro nao mexer mais no gride <3
     };
@@ -138,8 +145,8 @@ public class Gride : MonoBehaviour
 
 
     // Shop NPC
-    bool shopSetted = false;
-    int countNPC = 0;
+    /*bool shopSetted = false;
+    int countNPC = 0;*/
 
     public GameObject ShopKeeper1;
 
@@ -147,7 +154,7 @@ public class Gride : MonoBehaviour
     {
         // Randomizer
         // (aleatoriza qual gride será usada)
-        grid = grids[Random.Range(0, grids.Length)];
+        grid = grids[0/*Random.Range(0, grids.Length)*/];
 
         // Salas
         // (atribui os prevebs de cada salas à matriz 'obj')
@@ -231,90 +238,25 @@ public class Gride : MonoBehaviour
                         break;
                     // NPC
                     case Tipo.NPC:
-                        if (!shopSetted)
+                        switch (definicao.Formato)
                         {
-                            if (countNPC == 1)
-                            {
-                                // Spawn do shop como último NPC
-                                switch (definicao.Formato)
-                                {
-                                    case Formato.Linha:
-                                        NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                        break;
-                                    case Formato.L:
-                                        NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                        break;
-                                    case Formato.T:
-                                        NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                        break;
-                                }
-                                Instantiate(ShopKeeper1, posicaoNoMundo, Quaternion.identity);
-                                shopSetted = true;
-                            }
-                            else
-                            {
-                                // Spawn de um npc aleatório
-                                switch (Random.Range(0, 2))
-                                {
-                                    case 0:
-                                        // ShopKeeper
-                                        switch (definicao.Formato)
-                                        {
-                                            case Formato.Linha:
-                                                NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                                break;
-                                            case Formato.L:
-                                                NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                                break;
-                                            case Formato.T:
-                                                NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                                break;
-                                        }
-                                        Instantiate(ShopKeeper1, posicaoNoMundo, Quaternion.identity);
-                                        shopSetted = true;
-                                        break;
-                                    case 1:
-                                        // Outro npc
-                                        switch (definicao.Formato)
-                                        {
-                                            case Formato.Linha:
-                                                NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                                break;
-                                            case Formato.L:
-                                                NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                                break;
-                                            case Formato.T:
-                                                NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                                break;
-                                        }
-                                        break;
-                                }
-                            }
+                            case Formato.Linha:
+                                NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                            case Formato.L:
+                                NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                            case Formato.T:
+                                NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
                         }
-                        else
-                        {
-                            // Shop já foi spawnado (spawn de um npc aleatório)
-                            switch (definicao.Formato)
-                            {
-                                case Formato.Linha:
-                                    NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                    break;
-                                case Formato.L:
-                                    NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                    break;
-                                case Formato.T:
-                                    NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                    break;
-                            }
-                        }
-                        countNPC += 1;
                         break;
                     // Bau
                     case Tipo.Bau:
                         Bau_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
                         break;
                     // Trancada
-                    case Tipo.Trancada:
+                    case Tipo.Unica:
                         Trancada_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
                         break;
                     // Botao

@@ -22,14 +22,9 @@ public class Botao_Saidas : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (player.botoes >= 2)
+            if (FindObjectsOfType<Botao_Saidas>().Length == 1)
             {
                 player.aberto = true;
-                player.botoes += 1;
-            }
-            else
-            {
-                player.botoes += 1;
             }
             Destroy(gameObject);
         }

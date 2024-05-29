@@ -12,7 +12,6 @@ public class Textos_Emergencia : MonoBehaviour
 
     public Text textoPortas;
     public Text textoTesouro;
-    public Text textoBotao;
     public Text textoBotaoMensagem;
     float timerBotao = 20f;
     bool botao = true, posBotao = true;
@@ -30,7 +29,6 @@ public class Textos_Emergencia : MonoBehaviour
 
         textoPortas.gameObject.SetActive(true);
         textoTesouro.gameObject.SetActive(true);
-        textoBotao.gameObject.SetActive(true);
         textoBotaoMensagem.gameObject.SetActive(false);
         textoEmergencia.gameObject.SetActive(false);
         textoEmergenciaAlerta.gameObject.SetActive(false);
@@ -61,7 +59,6 @@ public class Textos_Emergencia : MonoBehaviour
 
             textoPortas.text = player.portas.ToString();
             textoTesouro.text = player.coletados.ToString() + " / 2";
-            textoBotao.text = player.botoes.ToString() + " / 3";
         }
 
         if (player.fuga == true)
@@ -81,7 +78,6 @@ public class Textos_Emergencia : MonoBehaviour
             textoEmergencia.gameObject.SetActive(true);
 
             textoEmergencia.text = ((int)emer.timerFinal).ToString();
-            textoBotao.text = player.botoes.ToString() + " / 3";
 
             if (timerAlerta <= 0)
             {
@@ -106,7 +102,6 @@ public class Textos_Emergencia : MonoBehaviour
 
         if (player.aberto == true)
         {
-            textoBotao.gameObject.SetActive(false);
             if (botao)
             {
                 textoBotaoMensagem.gameObject.SetActive(true);
