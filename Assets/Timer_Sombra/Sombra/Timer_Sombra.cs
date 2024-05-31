@@ -5,14 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Timer_Sombra : MonoBehaviour
 {
+    Gerenciador_Fase fase;
+
     public float timerSombra = 20f, ttSombra, taxaQueda = 1f;
     public bool active = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        fase = FindObjectOfType<Gerenciador_Fase>();
 
-        ttSombra = timerSombra;
+        timerSombra = fase.timerSombra;
+        ttSombra = fase.maxSombra;
     }
 
     // Update is called once per frame

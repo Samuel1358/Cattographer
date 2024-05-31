@@ -148,6 +148,7 @@ public class Funcao_Itens : MonoBehaviour
 
     public void Kyrozene()
     {
-        sombra.timerSombra = sombra.ttSombra;
+        sombra.timerSombra += 1;
+        sombra.ttSombra += 1;
     }
 }

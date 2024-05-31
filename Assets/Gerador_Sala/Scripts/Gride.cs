@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gride : MonoBehaviour
 {
+    Gerenciador_Fase fase;
+
     public const int nLinhas = 4;
     public const int nColunas = 3;
 
@@ -19,6 +21,7 @@ public class Gride : MonoBehaviour
         Unica = 6, // Sala Trancada + Shop
         Botao = 7,
         Saida = 8,
+        Secreto = 9,
     }
     public enum Formato
     {
@@ -108,37 +111,75 @@ public class Gride : MonoBehaviour
     // (templats dos grides disponiveis)
     private readonly Sala_Def[][,] grids = new[]
     {
+        // 0
         new[,] { //       1                      2                      3              
         { new Sala_Def(3, 3, 1), new Sala_Def(3, 4, 2), new Sala_Def(4, 1, 3) },    // 1
         { new Sala_Def(8, 3, 3), new Sala_Def(2, 2, 1), new Sala_Def(6, 1, 2) },    // 2
         { new Sala_Def(5, 3, 1), new Sala_Def(3, 5, 0), new Sala_Def(3, 4, 3) },    // 3
         { new Sala_Def(4, 1, 0), new Sala_Def(1, 2, 1), new Sala_Def(7, 1, 0) }, }, // 4
 
-
-
+        // 1
         new[,] { //       1                      2                      3              
-        { new Sala_Def(3, 3, 1), new Sala_Def(7, 1, 3), new Sala_Def(5, 1, 2) },    // 1
-        { new Sala_Def(1, 4, 0), new Sala_Def(3, 2, 1), new Sala_Def(4, 4, 0) },    // 2
-        { new Sala_Def(3, 3, 1), new Sala_Def(4, 3, 2), new Sala_Def(5, 1, 1) },    // 3
-        { new Sala_Def(6, 1, 0), new Sala_Def(2, 4, 1), new Sala_Def(3, 4, 2) }, }, // 4
-        
-        new[,] { //       1                      2                      3
-        { new Sala_Def(2, 3, 1), new Sala_Def(6, 1, 3), new Sala_Def(7, 1, 2) },    // 1
-        { new Sala_Def(1, 4, 0), new Sala_Def(3, 4, 2), new Sala_Def(3, 4, 3) },    // 2
-        { new Sala_Def(5, 1, 1), new Sala_Def(4, 3, 3), new Sala_Def(2, 4, 1) },    // 3
-        { new Sala_Def(2, 3, 1), new Sala_Def(3, 4, 2), new Sala_Def(3, 5, 0) }, }, // 4
-        
-        new[,] { //       1                      2                      3
-        { new Sala_Def(5, 1, 2), new Sala_Def(6, 1, 2), new Sala_Def(1, 3, 0) },    // 1
-        { new Sala_Def(3, 3, 0), new Sala_Def(4, 4, 3), new Sala_Def(7, 1, 1) },    // 2
-        { new Sala_Def(1, 2, 2), new Sala_Def(3, 5, 1), new Sala_Def(3, 4, 2) },    // 3
-        { new Sala_Def(7, 1, 1), new Sala_Def(2, 4, 0), new Sala_Def(3, 4, 3) }, }, // 4
-        
-        new[,] { //       1                      2                      3
-        { new Sala_Def(1, 3, 0), new Sala_Def(3, 4, 2), new Sala_Def(4, 4, 2) },    // 1
-        { new Sala_Def(6, 1, 2), new Sala_Def(5, 1, 0), new Sala_Def(7, 1, 0) },    // 2
-        { new Sala_Def(2, 4, 1), new Sala_Def(4, 2, 0), new Sala_Def(3, 4, 2) },    // 3
-        { new Sala_Def(3, 2, 0), new Sala_Def(7, 1, 2), new Sala_Def(5, 1, 0) }, }, // 4
+        { new Sala_Def(4, 1, 2), new Sala_Def(3, 3, 1), new Sala_Def(4, 1, 3) },    // 1
+        { new Sala_Def(3, 4, 1), new Sala_Def(3, 5, 0), new Sala_Def(8, 2, 0) },    // 2
+        { new Sala_Def(5, 2, 1), new Sala_Def(2, 4, 1), new Sala_Def(3, 3, 2) },    // 3
+        { new Sala_Def(7, 1, 0), new Sala_Def(6, 1, 0), new Sala_Def(1, 2, 1) }, }, // 4
+
+        // 2
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(8, 2, 1), new Sala_Def(4, 1, 1), new Sala_Def(3, 3, 2) },    // 1
+        { new Sala_Def(3, 2, 1), new Sala_Def(7, 1, 1), new Sala_Def(5, 4, 3) },    // 2
+        { new Sala_Def(3, 4, 1), new Sala_Def(2, 4, 2), new Sala_Def(3, 4, 3) },    // 3
+        { new Sala_Def(4, 1, 0), new Sala_Def(1, 2, 1), new Sala_Def(6, 1, 0) }, }, // 4
+
+        // 3
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(3, 3, 1), new Sala_Def(8, 3, 3), new Sala_Def(4, 1, 2) },    // 1
+        { new Sala_Def(3, 4, 1), new Sala_Def(6, 1, 3), new Sala_Def(5, 2, 1) },    // 2
+        { new Sala_Def(3, 4, 1), new Sala_Def(3, 4, 2), new Sala_Def(2, 4, 3) },    // 3
+        { new Sala_Def(1, 2, 1), new Sala_Def(4, 1, 0), new Sala_Def(7, 1, 0) }, }, // 4
+
+        // 4
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(6, 1, 1), new Sala_Def(3, 4, 2), new Sala_Def(3, 3, 2) },    // 1
+        { new Sala_Def(4, 1, 1), new Sala_Def(2, 4, 3), new Sala_Def(8, 3, 0) },    // 2
+        { new Sala_Def(1, 4, 2), new Sala_Def(3, 5, 0), new Sala_Def(4, 1, 3) },    // 3
+        { new Sala_Def(3, 3, 0), new Sala_Def(5, 4, 0), new Sala_Def(7, 1, 3) }, }, // 4
+
+        // 5
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(8, 2, 1), new Sala_Def(6, 1, 2), new Sala_Def(4, 1, 2) },    // 1
+        { new Sala_Def(2, 4, 1), new Sala_Def(3, 4, 0), new Sala_Def(3, 3, 3) },    // 2
+        { new Sala_Def(3, 4, 1), new Sala_Def(3, 4, 2), new Sala_Def(1, 2, 0) },    // 3
+        { new Sala_Def(4, 1, 0), new Sala_Def(5, 3, 0), new Sala_Def(7, 1, 3) }, }, // 4
+
+        // 6
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(6, 1, 1), new Sala_Def(3, 4, 2), new Sala_Def(4, 1, 3) },    // 1
+        { new Sala_Def(8, 2, 0), new Sala_Def(2, 4, 0), new Sala_Def(3, 3, 2) },    // 2
+        { new Sala_Def(1, 2, 0), new Sala_Def(3, 4, 2), new Sala_Def(3, 4, 3) },    // 3
+        { new Sala_Def(4, 1, 1), new Sala_Def(5, 3, 3), new Sala_Def(7, 1, 0) }, }, // 4
+
+        // 7
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(6, 1, 1), new Sala_Def(3, 4, 2), new Sala_Def(8, 3, 3) },    // 1
+        { new Sala_Def(7, 1, 2), new Sala_Def(2, 4, 1), new Sala_Def(4, 1, 3) },    // 2
+        { new Sala_Def(3, 3, 0), new Sala_Def(3, 5, 0), new Sala_Def(3, 3 ,2) },    // 3
+        { new Sala_Def(1, 3, 1), new Sala_Def(5, 3, 3), new Sala_Def(4, 1, 0) }, }, // 4
+
+
+
+        /*
+               
+        */
+
+        /*
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(, , ), new Sala_Def(, , ), new Sala_Def(, , ) },    // 1
+        { new Sala_Def(, , ), new Sala_Def(, , ), new Sala_Def(, , ) },    // 2
+        { new Sala_Def(, , ), new Sala_Def(, , ), new Sala_Def(, , ) },    // 3
+        { new Sala_Def(, , ), new Sala_Def(, , ), new Sala_Def(, , ) }, }, // 4
+        */
 
         // dedsculpa gatinho juro nao mexer mais no gride <3
     };
@@ -156,9 +197,11 @@ public class Gride : MonoBehaviour
 
     void Awake()
     {
+        fase = FindObjectOfType<Gerenciador_Fase>();
+
         // Randomizer
         // (aleatoriza qual gride será usada)
-        grid = grids[0/*Random.Range(0, grids.Length)*/];
+        grid = grids[Random.Range(0, grids.Length)];
 
         // Salas
         // (atribui os prevebs de cada salas à matriz 'obj')
@@ -261,12 +304,12 @@ public class Gride : MonoBehaviour
                         break;
                     // Trancada
                     case Tipo.Unica:
-                        switch (Random.Range(0, 2))
+                        switch (fase.boss)
                         {
-                            case 0:
+                            case true:
                                 Trancada_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
-                            case 1:
+                            case false:
                                 NPC_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }                       
