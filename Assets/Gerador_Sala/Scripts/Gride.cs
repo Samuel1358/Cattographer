@@ -11,14 +11,14 @@ public class Gride : MonoBehaviour
 
     public enum Tipo
     {
-        Saida = 1, // Entrada
+        Entrada = 1, // Entrada
         Vazia = 2,
         Obstaculo = 3,
-        NPC = 4,
-        Bau = 5,
+        Bau = 4,
+        NPC = 5,
         Unica = 6, // Sala Trancada + Shop
         Botao = 7,
-        SaidaReal = 8,
+        Saida = 8,
     }
     public enum Formato
     {
@@ -39,10 +39,10 @@ public class Gride : MonoBehaviour
     #region //Salas
     // (prefebs de todas as salas disponiveis)
 
-    // saída(Entrada)
-    public Sala_Prefab Saida_2;
-    public Sala_Prefab Saida_3;
-    public Sala_Prefab Saida_4;
+    // Entrada
+    public Sala_Prefab Entrada_2;
+    public Sala_Prefab Entrada_3;
+    public Sala_Prefab Entrada_4;
 
     // Vazio
     public Sala_Prefab Vazio_2;
@@ -58,13 +58,13 @@ public class Gride : MonoBehaviour
     public Sala_Prefab Obsc_4_2;
     public Sala_Prefab Obsc_5;
 
+    // Baú
+    public Sala_Prefab Bau_1;
+
     // NPC
     public Sala_Prefab NPC_2;
     public Sala_Prefab NPC_3;
-    public Sala_Prefab NPC_4;
-
-    // Baú
-    public Sala_Prefab Bau_1;
+    public Sala_Prefab NPC_4;   
 
     // Unica
     public Sala_Prefab Trancada_1;
@@ -73,6 +73,9 @@ public class Gride : MonoBehaviour
     public Sala_Prefab Botao_1;
 
     // Saída
+    public Sala_Prefab Saida_2;
+    public Sala_Prefab Saida_3;
+    public Sala_Prefab Saida_4;
 
     #endregion
 
@@ -105,10 +108,10 @@ public class Gride : MonoBehaviour
     private readonly Sala_Def[][,] grids = new[]
     {
         new[,] { //       1                      2                      3              
-        { new Sala_Def(3, 3, 1), new Sala_Def(3, 4, 2), new Sala_Def(5, 1, 3) },    // 1
-        { new Sala_Def(1, 3, 3), new Sala_Def(2, 2, 1), new Sala_Def(6, 1, 2) },    // 2
-        { new Sala_Def(4, 3, 1), new Sala_Def(3, 5, 0), new Sala_Def(3, 4, 3) },    // 3
-        { new Sala_Def(5, 1, 0), new Sala_Def(1, 2, 1), new Sala_Def(7, 1, 0) }, }, // 4
+        { new Sala_Def(3, 3, 1), new Sala_Def(3, 4, 2), new Sala_Def(4, 1, 3) },    // 1
+        { new Sala_Def(8, 3, 3), new Sala_Def(2, 2, 1), new Sala_Def(6, 1, 2) },    // 2
+        { new Sala_Def(5, 3, 1), new Sala_Def(3, 5, 0), new Sala_Def(3, 4, 3) },    // 3
+        { new Sala_Def(4, 1, 0), new Sala_Def(1, 2, 1), new Sala_Def(7, 1, 0) }, }, // 4
 
 
 
@@ -169,17 +172,17 @@ public class Gride : MonoBehaviour
 
                 switch (definicao.Tipo)
                 {
-                    case Tipo.Saida:
+                    case Tipo.Entrada:
                         switch (definicao.Formato)
                         {
                             case Formato.Linha:
-                                Saida_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                Entrada_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.L:
-                                Saida_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                Entrada_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.T:
-                                Saida_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                Entrada_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;
@@ -237,6 +240,10 @@ public class Gride : MonoBehaviour
                         }
                         break;
                     // NPC
+                    case Tipo.Bau:
+                        Bau_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                        break;
+                    // Bau
                     case Tipo.NPC:
                         switch (definicao.Formato)
                         {
@@ -251,10 +258,6 @@ public class Gride : MonoBehaviour
                                 break;
                         }
                         break;
-                    // Bau
-                    case Tipo.Bau:
-                        Bau_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                        break;
                     // Trancada
                     case Tipo.Unica:
                         Trancada_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
@@ -262,6 +265,21 @@ public class Gride : MonoBehaviour
                     // Botao
                     case Tipo.Botao:
                         Botao_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                        break;
+                    // Saida
+                    case Tipo.Saida:
+                        switch (definicao.Formato)
+                        {
+                            case Formato.Linha:
+                                Saida_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                            case Formato.L:
+                                Saida_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                            case Formato.T:
+                                Saida_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                        }
                         break;
                 }
             }

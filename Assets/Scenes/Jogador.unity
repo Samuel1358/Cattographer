@@ -1016,9 +1016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5856ec02d46b0e47baa26500deb4593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Saida_2: {fileID: 3905817770489799138, guid: 00ba3c62f461a5146a79ae5e2d6d525e, type: 3}
-  Saida_3: {fileID: 7558572519294569269, guid: 022f6c121cbd2b7428aff1908a5b327e, type: 3}
-  Saida_4: {fileID: 3588777396556853819, guid: 8d9b8dfb30c10194aa16531e9ffe66c6, type: 3}
+  Entrada_2: {fileID: 3905817770489799138, guid: 72833aa1e1812af499ba6fbeb4510b8f, type: 3}
+  Entrada_3: {fileID: 7558572519294569269, guid: 25ab7915c970c3f4b877876660bb7ad6, type: 3}
+  Entrada_4: {fileID: 3588777396556853819, guid: 2f9d71613493dfa48839a9f39238690d, type: 3}
   Vazio_2: {fileID: 8312927758327134578, guid: 043ef5fdb00d79349aac84a97aaba53d, type: 3}
   Vazio_3: {fileID: 2460428749503124545, guid: fbcaea7cfdc04184bb6a4f3bdacde912, type: 3}
   Vazio_4: {fileID: 103834429888560491, guid: 17d1c9034676c134ca92a6ba9b907c76, type: 3}
@@ -1029,12 +1029,15 @@ MonoBehaviour:
   Obsc_4_1: {fileID: 2356453783725169772, guid: 730af411694106443bc0ca1beeaeedd2, type: 3}
   Obsc_4_2: {fileID: 4217010439451247911, guid: 172630e528ef05c48a5231d164831de8, type: 3}
   Obsc_5: {fileID: 4357171427529797469, guid: c1fafb44f017ae943b4fea8e18ca4536, type: 3}
+  Bau_1: {fileID: -5547470969812560218, guid: 26210cb14882bf244b4a4bd8201a622d, type: 3}
   NPC_2: {fileID: 8818925703276032736, guid: 625924385dc43d44f87e87f340a3cd1c, type: 3}
   NPC_3: {fileID: 8263225764921234904, guid: c4fa05f9e21a34040a7dad985ed346cf, type: 3}
   NPC_4: {fileID: 5034029473093401248, guid: ac3817216681e9b4fa1e96748a58e35c, type: 3}
-  Bau_1: {fileID: -5547470969812560218, guid: 26210cb14882bf244b4a4bd8201a622d, type: 3}
   Trancada_1: {fileID: 6539611974125032862, guid: e92ae6fa4b9633e49bfc1ef58c16aea4, type: 3}
   Botao_1: {fileID: 8349008977595912797, guid: 0912e6429feda1b48ac9a01c50452f89, type: 3}
+  Saida_2: {fileID: 3905817770489799138, guid: 00ba3c62f461a5146a79ae5e2d6d525e, type: 3}
+  Saida_3: {fileID: 7558572519294569269, guid: 022f6c121cbd2b7428aff1908a5b327e, type: 3}
+  Saida_4: {fileID: 3588777396556853819, guid: 8d9b8dfb30c10194aa16531e9ffe66c6, type: 3}
   ShopKeeper1: {fileID: 8506865051930871170, guid: 317a2dd7efa7f234a8cb8e9af467fe00, type: 3}
 --- !u!114 &1291736553
 MonoBehaviour:

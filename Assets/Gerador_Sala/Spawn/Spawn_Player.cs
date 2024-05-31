@@ -22,7 +22,7 @@ public class Spawn_Player : MonoBehaviour
             for (int coluna = 0; coluna < grid.grid.GetLength(1); coluna++)
             {
                 Gride.Sala_Def sala = grid.grid[linha, coluna];
-                if (sala.Tipo == Gride.Tipo.Saida)
+                if (sala.Tipo == Gride.Tipo.Entrada)
                 {
                     Vector3 posicaoNoGrid = Gride.IndicesCentralizados(linha, coluna);
                     Vector3 posicaoNoMundo = Gride.PosicaoNoMundo(posicaoNoGrid);
