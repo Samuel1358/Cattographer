@@ -1033,6 +1033,7 @@ MonoBehaviour:
   NPC_2: {fileID: 8818925703276032736, guid: 625924385dc43d44f87e87f340a3cd1c, type: 3}
   NPC_3: {fileID: 8263225764921234904, guid: c4fa05f9e21a34040a7dad985ed346cf, type: 3}
   NPC_4: {fileID: 5034029473093401248, guid: ac3817216681e9b4fa1e96748a58e35c, type: 3}
+  NPC_1: {fileID: 6539611974125032862, guid: a8b31912832362845b7f1e0e6ecf7fe7, type: 3}
   Trancada_1: {fileID: 6539611974125032862, guid: e92ae6fa4b9633e49bfc1ef58c16aea4, type: 3}
   Botao_1: {fileID: 8349008977595912797, guid: 0912e6429feda1b48ac9a01c50452f89, type: 3}
   Saida_2: {fileID: 3905817770489799138, guid: 00ba3c62f461a5146a79ae5e2d6d525e, type: 3}

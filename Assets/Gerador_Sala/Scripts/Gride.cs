@@ -64,9 +64,10 @@ public class Gride : MonoBehaviour
     // NPC
     public Sala_Prefab NPC_2;
     public Sala_Prefab NPC_3;
-    public Sala_Prefab NPC_4;   
+    public Sala_Prefab NPC_4;
 
     // Unica
+    public Sala_Prefab NPC_1;
     public Sala_Prefab Trancada_1;
 
     // Botão
@@ -260,7 +261,15 @@ public class Gride : MonoBehaviour
                         break;
                     // Trancada
                     case Tipo.Unica:
-                        Trancada_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                        switch (Random.Range(0, 2))
+                        {
+                            case 0:
+                                Trancada_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                            case 1:
+                                NPC_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                        }                       
                         break;
                     // Botao
                     case Tipo.Botao:
