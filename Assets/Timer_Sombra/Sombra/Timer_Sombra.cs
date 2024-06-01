@@ -8,11 +8,12 @@ public class Timer_Sombra : MonoBehaviour
     Gerenciador_Fase fase;
 
     public float timerSombra = 20f, ttSombra, taxaQueda = 1f;
-    public bool active = true;
+    public bool active = true, ivencivel = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        // resgate das infos do gride anterior(caso tenha)
         fase = FindObjectOfType<Gerenciador_Fase>();
 
         timerSombra = fase.timerSombra;
@@ -24,12 +25,12 @@ public class Timer_Sombra : MonoBehaviour
     {
         if (timerSombra <= 0)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("Lose");
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (timerSombra > 0)
         {
-            if (active == true)
+            if (active == true && ivencivel == false)
             {
                 timerSombra -= Time.deltaTime * taxaQueda * 0.1f;
             }

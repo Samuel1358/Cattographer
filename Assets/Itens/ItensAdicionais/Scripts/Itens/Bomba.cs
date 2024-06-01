@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Bomba : MonoBehaviour
 {
-    Timer_Dungeon timer;
+    Timer_Sombra sombra;
     Mov_Player player;
 
     public Slider marcador;
@@ -15,7 +15,7 @@ public class Bomba : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = FindObjectOfType<Timer_Dungeon>();
+        sombra = FindObjectOfType<Timer_Sombra>();
         player = FindObjectOfType<Mov_Player>();
 
         ttx = explodir;
@@ -40,7 +40,7 @@ public class Bomba : MonoBehaviour
         {
             if (Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2) + Mathf.Pow(player.transform.position.z - transform.position.z, 2)) <= 2.5f)
             {
-                timer.timerDD -= 30f;
+                sombra.timerSombra -= 1f;
             }
 
             Destroy(bloco);

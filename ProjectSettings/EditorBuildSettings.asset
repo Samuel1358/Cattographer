@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lose.unity
     guid: 78edc331d72101644a5f6b13128fb0fd
+  - enabled: 1
+    path: Assets/Scenes/Fases/Tutorial.unity
+    guid: e8232d496d55f094a8c668ce4ed8b4ec
+  - enabled: 1
+    path: Assets/Scenes/Fases/TorreMagica.unity
+    guid: cef460b457b5b4e42ae6cb4a9ccca659
+  - enabled: 1
+    path: Assets/Scenes/Fases/CavernaCongelada.unity
+    guid: 5f8713ab0886e464d80a0ea510b7ac14
   m_configObjects: {}

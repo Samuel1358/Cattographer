@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Gride : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class Gride : MonoBehaviour
     public const int nColunas = 3;
 
     public const float DistanciaEntreSalas = 11f;
+
+    [SerializeField] int[] idGrids = new int[4];
 
     public enum Tipo
     {
@@ -43,43 +47,81 @@ public class Gride : MonoBehaviour
     // (prefebs de todas as salas disponiveis)
 
     // Entrada
-    public Sala_Prefab Entrada_2;
-    public Sala_Prefab Entrada_3;
-    public Sala_Prefab Entrada_4;
+    public Entrada entradas;
+    [System.Serializable]
+    public class Entrada
+    {
+        public Sala_Prefab[] Entrada_2;
+        public Sala_Prefab[] Entrada_3;
+        public Sala_Prefab[] Entrada_4;
+    }
 
     // Vazio
-    public Sala_Prefab Vazio_2;
-    public Sala_Prefab Vazio_3;
-    public Sala_Prefab Vazio_4;
-    public Sala_Prefab Vazio_5;
+    public Vazio vazios;
+    [System.Serializable]
+    public class Vazio
+    {
+        public Sala_Prefab[] Vazio_2;
+        public Sala_Prefab[] Vazio_3;
+        public Sala_Prefab[] Vazio_4;
+        public Sala_Prefab[] Vazio_5;
+    }
 
     // Obstáculo
-    public Sala_Prefab Obsc_1;
-    public Sala_Prefab Obsc_2;
-    public Sala_Prefab Obsc_3;
-    public Sala_Prefab Obsc_4_1;
-    public Sala_Prefab Obsc_4_2;
-    public Sala_Prefab Obsc_5;
+    public Obstaculo obstaculos;
+    [System.Serializable]
+    public class Obstaculo
+    {
+        public Sala_Prefab[] Obstaculo_2;
+        public Sala_Prefab[] Obstaculo_3;
+        public Sala_Prefab[] Obstaculo_4;
+        public Sala_Prefab[] Obstaculo_5;
+    }
 
     // Baú
-    public Sala_Prefab Bau_1;
+    public Bau baus;
+    [System.Serializable]
+    public class Bau
+    {
+        public Sala_Prefab[] Bau_1;
+    }
 
     // NPC
-    public Sala_Prefab NPC_2;
-    public Sala_Prefab NPC_3;
-    public Sala_Prefab NPC_4;
+    public NPC npcs;
+    [System.Serializable]
+    public class NPC
+    {
+        public Sala_Prefab[] NPC_2;
+        public Sala_Prefab[] NPC_3;
+        public Sala_Prefab[] NPC_4;
+    }
 
     // Unica
-    public Sala_Prefab NPC_1;
-    public Sala_Prefab Trancada_1;
+    public Unica unicas;
+    [System.Serializable]
+    public class Unica
+    {
+        public Sala_Prefab[] NPC_1;
+        public Sala_Prefab[] Trancada_1;
+    }
 
     // Botão
-    public Sala_Prefab Botao_1;
+    public Botao botoes;
+    [System.Serializable]
+    public class Botao
+    {
+        public Sala_Prefab[] Botao_1;
+    }
 
     // Saída
-    public Sala_Prefab Saida_2;
-    public Sala_Prefab Saida_3;
-    public Sala_Prefab Saida_4;
+    public Saida saidas;
+    [System.Serializable]
+    public class Saida
+    {
+        public Sala_Prefab[] Saida_2;
+        public Sala_Prefab[] Saida_3;
+        public Sala_Prefab[] Saida_4;
+    }
 
     #endregion
 
@@ -201,7 +243,7 @@ public class Gride : MonoBehaviour
 
         // Randomizer
         // (aleatoriza qual gride será usada)
-        grid = grids[Random.Range(0, grids.Length)];
+        grid = grids[idGrids[Random.Range(0, idGrids.Length)]];
 
         // Salas
         // (atribui os prevebs de cada salas à matriz 'obj')
@@ -220,13 +262,13 @@ public class Gride : MonoBehaviour
                         switch (definicao.Formato)
                         {
                             case Formato.Linha:
-                                Entrada_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                entradas.Entrada_2[Random.Range(0, entradas.Entrada_2.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.L:
-                                Entrada_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                entradas.Entrada_3[Random.Range(0, entradas.Entrada_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.T:
-                                Entrada_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                entradas.Entrada_4[Random.Range(0, entradas.Entrada_4.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;
@@ -235,16 +277,16 @@ public class Gride : MonoBehaviour
                         switch (definicao.Formato)
                         {
                             case Formato.Linha:
-                                Vazio_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                vazios.Vazio_2[Random.Range(0, vazios.Vazio_2.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.L:
-                                Vazio_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                vazios.Vazio_3[Random.Range(0, vazios.Vazio_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.T:
-                                Vazio_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                vazios.Vazio_4[Random.Range(0, vazios.Vazio_4.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.Cruz:
-                                Vazio_5.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                vazios.Vazio_5[Random.Range(0, vazios.Vazio_5.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;
@@ -252,53 +294,36 @@ public class Gride : MonoBehaviour
                     case Tipo.Obstaculo:
                         switch (definicao.Formato)
                         {
-                            case Formato.Unica:
-                                Obsc_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                break;
                             case Formato.Linha:
-                                Obsc_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                obstaculos.Obstaculo_2[Random.Range(0, obstaculos.Obstaculo_2.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.L:
-                                Obsc_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                obstaculos.Obstaculo_3[Random.Range(0, obstaculos.Obstaculo_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.T:
-
-                                //GameObject[] Obsc_4 = { Obsc_4_1, Obsc_4_2 };
-                                //obj[i, j] = Obsc_4[Random.Range(0, 2)];
-
-                                // obsc_4
-                                switch (Random.Range(1, 3))
-                                {
-                                    case 1:
-                                        Obsc_4_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                        break;
-                                    case 2:
-                                        Obsc_4_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
-                                        break;
-                                }
-
+                                obstaculos.Obstaculo_4[Random.Range(0, obstaculos.Obstaculo_4.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.Cruz:
-                                Obsc_5.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                obstaculos.Obstaculo_5[Random.Range(0, obstaculos.Obstaculo_5.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;
                     // NPC
                     case Tipo.Bau:
-                        Bau_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                        baus.Bau_1[Random.Range(0, baus.Bau_1.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                         break;
                     // Bau
                     case Tipo.NPC:
                         switch (definicao.Formato)
                         {
                             case Formato.Linha:
-                                NPC_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                npcs.NPC_2[Random.Range(0, npcs.NPC_2.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.L:
-                                NPC_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                npcs.NPC_3[Random.Range(0, npcs.NPC_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.T:
-                                NPC_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                npcs.NPC_4[Random.Range(0, npcs.NPC_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;
@@ -307,29 +332,29 @@ public class Gride : MonoBehaviour
                         switch (fase.boss)
                         {
                             case true:
-                                Trancada_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                unicas.Trancada_1[Random.Range(0, unicas.Trancada_1.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case false:
-                                NPC_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                unicas.NPC_1[Random.Range(0, unicas.NPC_1.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }                       
                         break;
                     // Botao
                     case Tipo.Botao:
-                        Botao_1.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                        botoes.Botao_1[Random.Range(0, botoes.Botao_1.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                         break;
                     // Saida
                     case Tipo.Saida:
                         switch (definicao.Formato)
                         {
                             case Formato.Linha:
-                                Saida_2.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                saidas.Saida_2[Random.Range(0, saidas.Saida_2.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.L:
-                                Saida_3.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                saidas.Saida_3[Random.Range(0, saidas.Saida_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.T:
-                                Saida_4.Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                saidas.Saida_4[Random.Range(0, saidas.Saida_4.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;

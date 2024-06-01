@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Hit_Timer : MonoBehaviour
 {
-    Timer_Dungeon timer;
+    Timer_Sombra sombra;
     public float dano = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        timer = FindObjectOfType<Timer_Dungeon>();
+        sombra = FindObjectOfType<Timer_Sombra>();
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class Hit_Timer : MonoBehaviour
     {
         if (other.CompareTag("Inimigo"))
         {
-            timer.timerDD -= dano;
+            sombra.timerSombra -= dano;
         }
     }
 }

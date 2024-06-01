@@ -15,6 +15,7 @@ public class Player_Final : MonoBehaviour
 
     void Start()
     {
+        // resgate das infos do gride anterior(caso tenha)
         fase = FindObjectOfType<Gerenciador_Fase>();
 
         moedas = fase.moedas;

@@ -956,7 +956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   original: 0
   boss: 1
-  nivel: 1
+  nivel: 5
   moedas: 0
   chaves: 0
   listaItens: 000000000000000000000000
@@ -971,7 +971,7 @@ Transform:
   m_GameObject: {fileID: 1093900044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44800872, y: -3.365503, z: -0.42401215}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5856ec02d46b0e47baa26500deb4593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idGrids: 0000000001000000020000000300000004000000050000000600000007000000
+  idGrids: 01000000020000000300000004000000
   entradas:
     Entrada_2:
     - {fileID: 3905817770489799138, guid: 72833aa1e1812af499ba6fbeb4510b8f, type: 3}

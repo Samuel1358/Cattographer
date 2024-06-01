@@ -7,12 +7,14 @@ public class Saida_Fuga : MonoBehaviour
 {
     Gerenciador_Fase fase;
     Player_Final player;
+    Lista_Itens lista;
     Timer_Sombra sombra;
 
     void Start()
     {
         fase = FindObjectOfType<Gerenciador_Fase>();
         player = FindObjectOfType<Player_Final>();
+        lista = FindAnyObjectByType<Lista_Itens>();
         sombra = FindObjectOfType<Timer_Sombra>();
     }
 
@@ -39,6 +41,9 @@ public class Saida_Fuga : MonoBehaviour
             // chaves
             fase.chaves = player.portas;
 
+            // lista itens
+            fase.listaItens = lista.listaItens;
+
             // recarga da sombra
             fase.timerSombra = sombra.timerSombra;
             fase.maxSombra = sombra.ttSombra;
@@ -50,11 +55,11 @@ public class Saida_Fuga : MonoBehaviour
             
             if (fase.nivel - 1 == 5)
             {
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene("Win");
             }
             else
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             
         }

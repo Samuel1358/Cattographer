@@ -9,14 +9,18 @@ public class Bau_Radomizer : MonoBehaviour
     Baus_Controller controller;
 
     [SerializeField] GameObject chave;
-    [SerializeField] GameObject bomba;
+    public GameObject[] lista = new GameObject[1];
+
+    /*[SerializeField] GameObject bomba;
     [SerializeField] GameObject tabua;
-    [SerializeField] GameObject kyrozene;
+    [SerializeField] GameObject kyrozene;*/
 
     // Start is called before the first frame update
     void Start()
     {
         controller = FindObjectOfType<Baus_Controller>();
+
+        lista[0] = chave;
     }
 
     public IEnumerator AbrirCoroutine(Vector3 direcao)
@@ -35,28 +39,18 @@ public class Bau_Radomizer : MonoBehaviour
             int rand;
             if (controller.chaveSpawned == true)
             {
-                rand = Random.Range(1, 4);
+                rand = Random.Range(1, lista.Length);
             }
             else
             {
-                rand = Random.Range(0, 4);
+                rand = Random.Range(0, lista.Length);
             }
-            switch (rand)
+            item = lista[rand];
+            if (rand == 0)
             {
-                case 0:
-                    item = chave;
-                    controller.chaveSpawned = true;
-                    break;
-                case 1:
-                    item = bomba;
-                    break;
-                case 2:
-                    item = tabua;
-                    break;
-                case 3:
-                    item = kyrozene;
-                    break;
+                controller.chaveSpawned = true;
             }
+            
             controller.bausAtivos -= 1;
         }
 

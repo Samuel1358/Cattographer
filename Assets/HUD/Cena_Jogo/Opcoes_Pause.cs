@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Opcoes_Pause : MonoBehaviour
 {
-    Timer_Dungeon timer;
     Timer_Sombra sombra;
     public GameObject marcadorCheat;
 
@@ -15,7 +14,6 @@ public class Opcoes_Pause : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = FindFirstObjectByType<Timer_Dungeon>();
         sombra = FindFirstObjectByType<Timer_Sombra>();
     }
 
@@ -46,21 +44,19 @@ public class Opcoes_Pause : MonoBehaviour
     public void NovaSala()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void VidaInfinita()
     {
-        if (timer.active == true && sombra.active == true)
+        if (sombra.active == true)
         {
-            timer.active = false;
-            sombra.active = false;
+            sombra.ivencivel = true;
             marcadorCheat.SetActive(true);
         }
-        else if (timer.active == false && sombra.active == false)
+        else if (sombra.active == false)
         {
-            timer.active = true;
-            sombra.active = true;
+            sombra.ivencivel = false;
             marcadorCheat.SetActive(false);
         }
         

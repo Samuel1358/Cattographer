@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5856ec02d46b0e47baa26500deb4593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idGrids: 0000000001000000020000000300000004000000050000000600000007000000
+  idGrids: 00000000050000000600000007000000
   entradas:
     Entrada_2:
     - {fileID: 3905817770489799138, guid: 72833aa1e1812af499ba6fbeb4510b8f, type: 3}

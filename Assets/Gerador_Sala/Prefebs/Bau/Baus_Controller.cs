@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Baus_Controller : MonoBehaviour
 {
-    public int bausAtivos = 3;
+    Bau_Radomizer[] bau;
+
+    public int bausAtivos;
     public bool chaveSpawned = false;
+
+    private void Start()
+    {
+        bau = FindObjectsOfType<Bau_Radomizer>();
+        bausAtivos = bau.Length;
+    }
 }

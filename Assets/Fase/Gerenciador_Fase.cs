@@ -7,13 +7,17 @@ using UnityEngine.SceneManagement;
 public class Gerenciador_Fase : MonoBehaviour
 {
     Gerenciador_Fase instance;
+    Player_Final player;
+    Lista_Itens lista;
     Timer_Sombra sombra;
-    public bool original = false;
+
+    [HideInInspector] public bool original = false;
 
     public bool boss = true;
     public int nivel = 1;
     public int moedas = 0;
     public int chaves = 0;
+    public int[] listaItens = new int[3];
     public float timerSombra, maxSombra;
 
 
@@ -35,6 +39,16 @@ public class Gerenciador_Fase : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        // player
+        player = FindAnyObjectByType<Player_Final>();
+        moedas = player.moedas;
+        chaves = player.portas;
+
+        // lista itens
+        lista = FindObjectOfType<Lista_Itens>();
+        listaItens = lista.listaItens;
+
+        // sombra
         sombra = FindAnyObjectByType<Timer_Sombra>();
         timerSombra = sombra.timerSombra;
         maxSombra = sombra.timerSombra;
@@ -49,7 +63,7 @@ public class Gerenciador_Fase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name != "Jogador")
+        if (FindObjectOfType<Spawn_Player>() == null)
         {
             Destroy(gameObject);
         }

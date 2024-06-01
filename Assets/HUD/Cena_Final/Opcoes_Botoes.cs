@@ -6,26 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class Opcoes_Botoes : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Menu()
     {
         SceneManager.LoadScene(0);
     }
 
-    public void Jogo()
+    public void Tutorial()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Tutorial");
+    }
+    public void TorreMagica()
+    {
+        SceneManager.LoadScene("TorreMagica");
+    }
+    public void CavernaCongelada()
+    {
+        SceneManager.LoadScene("CavernaCongelada");
     }
 
     /*public void Win()
