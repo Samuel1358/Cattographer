@@ -7,6 +7,7 @@ public class Bau_Radomizer : MonoBehaviour
     GameObject item;
 
     Baus_Controller controller;
+    Count_RecargaSombra recarga;
 
     [SerializeField] GameObject chave;
     public GameObject[] lista = new GameObject[1];
@@ -19,6 +20,7 @@ public class Bau_Radomizer : MonoBehaviour
     void Start()
     {
         controller = FindObjectOfType<Baus_Controller>();
+        recarga = FindObjectOfType<Count_RecargaSombra>();
 
         lista[0] = chave;
     }
@@ -64,6 +66,7 @@ public class Bau_Radomizer : MonoBehaviour
         );
 
         Instantiate(item, transform.position, Quaternion.identity);
+        recarga.ConcluirSala();
         Destroy(gameObject);
     }
 }

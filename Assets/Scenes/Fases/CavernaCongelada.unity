@@ -1633,6 +1633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091207719}
   - component: {fileID: 2091207720}
+  - component: {fileID: 2091207721}
   m_Layer: 0
   m_Name: Timer&Sombra
   m_TagString: Untagged
@@ -1671,6 +1672,20 @@ MonoBehaviour:
   ttSombra: 0
   taxaQueda: 1
   active: 1
+  ivencivel: 0
+--- !u!114 &2091207721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091207717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a378211835ed8d4aa58d5bee9fa0656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  salasComcluidas: 0
 --- !u!1 &2138733411
 GameObject:
   m_ObjectHideFlags: 0
