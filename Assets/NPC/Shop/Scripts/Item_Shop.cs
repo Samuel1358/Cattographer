@@ -21,8 +21,6 @@ public class Item_Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player_Final>();
-
         switch (tipo)
         {
             case Tipo.ItemGerais:
@@ -37,6 +35,11 @@ public class Item_Shop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = FindObjectOfType<Player_Final>();
+        }
+
         if (player.moedas >= valor)
         {
             Ativar();

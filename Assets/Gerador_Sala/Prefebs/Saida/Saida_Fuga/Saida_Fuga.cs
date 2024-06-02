@@ -8,6 +8,7 @@ public class Saida_Fuga : MonoBehaviour
     Gerenciador_Fase fase;
     Player_Final player;
     Lista_Itens lista;
+    Count_RecargaSombra recarga;
     Timer_Sombra sombra;
 
     void Start()
@@ -15,6 +16,7 @@ public class Saida_Fuga : MonoBehaviour
         fase = FindObjectOfType<Gerenciador_Fase>();
         player = FindObjectOfType<Player_Final>();
         lista = FindAnyObjectByType<Lista_Itens>();
+        recarga = FindObjectOfType<Count_RecargaSombra>();
         sombra = FindObjectOfType<Timer_Sombra>();
     }
 
@@ -45,11 +47,13 @@ public class Saida_Fuga : MonoBehaviour
             fase.listaItens = lista.listaItens;
 
             // recarga da sombra
+            recarga.ConcluirSala();
+
             fase.timerSombra = sombra.timerSombra;
             fase.maxSombra = sombra.ttSombra;
-            if ((fase.maxSombra / 5) * 3 > fase.timerSombra)
+            if ((fase.maxSombra / 20) * (recarga.GetSalas() + 8) > fase.timerSombra)
             {
-                fase.timerSombra = (fase.maxSombra / 5) * 3; // 60%
+                fase.timerSombra = (fase.maxSombra / 20) * (recarga.GetSalas() + 8);
             }
 
             

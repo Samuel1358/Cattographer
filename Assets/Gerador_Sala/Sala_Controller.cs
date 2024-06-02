@@ -63,4 +63,9 @@ public class Sala_Controller : MonoBehaviour
 
     static public void SetUltimaPorta(Saidas_Ativador porta)
     { ultimaPorta = porta; }
+
+    public Saidas_Ativador GetUltimaPorta()
+    {
+        return ultimaPorta;
+    }
 }
