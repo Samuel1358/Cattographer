@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4814763121706236802}
   - component: {fileID: 978681781042694612}
   - component: {fileID: 8697797576363879243}
+  - component: {fileID: 975840864538803205}
   m_Layer: 7
   m_Name: Empurravel
   m_TagString: Empurravel
@@ -102,6 +103,20 @@ MonoBehaviour:
   chao:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &975840864538803205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810660955635117866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103ac367bed97924aa3628f0dfe156b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelo: {fileID: 0}
+  altura: -0.75
 --- !u!1 &6888871896308627966
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6e206c835bf1dbe40a648a1d0ad71466, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

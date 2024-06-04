@@ -5,12 +5,14 @@ using UnityEngine.UIElements;
 
 public class PreencherModelos : MonoBehaviour
 {
-    public GameObject modelo;
+    [SerializeField] GameObject modelo;
     public float altura;
 
     // Start is called before the first frame update
     void Start()
     {
+        modelo = FindObjectOfType<ModelosFase>().parede;
+
         int x = (int)Mathf.Ceil(Mathf.Ceil(transform.localScale.x - modelo.transform.localScale.x) / modelo.transform.localScale.x),
             z = (int)Mathf.Ceil(Mathf.Ceil(transform.localScale.z - modelo.transform.localScale.z) / modelo.transform.localScale.z);
 
