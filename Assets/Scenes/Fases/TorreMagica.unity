@@ -987,7 +987,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3106057860008764692, guid: 38bc855d0d2facd49852af7ee4316b75, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3426876452970139833, guid: 38bc855d0d2facd49852af7ee4316b75, type: 3}
       propertyPath: musica
