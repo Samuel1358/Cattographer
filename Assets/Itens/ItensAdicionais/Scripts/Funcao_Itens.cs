@@ -228,7 +228,7 @@ public class Funcao_Itens : MonoBehaviour
                 {
                     if (hit.collider.gameObject.CompareTag("Buraco"))
                     {
-                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), Quaternion.identity);
+                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), transform.rotation);
                     }
                 }
                 break;
@@ -237,7 +237,7 @@ public class Funcao_Itens : MonoBehaviour
                 {
                     if (hit.collider.gameObject.CompareTag("Buraco"))
                     {
-                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), Quaternion.identity);
+                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), transform.rotation);
                     }
                 }
                 break;
@@ -246,7 +246,7 @@ public class Funcao_Itens : MonoBehaviour
                 {
                     if (hit.collider.gameObject.CompareTag("Buraco"))
                     {
-                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), Quaternion.identity);
+                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), transform.rotation);
                     }
                 }
                 break;
@@ -255,7 +255,7 @@ public class Funcao_Itens : MonoBehaviour
                 {
                     if (hit.collider.gameObject.CompareTag("Buraco"))
                     {
-                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), Quaternion.identity);
+                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), transform.rotation);
                     }
                 }
                 break;
