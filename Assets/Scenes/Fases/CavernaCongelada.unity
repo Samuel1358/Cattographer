@@ -1387,7 +1387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parede: {fileID: 5180688245799661882, guid: 2cdae183a3fdd2c4f90fec0abd507ed9, type: 3}
-  bloco: {fileID: 919132149155446097, guid: 6e206c835bf1dbe40a648a1d0ad71466, type: 3}
+  bloco1: {fileID: 919132149155446097, guid: 6e206c835bf1dbe40a648a1d0ad71466, type: 3}
+  bloco2: {fileID: 919132149155446097, guid: 6fcdae46f7c732f42a0b708af630a886, type: 3}
 --- !u!4 &1387662180
 Transform:
   m_ObjectHideFlags: 0
