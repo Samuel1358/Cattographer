@@ -10,7 +10,15 @@ public class SubstituirModelo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        modelo = FindObjectOfType<ModelosFase>().bloco;
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                modelo = FindObjectOfType<ModelosFase>().bloco1;
+                break;
+            case 1:
+                modelo = FindObjectOfType<ModelosFase>().bloco2;
+                break;
+        }        
 
         GameObject instance;
 
