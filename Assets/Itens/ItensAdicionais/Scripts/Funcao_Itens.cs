@@ -5,6 +5,7 @@ using UnityEngine;
 public class Funcao_Itens : MonoBehaviour
 {
     public GameObject bomba;
+    public GameObject tabua;
     Timer_Sombra sombra;
     Mov_Player player;
 
@@ -141,14 +142,129 @@ public class Funcao_Itens : MonoBehaviour
         }
     }
 
-    public void Tabua()
+    public bool VerificarTabua(int dir)
     {
-        //@
+        RaycastHit hit;
+        switch (dir)
+        {
+            case 1:
+                if (Physics.Raycast(player.transform.position, Vector3.forward, out hit, 1f))
+                {
+                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            //break;
+            case 2:
+                if (Physics.Raycast(player.transform.position, Vector3.right, out hit, 1f))
+                {
+                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            //break;
+            case 3:
+                if (Physics.Raycast(player.transform.position, -Vector3.forward, out hit, 1f))
+                {
+                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            //break;
+            case 4:
+                if (Physics.Raycast(player.transform.position, -Vector3.right, out hit, 1f))
+                {
+                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            //break;
+            default: return false;
+        }
+    }
+    public void ColocarTabua(int dir)
+    {
+        RaycastHit hit;
+        switch (dir)
+        {
+            case 1:
+                if (Physics.Raycast(player.transform.position, Vector3.forward, out hit, 1f))
+                {
+                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    {
+                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), Quaternion.identity);
+                    }
+                }
+                break;
+            case 2:
+                if (Physics.Raycast(player.transform.position, Vector3.right, out hit, 1f))
+                {
+                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    {
+                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), Quaternion.identity);
+                    }
+                }
+                break;
+            case 3:
+                if (Physics.Raycast(player.transform.position, -Vector3.forward, out hit, 1f))
+                {
+                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    {
+                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), Quaternion.identity);
+                    }
+                }
+                break;
+            case 4:
+                if (Physics.Raycast(player.transform.position, -Vector3.right, out hit, 1f))
+                {
+                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    {
+                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), Quaternion.identity);
+                    }
+                }
+                break;
+        }
     }
 
     public void Kyrozene()
     {
-        sombra.timerSombra += 1;
+        sombra.timerSombra += 2;
         sombra.ttSombra += 1;
     }
 }

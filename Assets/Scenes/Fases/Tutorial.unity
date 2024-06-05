@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomba: {fileID: 1303248762645176447, guid: 901ee469ca3567140b1416367f36171d, type: 3}
+  tabua: {fileID: 684298692848955116, guid: 3525b8132148ef845adca51def819ed0, type: 3}
 --- !u!1001 &228011452
 PrefabInstance:
   m_ObjectHideFlags: 0

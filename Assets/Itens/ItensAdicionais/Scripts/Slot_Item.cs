@@ -162,9 +162,11 @@ public class Slot_Item : MonoBehaviour
                     }
                     break;
                 case 2:
-                    //@
-                    //selecionadoControler = true;
-                    lista.listaItens[slot] = 0;
+                    if (funcoes.VerificarTabua(lista.dir) == true)
+                    {
+                        funcoes.ColocarTabua(lista.dir);
+                        lista.listaItens[slot] = 0;
+                    }
                     break;
             }
             lista.Selecionado(selecionadoControler);
