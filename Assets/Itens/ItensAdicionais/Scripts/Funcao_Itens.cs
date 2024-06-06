@@ -148,116 +148,113 @@ public class Funcao_Itens : MonoBehaviour
         switch (dir)
         {
             case 1:
-                if (Physics.Raycast(player.transform.position, Vector3.forward, out hit, 1f))
+                Debug.Log("cima");
+                if (Physics.Raycast(player.transform.position + Vector3.forward, Vector3.down, out hit, 23f))
                 {
-                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    if (hit.collider.gameObject.CompareTag("Fundo"))
                     {
+                        Debug.Log("1");
                         return true;
                     }
                     else
                     {
+                        Debug.Log("2");
+                        Debug.Log(hit.collider.gameObject);
                         return false;
                     }
                 }
                 else
                 {
+                    Debug.Log("3");
                     return false;
                 }
             //break;
             case 2:
-                if (Physics.Raycast(player.transform.position, Vector3.right, out hit, 1f))
+                Debug.Log("direita");
+                if (Physics.Raycast(player.transform.position + Vector3.right, Vector3.down, out hit, 24f))
                 {
-                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    if (hit.collider.gameObject.CompareTag("Fundo"))
                     {
+                        Debug.Log("1");
                         return true;
                     }
                     else
                     {
+                        Debug.Log("2");
+                        Debug.Log(hit.collider.gameObject);
                         return false;
                     }
                 }
                 else
                 {
+                    Debug.Log("3");
                     return false;
                 }
             //break;
             case 3:
-                if (Physics.Raycast(player.transform.position, -Vector3.forward, out hit, 1f))
+                Debug.Log("baixo");
+                if (Physics.Raycast(player.transform.position + Vector3.back, Vector3.down, out hit, 25f))
                 {
-                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    if (hit.collider.gameObject.CompareTag("Fundo"))
                     {
+                        Debug.Log("1");
                         return true;
                     }
                     else
                     {
+                        Debug.Log("2");
+                        Debug.Log(hit.collider.gameObject);
                         return false;
                     }
                 }
                 else
                 {
+                    Debug.Log("3");
                     return false;
                 }
             //break;
             case 4:
-                if (Physics.Raycast(player.transform.position, -Vector3.right, out hit, 1f))
+                Debug.Log("esquerda");
+                if (Physics.Raycast(player.transform.position + Vector3.left, Vector3.down, out hit, 26f))
                 {
-                    if (hit.collider.gameObject.CompareTag("Buraco"))
+                    if (hit.collider.gameObject.CompareTag("Fundo"))
                     {
+                        Debug.Log("1");
                         return true;
                     }
                     else
                     {
+                        Debug.Log("2");
+                        Debug.Log(hit.collider.gameObject);
                         return false;
                     }
                 }
                 else
                 {
+                    Debug.Log("3");
                     return false;
                 }
             //break;
-            default: return false;
+            default:
+                Debug.Log("4");
+                return false;
         }
     }
     public void ColocarTabua(int dir)
     {
-        RaycastHit hit;
         switch (dir)
         {
             case 1:
-                if (Physics.Raycast(player.transform.position, Vector3.forward, out hit, 1f))
-                {
-                    if (hit.collider.gameObject.CompareTag("Buraco"))
-                    {
-                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), transform.rotation);
-                    }
-                }
+                Instantiate(tabua, new Vector3(player.transform.position.x, 0, player.transform.position.z + 1), transform.rotation);
                 break;
             case 2:
-                if (Physics.Raycast(player.transform.position, Vector3.right, out hit, 1f))
-                {
-                    if (hit.collider.gameObject.CompareTag("Buraco"))
-                    {
-                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), transform.rotation);
-                    }
-                }
+                Instantiate(tabua, new Vector3(player.transform.position.x + 1, 0, player.transform.position.z), transform.rotation);
                 break;
             case 3:
-                if (Physics.Raycast(player.transform.position, -Vector3.forward, out hit, 1f))
-                {
-                    if (hit.collider.gameObject.CompareTag("Buraco"))
-                    {
-                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), transform.rotation);
-                    }
-                }
+                Instantiate(tabua, new Vector3(player.transform.position.x, 0, player.transform.position.z - 1), transform.rotation);
                 break;
             case 4:
-                if (Physics.Raycast(player.transform.position, -Vector3.right, out hit, 1f))
-                {
-                    if (hit.collider.gameObject.CompareTag("Buraco"))
-                    {
-                        Instantiate(tabua, new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z), transform.rotation);
-                    }
-                }
+                Instantiate(tabua, new Vector3(player.transform.position.x - 1, 0, player.transform.position.z), transform.rotation);
                 break;
         }
     }

@@ -32,7 +32,7 @@ public class Timer_Sombra : MonoBehaviour
         {
             if (active == true && ivencivel == false)
             {
-                timerSombra -= Time.deltaTime * taxaQueda * 0.1f;
+                timerSombra -= Time.deltaTime * taxaQueda * 0.15f;
             }
         }
     }

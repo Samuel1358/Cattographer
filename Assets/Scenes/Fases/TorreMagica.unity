@@ -542,6 +542,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3610327696307722031, guid: d5f5424d86c35dd4f8348226cb4f9d13, type: 3}
+      propertyPath: dano
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5201281586023410161, guid: d5f5424d86c35dd4f8348226cb4f9d13, type: 3}
       propertyPath: m_Name
       value: Player
@@ -988,7 +992,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3106057860008764692, guid: 38bc855d0d2facd49852af7ee4316b75, type: 3}
       propertyPath: m_Volume
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3426876452970139833, guid: 38bc855d0d2facd49852af7ee4316b75, type: 3}
       propertyPath: musica

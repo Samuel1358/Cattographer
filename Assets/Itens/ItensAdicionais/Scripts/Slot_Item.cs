@@ -162,6 +162,7 @@ public class Slot_Item : MonoBehaviour
                     }
                     break;
                 case 2:
+                    //Debug.Log(funcoes.VerificarTabua(lista.dir));
                     if (funcoes.VerificarTabua(lista.dir) == true)
                     {
                         funcoes.ColocarTabua(lista.dir);
