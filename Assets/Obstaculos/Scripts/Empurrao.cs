@@ -104,4 +104,17 @@ public class Empurrao : MonoBehaviour
 
         caindo = false;
     }
+
+    public void Queda()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(new Ray(transform.position, -transform.up), out hit, 23f))
+        {
+            if (hit.collider.gameObject.CompareTag("Fundo"))
+            {
+                box.isTrigger = false;
+                rb.useGravity = true;
+            }
+        }
+    }
 }
