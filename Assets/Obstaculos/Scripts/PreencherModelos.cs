@@ -25,9 +25,9 @@ public class PreencherModelos : MonoBehaviour
 
         GameObject instance;
 
-        GameObject cubo = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cubo.transform.position = new Vector3(0, -10, 0);
-        cubo.name = "Modelos";
+        //GameObject cubo = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //cubo.transform.position = new Vector3(0, -10, 0);
+        //cubo.name = "Modelos";
 
         for (float i = -(x/2f); i <= x/2f; i += modelo.transform.localScale.x)
         {
@@ -44,12 +44,13 @@ public class PreencherModelos : MonoBehaviour
                     b = i;
                 }
                 Vector3 pos = new Vector3(transform.position.x + a, transform.position.y + /*(float)*/altura, transform.position.z + b);
-                instance = Instantiate(modelo, pos, Quaternion.identity, cubo.transform);
+                instance = Instantiate(modelo, pos, Quaternion.Euler(0f, 90 * Random.Range(0, 4), 0f));
+                instance.transform.SetParent(this.transform);
                 instance.isStatic = true;
             }
         }
 
-        cubo.isStatic = true;
-        cubo.transform.SetParent(this.transform);
+        //cubo.isStatic = true;
+        //cubo.transform.SetParent(this.transform);
     }
 }

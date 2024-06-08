@@ -11,7 +11,7 @@ public class Gerenciador_Fase : MonoBehaviour
     Lista_Itens lista;
     Timer_Sombra sombra;
 
-    [HideInInspector] public bool original = false;
+    bool original = false;
 
     public bool boss = true;
     public int nivel = 1;

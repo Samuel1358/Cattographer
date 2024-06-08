@@ -26,7 +26,7 @@ public class SubstituirModelo : MonoBehaviour
         modelo.transform.localScale = new Vector3(1, 1.5f, 1);
 
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + altura, transform.position.z);
-        instance = Instantiate(modelo, pos, Quaternion.identity, this.transform);        
+        instance = Instantiate(modelo, pos, Quaternion.Euler(0f, 90 * Random.Range(0, 4), 0f), this.transform);        
         instance.isStatic = true;
     }
 }

@@ -959,7 +959,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a465828ef4c064f48b504beab14e0160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  original: 0
   boss: 1
   nivel: 1
   moedas: 0

@@ -142,14 +142,14 @@ public class Funcao_Itens : MonoBehaviour
         }
     }
 
-    public bool VerificarTabua(int dir)
+    public bool VerificarTabua(int dir, int mult)
     {
         RaycastHit hit;
         switch (dir)
         {
             case 1:
                 Debug.Log("cima");
-                if (Physics.Raycast(player.transform.position + Vector3.forward, Vector3.down, out hit, 23f))
+                if (Physics.Raycast(player.transform.position + Vector3.forward * mult, Vector3.down, out hit, 23f))
                 {
                     if (hit.collider.gameObject.CompareTag("Fundo"))
                     {
@@ -171,7 +171,7 @@ public class Funcao_Itens : MonoBehaviour
             //break;
             case 2:
                 Debug.Log("direita");
-                if (Physics.Raycast(player.transform.position + Vector3.right, Vector3.down, out hit, 24f))
+                if (Physics.Raycast(player.transform.position + Vector3.right * mult, Vector3.down, out hit, 24f))
                 {
                     if (hit.collider.gameObject.CompareTag("Fundo"))
                     {
@@ -193,7 +193,7 @@ public class Funcao_Itens : MonoBehaviour
             //break;
             case 3:
                 Debug.Log("baixo");
-                if (Physics.Raycast(player.transform.position + Vector3.back, Vector3.down, out hit, 25f))
+                if (Physics.Raycast(player.transform.position + Vector3.back * mult, Vector3.down, out hit, 25f))
                 {
                     if (hit.collider.gameObject.CompareTag("Fundo"))
                     {
@@ -215,7 +215,7 @@ public class Funcao_Itens : MonoBehaviour
             //break;
             case 4:
                 Debug.Log("esquerda");
-                if (Physics.Raycast(player.transform.position + Vector3.left, Vector3.down, out hit, 26f))
+                if (Physics.Raycast(player.transform.position + Vector3.left * mult, Vector3.down, out hit, 26f))
                 {
                     if (hit.collider.gameObject.CompareTag("Fundo"))
                     {
