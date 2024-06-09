@@ -314,17 +314,20 @@ public class Freckles_Escavar : MonoBehaviour
 
     private void Sortiar()
     {
-        while (true)
+        if (contagem > 0)
         {
-            linha = Random.Range(0, 5);
-            coluna = Random.Range(0, 7);
-
-            #pragma warning disable CS0618 // O tipo ou membro é obsoleto
-            if (escavaveis[linha][coluna].active == true)
+            while (true)
             {
-                break;
+                linha = Random.Range(0, 5);
+                coluna = Random.Range(0, 7);
+
+                #pragma warning disable CS0618 // GameObject.active é obsoleto
+                if (escavaveis[linha][coluna].active == true)
+                {
+                    break;
+                }
             }
-        }
+        }        
     }
 
     private float InterpolarDistancia(float distancia, float tt)
