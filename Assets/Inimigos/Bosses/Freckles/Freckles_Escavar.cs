@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Freckles_Escavar : MonoBehaviour
@@ -15,16 +14,17 @@ public class Freckles_Escavar : MonoBehaviour
 
     public Empurrao[] blocos = new Empurrao[4];
 
-    [SerializeField] int estado = 0;
-    [SerializeField] int contagem;
+    public int estado = 0;
+    int contagem;
     int linha = 2, coluna = 3;
     int projeteis = 3;
 
-    public float timerBuraco = 4f, timerAtaque = 5f, timerMover = 3f;
-    float ttBuraco, ttAtaque, ttMover;
-    float timerArremesso, ttArremesso;
+    [SerializeField] float timerBuraco = 4f, timerAparece = 1f, timerAtaque = 5f, timerEntrar = 1f, timerMover = 2f, timerAtordoado = 3f;
+    float ttBuraco, ttAparece, ttAtaque, ttMover, ttEntrar, ttAtordoado;
+    float timerArremesso, ttArremesso, timerAjusteAtordoado;
 
-    private float timerAniEntrar = 2f, ttAniEntrar;
+    //Teste
+    public Material material;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +34,20 @@ public class Freckles_Escavar : MonoBehaviour
         contagem = linhaA.Length * escavaveis.Length;
 
         ttBuraco = timerBuraco;
+        ttAparece = timerAparece;
         ttAtaque = timerAtaque;
         timerArremesso = ttAtaque / 4;
         ttArremesso = timerArremesso;
+        ttEntrar = timerEntrar;
         ttMover = timerMover;
-        ttAniEntrar = timerAniEntrar;
+        ttAtordoado = timerAtordoado;
+
+        //Teste
+        if (ColorUtility.TryParseHtmlString("#234bb4", out Color cor))
+        {
+            material.color = cor;
+        }
+            
     }
 
     // Update is called once per frame
@@ -46,7 +55,10 @@ public class Freckles_Escavar : MonoBehaviour
     {
         for (int i = 0; i < blocos.Length; i++)
         {
-            blocos[i].Queda();
+            if (blocos[i] != null)
+            {
+                blocos[i].Queda();
+            } 
         }
 
         switch (estado)
@@ -54,7 +66,7 @@ public class Freckles_Escavar : MonoBehaviour
             case 0:
                 if (Cavar(escavaveis[2][3]))
                 {
-                    estado = 3;
+                    estado = 2;
                     Sortiar();
                 }
                 else
@@ -63,44 +75,47 @@ public class Freckles_Escavar : MonoBehaviour
                     escavaveis[2][3].transform.eulerAngles = new Vector3(0f, escavaveis[linha][coluna].transform.rotation.eulerAngles.y + 0.5f, 0f);
                 }
                 break;
-            case 1:
-                if (Mover())
-                {
-                    estado = 2;
-                }
-                else
-                {
-                    /*if (Entrar())
-                    {
 
-                    }*/
-                }
-                break;
-            case 2:
+            // Cava/da sinal
+            case 1:
                 if (Cavar(escavaveis[linha][coluna]))
                 {
                     if (contagem <= 0)
                     {
-                        estado = 4;
+                        estado = 6;
                     }
                     else
                     {
-                        estado = 3;
+                        estado = 2;
                     }
                 }
                 else
-                {           
+                {
                     // deu sinal
                     escavaveis[linha][coluna].transform.eulerAngles = new Vector3(0f, escavaveis[linha][coluna].transform.rotation.eulerAngles.y + 0.5f, 0f);
                 }
                 break;
+
+            // Aparece
+            case 2:
+                if (Aparecer())
+                {
+                    estado = 3;
+                }
+                else
+                {
+                    Vector3 pos = new Vector3(0f, InterpolarDistancia(2f, ttAparece), 0f);
+                    transform.position += pos;
+                }
+                break;
+
+            // Ataca 3x
             case 3:
                 if (Ataque())
                 {
-                    estado = 1;
+                    estado = 4;
                     projeteis = 3;
                     Sortiar();
-                    Debug.Log("entrou na terra");
                 }
                 else
                 {
@@ -113,9 +128,75 @@ public class Freckles_Escavar : MonoBehaviour
                     }
                 }
                 break;
+
+            // Entrar
             case 4:
-                Debug.Log("deu certooo");
+                if (Entrar())
+                {
+                    estado = 5;
+                    Vector3 pos = new Vector3(escavaveis[linha][coluna].transform.position.x, transform.position.y, escavaveis[linha][coluna].transform.position.z);
+                    transform.position = pos;
+                }
+                else
+                {
+                    Vector3 pos = new Vector3(0f, InterpolarDistancia(3f, ttEntrar), 0f);
+                    transform.position -= pos;
+                }
                 break;
+
+            // Move
+            case 5:
+                if (Mover())
+                {
+                    estado = 1;
+                }
+                else
+                {
+                    Vector3 pos = new Vector3(0f, InterpolarDistancia(1f, ttMover), 0f);
+                    transform.position += pos;
+                }
+
+                break;
+            
+            // Atordoado
+            case 6:
+                if (Atordoado())
+                {
+                    Sortiar();
+                    estado = 4;
+                    if (ColorUtility.TryParseHtmlString("#234bb4", out Color cor))
+                    {
+                        material.color = cor;
+                    }
+                }
+                else
+                {
+                    if (timerAjusteAtordoado > 0)
+                    {
+                        Vector3 pos = new Vector3(0f, InterpolarDistancia(2f, ttAparece), 0f);
+                        transform.position += pos;
+
+                        timerAjusteAtordoado -= Time.deltaTime;
+
+                        if (ColorUtility.TryParseHtmlString("#ebb400", out Color cor))
+                        {
+                            material.color = cor;
+                        }
+                    }  
+                }
+                break;
+            
+            case 7:
+                Debug.Log("deu certo");
+                break;
+            case 8:
+                Debug.Log("acabou");
+                break;
+        }
+
+        if (contagem <= 0)
+        {
+            estado = 8;
         }
     }
 
@@ -137,16 +218,16 @@ public class Freckles_Escavar : MonoBehaviour
         }
     }
 
-    private bool Mover()
+    private bool Aparecer()
     {
-        if (timerMover <= 0)
+        if (timerAparece <= 0)
         {
-            timerMover = ttMover;
+            timerAparece = ttAparece;
             return true;
         }
         else
         {
-            timerMover -= Time.deltaTime;
+            timerAparece -= Time.deltaTime;
             return false;
         }
     }
@@ -181,20 +262,52 @@ public class Freckles_Escavar : MonoBehaviour
         }
     }
 
-
-
-    private bool Entrar(float timer, float tt)
+    private bool Entrar()
     {
-        if (timerAniEntrar <= 0)
+        if (timerEntrar <= 0)
         {
-            timerAniEntrar = ttAniEntrar;
+            timerEntrar = ttEntrar;
             return true;
         }
         else
         {
-            timerAniEntrar -= Time.deltaTime;
+            timerEntrar -= Time.deltaTime;
             return false;
         }
+    }
+
+    private bool Mover()
+    {
+        if (timerMover <= 0)
+        {
+            timerMover = ttMover;
+            return true;
+        }
+        else
+        {
+            timerMover -= Time.deltaTime;
+            return false;
+        }
+    }
+
+    private bool Atordoado()
+    {
+        if (timerAtordoado <= 0)
+        {
+            timerAtordoado = ttAtordoado;
+            return true;
+        }
+        else
+        {
+            timerAtordoado -= Time.deltaTime;
+            return false;
+        }
+    }
+
+    public void AjusteAtordoado()
+    {
+        timerAjusteAtordoado = timerAparece;
+        timerAparece = ttAparece;
     }
 
 
@@ -212,5 +325,10 @@ public class Freckles_Escavar : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private float InterpolarDistancia(float distancia, float tt)
+    {
+        return distancia * (Time.deltaTime / tt);
     }
 }

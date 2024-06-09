@@ -110,7 +110,7 @@ public class Empurrao : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(new Ray(transform.position, -transform.up), out hit, 23f))
         {
-            if (hit.collider.gameObject.CompareTag("Fundo"))
+            if (hit.collider.gameObject.CompareTag("Fundo") || hit.collider.gameObject.CompareTag("Freckles"))
             {
                 box.isTrigger = false;
                 rb.useGravity = true;

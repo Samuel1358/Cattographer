@@ -1946,33 +1946,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: SalaTrancada_Freckles
       objectReference: {fileID: 0}
-    - target: {fileID: 763262021265403252, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
-      propertyPath: timerMover
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 763262021265403252, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
-      propertyPath: timerBuraco
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866660190692259960, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2050002012907220076, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3231478414746001157, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3747055887279343765, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3747055887279343765, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.68
+      propertyPath: m_LocalPosition.y
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4253081408313386164, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
       propertyPath: m_LocalPosition.x
