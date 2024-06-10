@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sala_Controller : MonoBehaviour
 {
-    static private Sala_Controller salaAtual;
+    static public Sala_Controller salaAtual;
     static private Saidas_Ativador ultimaPorta;
     static private Mov_Player player;
     
@@ -67,5 +67,10 @@ public class Sala_Controller : MonoBehaviour
     public Saidas_Ativador GetUltimaPorta()
     {
         return ultimaPorta;
+    }
+
+    public Sala_Controller GetSalaAtual()
+    {
+        return salaAtual;   
     }
 }

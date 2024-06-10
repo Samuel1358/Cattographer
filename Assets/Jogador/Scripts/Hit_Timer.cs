@@ -13,17 +13,16 @@ public class Hit_Timer : MonoBehaviour
         sombra = FindObjectOfType<Timer_Sombra>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Inimigo"))
         {
             sombra.timerSombra -= dano;
         }
+    }
+
+    public void CausarDano(float dano)
+    {
+        sombra.timerSombra -= dano;
     }
 }

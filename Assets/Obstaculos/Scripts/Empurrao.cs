@@ -17,7 +17,7 @@ public class Empurrao : MonoBehaviour
     Rigidbody rb;
     Collider box;
     bool noFundo = false;
-    bool caindo = false;
+    [HideInInspector] public bool caindo = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +37,7 @@ public class Empurrao : MonoBehaviour
         if (collision.collider.CompareTag("Fundo"))
         {
             noFundo = true;
+            caindo = false;
             gameObject.layer = LayerMask.NameToLayer("Chao");
         }
     }
@@ -112,9 +113,14 @@ public class Empurrao : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Fundo") || hit.collider.gameObject.CompareTag("Freckles"))
             {
+                Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
+                caindo = true;
                 box.isTrigger = false;
                 rb.useGravity = true;
             }
+            
         }
+
+
     }
 }

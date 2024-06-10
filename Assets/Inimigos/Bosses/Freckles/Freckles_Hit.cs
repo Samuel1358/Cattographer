@@ -5,7 +5,7 @@ using UnityEngine;
 public class Freckles_Hit : MonoBehaviour
 {
     Freckles_Escavar escavar;
-    int hits;
+    public int hits;
 
     // Start is called before the first frame update
     void Start()

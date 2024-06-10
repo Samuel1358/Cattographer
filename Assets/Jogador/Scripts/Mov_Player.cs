@@ -40,25 +40,35 @@ public class Mov_Player : MonoBehaviour
 
         Vector3 movimento = Vector3.zero;
         if (inputCima && !(inputDireita || inputBaixo || inputEsquerda))
-        { movimento = Vector3.forward; }
+        {
+            movimento = Vector3.forward;
+        }
         else if (inputDireita && !(inputCima || inputBaixo || inputEsquerda))
-        { movimento = Vector3.right; }
+        {
+            movimento = Vector3.right;
+        }
         if (inputBaixo && !(inputCima || inputDireita || inputEsquerda))
-        { movimento = Vector3.back; }
+        {
+            movimento = Vector3.back;
+        }
         if (inputEsquerda && !(inputCima || inputDireita || inputBaixo))
-        { movimento = Vector3.left; }
+        {
+            movimento = Vector3.left;
+        }
 
         if (inputCima || inputDireita || inputBaixo || inputEsquerda)
         {
-            if (movimento != Vector3.zero
-            && (holdTime > holdTimeMovimentacao || holdTime == 0)
-            )
-            { Movimentar(movimento); }
+            if (movimento != Vector3.zero && (holdTime > holdTimeMovimentacao || holdTime == 0))
+            { 
+                Movimentar(movimento); 
+            }
 
             holdTime += Time.deltaTime;
         }
         else
-        { holdTime = 0; }
+        { 
+            holdTime = 0; 
+        }
     }
 
     public void Movimentar(Vector3 direcao) => StartCoroutine(MovimentacaoCoroutine(direcao));
