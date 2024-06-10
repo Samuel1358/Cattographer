@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739e5e9c848b20a4ca4e11c58668fe07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listaItens: 020000000000000000000000
+  listaItens: 000000000000000000000000
   dir: 1
   agir: 0
   selecionado: 0
