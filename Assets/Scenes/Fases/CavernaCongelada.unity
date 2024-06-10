@@ -1012,7 +1012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a465828ef4c064f48b504beab14e0160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  original: 0
   boss: 1
   nivel: 5
   moedas: 0
@@ -1180,7 +1179,7 @@ MonoBehaviour:
     NPC_1:
     - {fileID: 6539611974125032862, guid: a8b31912832362845b7f1e0e6ecf7fe7, type: 3}
     Trancada_1:
-    - {fileID: 6539611974125032862, guid: e92ae6fa4b9633e49bfc1ef58c16aea4, type: 3}
+    - {fileID: 6539611974125032862, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
   botoes:
     Botao_1:
     - {fileID: 8349008977595912797, guid: 0912e6429feda1b48ac9a01c50452f89, type: 3}
