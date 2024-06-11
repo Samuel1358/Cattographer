@@ -26,10 +26,8 @@ public class Ferramenta_Freckles : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                //other.gameObject.GetComponent<Hit_Timer>().CausarDano(0.5f);
-                Debug.Log("Tomou gep do vo");
+                other.gameObject.GetComponent<Hit_Timer>().CausarDano(1f);
             }
-            Debug.Log("Destruiu");
             Destroy(gameObject);
         }
     }
