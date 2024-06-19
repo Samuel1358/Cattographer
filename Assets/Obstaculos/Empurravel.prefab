@@ -104,6 +104,9 @@ MonoBehaviour:
   chao:
     serializedVersion: 2
     m_Bits: 512
+  sfxEmpurrao: {fileID: 8300000, guid: f7ae1603096d458489fbf9ce05abfb98, type: 3}
+  sfxQueda: {fileID: 8300000, guid: 133f78e91376dbd43bdf53bbced4be50, type: 3}
+  caindo: 0
 --- !u!114 &975840864538803205
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -122,11 +122,16 @@ public class Mov_Player : MonoBehaviour
                     StartCoroutine(bloco.EmpurraoCoroutine(direcao));
                     yield return null;
                 }
+                // Se for um baú, o abre
                 else if (obstaculo.collider.CompareTag("Bau"))
                 {
                     Bau_Radomizer bau = obstaculo.collider.GetComponent<Bau_Radomizer>();
                     yield return bau.AbrirCoroutine(direcao);
 
+                    movimentoObstruido = true;
+                }
+                else if (obstaculo.collider.CompareTag("Chester"))
+                {
                     movimentoObstruido = true;
                 }
             }

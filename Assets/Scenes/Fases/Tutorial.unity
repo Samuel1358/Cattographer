@@ -1366,7 +1366,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
-  m_LocalPosition: {x: 0, y: 9.7, z: -17.5}
+  m_LocalPosition: {x: 0, y: 30, z: -22.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1460,7 +1460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a465828ef4c064f48b504beab14e0160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  original: 0
   boss: 1
   nivel: 5
   moedas: 0

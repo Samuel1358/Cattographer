@@ -5,23 +5,21 @@ using System.Dynamic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
+using static Gride;
 using static Mov_Inimigo_PassoAPasso;
 
-public class Empurrao : MonoBehaviour
+public class NovoEmpurrao : MonoBehaviour
 {
     public LayerMask bloqueio;
     public LayerMask chao;
     //public Vector3 x = new Vector3(0, 0, 0);
 
-    // SFX
-    public AudioClip sfxEmpurrao;
-    public AudioClip sfxQueda;
-
     // QUEDA
     Rigidbody rb;
     Collider box;
     bool noFundo = false;
-    [HideInInspector] public bool caindo = false;
+    bool noChao = false;
+    bool caindo = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,14 +39,13 @@ public class Empurrao : MonoBehaviour
         if (collision.collider.CompareTag("Fundo"))
         {
             noFundo = true;
-            caindo = false;
             gameObject.layer = LayerMask.NameToLayer("Chao");
         }
     }
 
     public bool MovimentoObstruido(Vector3 direcao)
     {
-        if (caindo || pulando) return true;
+        if (caindo) return true;
 
         if (Physics.Raycast(
             ray: new Ray(transform.position, direcao),
@@ -60,7 +57,7 @@ public class Empurrao : MonoBehaviour
         {
             if (obstaculo.collider.TryGetComponent(out Chester chester))
             { return !chester.IsIndefeso; }
-
+            
             return true;
         }
 
@@ -78,7 +75,6 @@ public class Empurrao : MonoBehaviour
             // Se não tiver, movimenta o bloco
             if (!movimentoObstruido)
             {
-                Gerenciador_Audio.TocarSFX(sfxEmpurrao);
                 transform.position += direcao;
 
                 // Queda no buraco
@@ -129,30 +125,23 @@ public class Empurrao : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Fundo") || hit.collider.gameObject.CompareTag("Freckles"))
             {
-                Gerenciador_Audio.TocarSFX(sfxQueda);
-
-                Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
-                caindo = true;
                 box.isTrigger = false;
                 rb.useGravity = true;
             }
-            
         }
-
-
     }
 
-    bool pulando = false;
-    public void Pula(Vector3 offset, float altura, float tempo)
+    bool isPulando = false;
+    public void Pula(float altura, float tempo)
     {
-        if (!pulando)
-        { StartCoroutine(PuloCoroutine(Utilitarios.IgnoreY(offset), altura, tempo)); }
+        if (!isPulando)
+        { StartCoroutine(PuloCoroutine(altura, tempo)); }
     }
 
-    private IEnumerator PuloCoroutine(Vector3 offset, float altura, float tempo)
+    private IEnumerator PuloCoroutine(float altura, float tempo)
     {
-        pulando = true;
-        yield return Utilitarios.Parabola(gameObject, transform.position + offset, altura, tempo);
-        pulando = false;
+        isPulando = true;
+        yield return Utilitarios.Parabola(gameObject, transform.position, altura, tempo);
+        isPulando = false;
     }
 }
