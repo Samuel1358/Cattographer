@@ -2003,6 +2003,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SalaTrancada_Freckles
       objectReference: {fileID: 0}
+    - target: {fileID: 518767507180438506, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4253081408313386164, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11
@@ -3124,6 +3128,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7327947972905421366, guid: 1e28fa7a620e8984bb6ffab42cd1a4dc, type: 3}
   m_PrefabInstance: {fileID: 652776060}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1766405263
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 518767507180438506, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_Name
+      value: SalaBau_1G-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 518767507180438506, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253081408313386164, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253081408313386164, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253081408313386164, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253081408313386164, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253081408313386164, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253081408313386164, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253081408313386164, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253081408313386164, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253081408313386164, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253081408313386164, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
 --- !u!1001 &1769365259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3739,6 +3804,7 @@ SceneRoots:
   - {fileID: 2000839306}
   - {fileID: 2066782186}
   - {fileID: 1271059959}
+  - {fileID: 1766405263}
   - {fileID: 339255879}
   - {fileID: 1697285711}
   - {fileID: 261162299}

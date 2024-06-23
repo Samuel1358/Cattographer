@@ -29,7 +29,6 @@ public class Alavanca : MonoBehaviour
             timer > 0f
         );*/
 
-        Debug.Log("oii");
         reset.DesativarSombra();
         recarga.ConcluirSala();
         acionada = true;
