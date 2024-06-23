@@ -15,12 +15,6 @@ public class Reset_Sombra : MonoBehaviour
         sombra = FindObjectOfType<Timer_Sombra>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -40,5 +34,12 @@ public class Reset_Sombra : MonoBehaviour
                 sombra.timerSombra = sombra.ttSombra;
             }            
         }
+    }
+
+    public void DesativarSombra()
+    {
+        descanco = true;
+        taxaQueda = 0;
+        sombra.taxaQueda = taxaQueda;
     }
 }

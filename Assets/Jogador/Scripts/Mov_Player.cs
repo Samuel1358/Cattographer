@@ -130,6 +130,18 @@ public class Mov_Player : MonoBehaviour
 
                     movimentoObstruido = true;
                 }
+                // Se for uma alavanca e não estiver acionada, acione-a
+                else if (obstaculo.collider.CompareTag("Alavanca"))
+                {
+                    Alavanca alavanca = obstaculo.collider.GetComponent<Alavanca>();
+
+                    if (!alavanca.GetAcionada())
+                    {
+                        yield return alavanca.AcionarCoroutine(direcao);
+                    }
+
+                    movimentoObstruido = true;
+                }
                 else if (obstaculo.collider.CompareTag("Chester"))
                 {
                     movimentoObstruido = true;
