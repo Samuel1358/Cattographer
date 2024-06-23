@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4253081408313386164}
   - component: {fileID: 6707971882657769524}
   m_Layer: 0
-  m_Name: SalaObstaculo_3-gelo
+  m_Name: SalaObstaculo_3G-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

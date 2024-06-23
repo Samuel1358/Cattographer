@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 4253081408313386164}
   - component: {fileID: 4217010439451247911}
   m_Layer: 0
-  m_Name: SalaObstaculo_4-burracos
+  m_Name: SalaObstaculo_4-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
