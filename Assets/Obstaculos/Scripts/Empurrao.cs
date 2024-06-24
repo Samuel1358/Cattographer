@@ -112,6 +112,8 @@ public class Empurrao : MonoBehaviour
 
         const float tempoMaximoDaQueda = 4f;
 
+        Gerenciador_Audio.TocarSFX(sfxQueda);
+
         float timer = tempoMaximoDaQueda;
         while (timer > Time.deltaTime && !noFundo)
         {
@@ -124,22 +126,21 @@ public class Empurrao : MonoBehaviour
 
     public void Queda()
     {
+        if (caindo || noFundo) return;
         RaycastHit hit;
         if (Physics.Raycast(new Ray(transform.position, -transform.up), out hit, 23f))
         {
             if (hit.collider.gameObject.CompareTag("Fundo") || hit.collider.gameObject.CompareTag("Freckles"))
             {
+                Debug.Log("oiii");
                 Gerenciador_Audio.TocarSFX(sfxQueda);
 
                 Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
                 caindo = true;
                 box.isTrigger = false;
                 rb.useGravity = true;
-            }
-            
+            } 
         }
-
-
     }
 
     bool pulando = false;
