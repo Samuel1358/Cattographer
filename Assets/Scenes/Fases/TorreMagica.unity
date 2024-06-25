@@ -1160,33 +1160,48 @@ MonoBehaviour:
     - {fileID: 3588777396556853819, guid: 2f9d71613493dfa48839a9f39238690d, type: 3}
   vazios:
     Vazio_2:
-    - {fileID: 8312927758327134578, guid: 043ef5fdb00d79349aac84a97aaba53d, type: 3}
+    - {fileID: 8312927758327134578, guid: 7af0fafa6c07a434c9c8257df13431c0, type: 3}
     Vazio_3:
-    - {fileID: 2460428749503124545, guid: fbcaea7cfdc04184bb6a4f3bdacde912, type: 3}
+    - {fileID: 2460428749503124545, guid: 62d9ce530c71c1646b60449e25c22256, type: 3}
     Vazio_4:
-    - {fileID: 103834429888560491, guid: 17d1c9034676c134ca92a6ba9b907c76, type: 3}
+    - {fileID: 103834429888560491, guid: 414a5be6e0f44b1438e92f8602c8e44b, type: 3}
     Vazio_5:
-    - {fileID: 103834429888560491, guid: e13ab780326e469419dfbb755f86471f, type: 3}
+    - {fileID: 103834429888560491, guid: 20cf8b9451a42f949a76083f013d2d5a, type: 3}
   obstaculos:
     Obstaculo_2:
+    - {fileID: -7870430306109585478, guid: d44db5253b42c04409dba3b83abad593, type: 3}
+    - {fileID: 7889454781266075897, guid: 673116974770f634ea3ac672fa0fc4bc, type: 3}
     - {fileID: 7889454781266075897, guid: bf2a68e9344091a4f8cdcf83ff016510, type: 3}
     Obstaculo_3:
-    - {fileID: 6707971882657769524, guid: 9344a51b7f77b3c478247ba44158b3ef, type: 3}
+    - {fileID: 6313128348287606143, guid: 52da5cf75ec83c8418662b8745670e45, type: 3}
+    - {fileID: 6313128348287606143, guid: 63c47f423545ea04aaec5d41dfcde3be, type: 3}
+    - {fileID: 6313128348287606143, guid: 84f3c5c86b234a242aaee75a05ad1466, type: 3}
     Obstaculo_4:
     - {fileID: 2356453783725169772, guid: 730af411694106443bc0ca1beeaeedd2, type: 3}
     - {fileID: 4217010439451247911, guid: 172630e528ef05c48a5231d164831de8, type: 3}
+    - {fileID: 2356453783725169772, guid: b2694b53bb3b20148a597f22b7db9298, type: 3}
     Obstaculo_5:
     - {fileID: 4357171427529797469, guid: c1fafb44f017ae943b4fea8e18ca4536, type: 3}
+    - {fileID: 4357171427529797469, guid: 7fb1aec3754a4a9478315d41ae9b5b54, type: 3}
+    - {fileID: 4357171427529797469, guid: 8eabd4e3fe0795846aab799c893133b0, type: 3}
   baus:
     Bau_1:
     - {fileID: -5547470969812560218, guid: 26210cb14882bf244b4a4bd8201a622d, type: 3}
+    - {fileID: -5547470969812560218, guid: a591917173c2e824ba52c32692de01ad, type: 3}
+    - {fileID: -5547470969812560218, guid: 9e3aa7972421a9242a226f4194e2f042, type: 3}
   npcs:
     NPC_2:
-    - {fileID: 8818925703276032736, guid: 625924385dc43d44f87e87f340a3cd1c, type: 3}
+    - {fileID: -7870430306109585478, guid: d44db5253b42c04409dba3b83abad593, type: 3}
+    - {fileID: 7889454781266075897, guid: 673116974770f634ea3ac672fa0fc4bc, type: 3}
+    - {fileID: 7889454781266075897, guid: bf2a68e9344091a4f8cdcf83ff016510, type: 3}
     NPC_3:
-    - {fileID: 8263225764921234904, guid: c4fa05f9e21a34040a7dad985ed346cf, type: 3}
+    - {fileID: 6313128348287606143, guid: 52da5cf75ec83c8418662b8745670e45, type: 3}
+    - {fileID: 6313128348287606143, guid: 63c47f423545ea04aaec5d41dfcde3be, type: 3}
+    - {fileID: 6313128348287606143, guid: 84f3c5c86b234a242aaee75a05ad1466, type: 3}
     NPC_4:
-    - {fileID: 5034029473093401248, guid: ac3817216681e9b4fa1e96748a58e35c, type: 3}
+    - {fileID: 2356453783725169772, guid: 730af411694106443bc0ca1beeaeedd2, type: 3}
+    - {fileID: 4217010439451247911, guid: 172630e528ef05c48a5231d164831de8, type: 3}
+    - {fileID: 2356453783725169772, guid: b2694b53bb3b20148a597f22b7db9298, type: 3}
   unicas:
     NPC_1:
     - {fileID: 6539611974125032862, guid: a8b31912832362845b7f1e0e6ecf7fe7, type: 3}
@@ -1787,6 +1802,7 @@ MonoBehaviour:
   parede: {fileID: 919132149155446097, guid: 20066fdea95ff3e449c4e25c0ea0698c, type: 3}
   bloco1: {fileID: 919132149155446097, guid: 6e206c835bf1dbe40a648a1d0ad71466, type: 3}
   bloco2: {fileID: 919132149155446097, guid: 6fcdae46f7c732f42a0b708af630a886, type: 3}
+  chao: {fileID: 355725621764152404, guid: a6ff18807312d2349bb0ec286d18e8d6, type: 3}
 --- !u!4 &2093439352
 Transform:
   m_ObjectHideFlags: 0

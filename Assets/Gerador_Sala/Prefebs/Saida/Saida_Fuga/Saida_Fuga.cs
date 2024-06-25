@@ -53,7 +53,7 @@ public class Saida_Fuga : MonoBehaviour
             fase.maxSombra = sombra.ttSombra;
             if ((fase.maxSombra / 20) * (recarga.GetSalas() + 8) > fase.timerSombra)
             {
-                fase.timerSombra = ((fase.maxSombra / 100) * 28) + ((fase.maxSombra / 100) * 6 * recarga.GetSalas());
+                fase.timerSombra = ((fase.maxSombra / 100) * 22) + ((fase.maxSombra / 100) * 6.5f * recarga.GetSalas());
             }
 
             

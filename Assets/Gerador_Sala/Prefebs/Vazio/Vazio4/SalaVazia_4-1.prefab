@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 884457062224212124}
   - component: {fileID: 9136171987703758098}
   - component: {fileID: 5784697313789178954}
+  - component: {fileID: 734151538644531696}
   m_Layer: 9
   m_Name: Painel
   m_TagString: Untagged
@@ -194,6 +195,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &734151538644531696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978311580130116404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca76ae21bdc2f574cb13159674bc0192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipo: 1
+  modelo: {fileID: 0}
+  altura: 0
+  escala: 10
+  escalaM: 10
 --- !u!1 &2713007992072444831
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +224,7 @@ GameObject:
   - component: {fileID: 1477312604880903184}
   - component: {fileID: 7460514569753814679}
   - component: {fileID: 6081485148113306245}
+  - component: {fileID: 6118485735309385277}
   m_Layer: 9
   m_Name: Painel (4)
   m_TagString: Untagged
@@ -300,6 +319,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6118485735309385277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2713007992072444831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca76ae21bdc2f574cb13159674bc0192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipo: 1
+  modelo: {fileID: 0}
+  altura: 0
+  escala: 10
+  escalaM: 10
 --- !u!1 &3135970017235967538
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,11 +365,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 700392302155411607}
   - {fileID: 3570083287423830820}
   - {fileID: 3535703923393733894}
   - {fileID: 4077831274695933552}
   - {fileID: 6481647116397281752}
-  - {fileID: 700392302155411607}
   m_Father: {fileID: 4253081408313386164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3732471198802953181
@@ -492,6 +528,7 @@ GameObject:
   - component: {fileID: 5731810477017133977}
   - component: {fileID: 7546827630359522864}
   - component: {fileID: 3236824847863858739}
+  - component: {fileID: 5572255774704426027}
   m_Layer: 9
   m_Name: Painel (3)
   m_TagString: Untagged
@@ -586,6 +623,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &5572255774704426027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791865647545714866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca76ae21bdc2f574cb13159674bc0192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipo: 1
+  modelo: {fileID: 0}
+  altura: 0
+  escala: 10
+  escalaM: 10
 --- !u!1 &6089251219371698626
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +652,7 @@ GameObject:
   - component: {fileID: 2189976719852731278}
   - component: {fileID: 9090351346492382772}
   - component: {fileID: 3969095123721911707}
+  - component: {fileID: 6165543679733800246}
   m_Layer: 9
   m_Name: Painel (1)
   m_TagString: Untagged
@@ -692,6 +747,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6165543679733800246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089251219371698626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca76ae21bdc2f574cb13159674bc0192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipo: 1
+  modelo: {fileID: 0}
+  altura: 0
+  escala: 10
+  escalaM: 10
 --- !u!1 &7335554178554168061
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +886,7 @@ GameObject:
   - component: {fileID: 7308092547224846604}
   - component: {fileID: 2737890337732428592}
   - component: {fileID: 3435426847652064860}
+  - component: {fileID: 7411998292090317119}
   m_Layer: 9
   m_Name: Painel (2)
   m_TagString: Untagged
@@ -908,6 +981,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7411998292090317119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858360200823867325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca76ae21bdc2f574cb13159674bc0192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipo: 1
+  modelo: {fileID: 0}
+  altura: 0
+  escala: 10
+  escalaM: 10
 --- !u!1001 &97212764409282943
 PrefabInstance:
   m_ObjectHideFlags: 0

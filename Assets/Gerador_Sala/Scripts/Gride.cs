@@ -323,7 +323,7 @@ public class Gride : MonoBehaviour
                                 npcs.NPC_3[Random.Range(0, npcs.NPC_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                             case Formato.T:
-                                npcs.NPC_4[Random.Range(0, npcs.NPC_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                npcs.NPC_4[Random.Range(0, npcs.NPC_4.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;

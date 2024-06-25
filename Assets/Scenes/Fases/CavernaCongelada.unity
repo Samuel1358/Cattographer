@@ -552,7 +552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5720864581750974270, guid: d5f5424d86c35dd4f8348226cb4f9d13, type: 3}
       propertyPath: portas
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5720864581750974270, guid: d5f5424d86c35dd4f8348226cb4f9d13, type: 3}
       propertyPath: coletados
@@ -1148,33 +1148,55 @@ MonoBehaviour:
     - {fileID: 3588777396556853819, guid: 2f9d71613493dfa48839a9f39238690d, type: 3}
   vazios:
     Vazio_2:
-    - {fileID: 8312927758327134578, guid: 043ef5fdb00d79349aac84a97aaba53d, type: 3}
+    - {fileID: 8312927758327134578, guid: 7af0fafa6c07a434c9c8257df13431c0, type: 3}
+    - {fileID: 8312927758327134578, guid: a096bac4c7b034346a79b280b4f26e1f, type: 3}
     Vazio_3:
-    - {fileID: 2460428749503124545, guid: fbcaea7cfdc04184bb6a4f3bdacde912, type: 3}
+    - {fileID: 2460428749503124545, guid: 62d9ce530c71c1646b60449e25c22256, type: 3}
+    - {fileID: 2460428749503124545, guid: 048f3c575a9e47745bab65a49face96d, type: 3}
     Vazio_4:
-    - {fileID: 103834429888560491, guid: 17d1c9034676c134ca92a6ba9b907c76, type: 3}
+    - {fileID: 103834429888560491, guid: 414a5be6e0f44b1438e92f8602c8e44b, type: 3}
+    - {fileID: 103834429888560491, guid: 1dd27620205686344ba3f8c4abc5aaad, type: 3}
+    - {fileID: 103834429888560491, guid: 9bea253ff81fa5149a1269264ea939ea, type: 3}
     Vazio_5:
-    - {fileID: 103834429888560491, guid: e13ab780326e469419dfbb755f86471f, type: 3}
+    - {fileID: 103834429888560491, guid: 20cf8b9451a42f949a76083f013d2d5a, type: 3}
   obstaculos:
     Obstaculo_2:
-    - {fileID: 7889454781266075897, guid: bf2a68e9344091a4f8cdcf83ff016510, type: 3}
+    - {fileID: -7870430306109585478, guid: d44db5253b42c04409dba3b83abad593, type: 3}
+    - {fileID: 7889454781266075897, guid: 673116974770f634ea3ac672fa0fc4bc, type: 3}
+    - {fileID: 7889454781266075897, guid: 11d5759e07a2aff41b7bf2f89d4b076e, type: 3}
     Obstaculo_3:
+    - {fileID: 6313128348287606143, guid: 52da5cf75ec83c8418662b8745670e45, type: 3}
+    - {fileID: 6313128348287606143, guid: 63c47f423545ea04aaec5d41dfcde3be, type: 3}
     - {fileID: 6707971882657769524, guid: 9344a51b7f77b3c478247ba44158b3ef, type: 3}
+    - {fileID: 6313128348287606143, guid: 1fe0ac473da4618438cd1f45e72f618e, type: 3}
     Obstaculo_4:
     - {fileID: 2356453783725169772, guid: 730af411694106443bc0ca1beeaeedd2, type: 3}
     - {fileID: 4217010439451247911, guid: 172630e528ef05c48a5231d164831de8, type: 3}
+    - {fileID: 2356453783725169772, guid: 47ec4c93bd1468947ad7ecf6988565d3, type: 3}
     Obstaculo_5:
     - {fileID: 4357171427529797469, guid: c1fafb44f017ae943b4fea8e18ca4536, type: 3}
+    - {fileID: 4357171427529797469, guid: 7fb1aec3754a4a9478315d41ae9b5b54, type: 3}
+    - {fileID: 4357171427529797469, guid: 1877750e218cb244eafd63a64593e30a, type: 3}
   baus:
     Bau_1:
     - {fileID: -5547470969812560218, guid: 26210cb14882bf244b4a4bd8201a622d, type: 3}
+    - {fileID: -5547470969812560218, guid: a591917173c2e824ba52c32692de01ad, type: 3}
+    - {fileID: -5547470969812560218, guid: 19524fd305d733f4e832c721b4e21569, type: 3}
   npcs:
     NPC_2:
-    - {fileID: 8818925703276032736, guid: 625924385dc43d44f87e87f340a3cd1c, type: 3}
+    - {fileID: -7870430306109585478, guid: d44db5253b42c04409dba3b83abad593, type: 3}
+    - {fileID: 7889454781266075897, guid: 673116974770f634ea3ac672fa0fc4bc, type: 3}
+    - {fileID: 7889454781266075897, guid: 28a41f880a6a6c649ab4557358534490, type: 3}
+    - {fileID: 7889454781266075897, guid: 11d5759e07a2aff41b7bf2f89d4b076e, type: 3}
     NPC_3:
-    - {fileID: 8263225764921234904, guid: c4fa05f9e21a34040a7dad985ed346cf, type: 3}
+    - {fileID: 6313128348287606143, guid: 52da5cf75ec83c8418662b8745670e45, type: 3}
+    - {fileID: 6313128348287606143, guid: 63c47f423545ea04aaec5d41dfcde3be, type: 3}
+    - {fileID: 6707971882657769524, guid: 9344a51b7f77b3c478247ba44158b3ef, type: 3}
+    - {fileID: 6313128348287606143, guid: 1fe0ac473da4618438cd1f45e72f618e, type: 3}
     NPC_4:
-    - {fileID: 5034029473093401248, guid: ac3817216681e9b4fa1e96748a58e35c, type: 3}
+    - {fileID: 2356453783725169772, guid: 730af411694106443bc0ca1beeaeedd2, type: 3}
+    - {fileID: 4217010439451247911, guid: 172630e528ef05c48a5231d164831de8, type: 3}
+    - {fileID: 2356453783725169772, guid: 47ec4c93bd1468947ad7ecf6988565d3, type: 3}
   unicas:
     NPC_1:
     - {fileID: 6539611974125032862, guid: a8b31912832362845b7f1e0e6ecf7fe7, type: 3}
@@ -1385,9 +1407,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4352846c340ce1469cb4b44748b18d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parede: {fileID: 5180688245799661882, guid: 2cdae183a3fdd2c4f90fec0abd507ed9, type: 3}
-  bloco1: {fileID: 919132149155446097, guid: 6e206c835bf1dbe40a648a1d0ad71466, type: 3}
-  bloco2: {fileID: 919132149155446097, guid: 6fcdae46f7c732f42a0b708af630a886, type: 3}
+  parede: {fileID: 5758625582862891505, guid: f2614e6fc24381e4c81733bf2b346fe1, type: 3}
+  bloco1: {fileID: 7917104978336383353, guid: 26c68f042554cf64b8ea89e776c0ce02, type: 3}
+  bloco2: {fileID: 7917104978336383353, guid: 26c68f042554cf64b8ea89e776c0ce02, type: 3}
+  chao: {fileID: 4819560308012417601, guid: 2a9c7923c6247df47852ac2fff423292, type: 3}
 --- !u!4 &1387662180
 Transform:
   m_ObjectHideFlags: 0
@@ -1397,7 +1420,7 @@ Transform:
   m_GameObject: {fileID: 1387662178}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.7070107, y: 2.7102594, z: -10.2586}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
