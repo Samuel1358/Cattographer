@@ -18,7 +18,7 @@ public class NovoEmpurrao : MonoBehaviour
     Rigidbody rb;
     Collider box;
     bool noFundo = false;
-    bool noChao = false;
+    //bool noChao = false;
     bool caindo = false;
 
     // Start is called before the first frame update
