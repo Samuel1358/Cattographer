@@ -5,45 +5,82 @@ using UnityEngine;
 
 public class Chester : MonoBehaviour
 {
-    [SerializeField] private float velocidade = 5;
-    [SerializeField] private float cooldownPulo = 2;
-    [SerializeField] private float tempoAtordoado = 1;
-    [SerializeField] private float alturaBlocos = 5;
-    [SerializeField] private float tempoQuedaBlocos = 1;
-    [SerializeField] private float raioEmpurrao = 1;
+    [SerializeField] private Sala_Controller controller;
+
+    [SerializeField] private int vida = 3;
+
+    [SerializeField] private float tempoInicioBatalha = 2f;
+    [SerializeField] private float velocidade = 5f;
+    [SerializeField] private float cooldownPulo = 2f;
+    [SerializeField] private float tempoAtordoado = 1.5f;
+
+    [SerializeField] private float alturaBlocos = 5f;
+    [SerializeField] private float tempoQuedaBlocos = 1f;
+    [SerializeField] private float raioEmpurrao = 1f;
 
     [SerializeField] private List<Empurrao> blocosAfetados;
+    [SerializeField] private GameObject premio;
 
+    private float cooldownBatalha;
+    private Mov_Player player;
     private float defaultY;
     private void Start()
     {
         defaultY = transform.position.y;
+        player = FindObjectOfType<Mov_Player>();
+        cooldownBatalha = tempoInicioBatalha;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (controller.GetSalaAtual() == controller)
         {
-            Mov_Player player = FindObjectOfType<Mov_Player>();
-            Vector3 alvo = new(
-                player.transform.position.x,
-                defaultY,
-                player.transform.position.z
-            );
-            Pular(alvo);
+            if (cooldownBatalha > 0)
+            {
+                if (cooldownBatalha > Time.deltaTime)
+                {
+                    cooldownBatalha -= Time.deltaTime;
+                }
+                else
+                {
+                    cooldownBatalha = 0;
+                }
+            }
+            else // if (isAtivo)
+            {
+                if (!isPulando && !IsIndefeso)
+                {
+                    Vector3 alvo = new(
+                        player.transform.position.x,
+                        defaultY,
+                        player.transform.position.z
+                    );
+                    Pular(alvo);
+                }
+            }
+        }
+        else if (cooldownBatalha == 0)
+        {
+            if (Pular(controller.transform.position))
+            { cooldownBatalha = tempoInicioBatalha; }
         }
     }
 
-    bool pulando = false;
-    private void Pular(Vector3 alvo)
+    bool isPulando = false;
+    private bool Pular(Vector3 alvo)
     {
-        if (!pulando)
-        { StartCoroutine(PuloCoroutine(alvo)); }
+        if (!isPulando)
+        {
+            StartCoroutine(PuloCoroutine(alvo));
+            return true;
+        }
+
+        return false;
     }
 
     private IEnumerator PuloCoroutine(Vector3 alvo)
     {
-        pulando = true;
+        isPulando = true;
 
         // corrige a posição conforme o grid
         Vector3 direcao = alvo - transform.position;
@@ -81,7 +118,7 @@ public class Chester : MonoBehaviour
 
         yield return TempoIndefeso();
 
-        pulando = false;
+        isPulando = false;
     }
 
     private float tempoIndefesoRestante = 0;
@@ -100,6 +137,16 @@ public class Chester : MonoBehaviour
     private void LevarDano()
     {
         tempoIndefesoRestante += tempoAtordoado;
+
+        if (vida > 0)
+        {
+            vida--;
+            if (vida == 0)
+            {
+                premio.SetActive(true);
+                Destroy(gameObject, 0.2f);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -109,9 +156,14 @@ public class Chester : MonoBehaviour
             if (other.CompareTag("Empurravel"))
             {
                 LevarDano();
-                blocosAfetados.RemoveAll(bloco => bloco.gameObject == other.gameObject);
-                Destroy(other.gameObject, 0.5f);
+                DestroiBloco(other.gameObject);
             }
         }
+    }
+
+    public void DestroiBloco(GameObject empurravel)
+    {
+        if (blocosAfetados.RemoveAll(bloco => bloco.gameObject == empurravel) > 0)
+        { Destroy(empurravel, 0.2f); }
     }
 }
