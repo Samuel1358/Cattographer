@@ -11,9 +11,9 @@ public class Opcoes_Botoes : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void Tutorial()
+    public void ComoJogar()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("ComoJogar");
     }
     public void TorreMagica()
     {
@@ -24,12 +24,12 @@ public class Opcoes_Botoes : MonoBehaviour
         SceneManager.LoadScene("CavernaCongelada");
     }
 
-    /*public void Win()
+    public void Creditos()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Creditos");
     }
 
-    public void Lose()
+    /*public void Config()
     {
         SceneManager.LoadScene(2);
     }*/
