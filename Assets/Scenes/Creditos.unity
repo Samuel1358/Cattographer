@@ -252,8 +252,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: -780}
-  m_SizeDelta: {x: 880, y: 100}
+  m_AnchoredPosition: {x: 32, y: -780}
+  m_SizeDelta: {x: 900, y: 150}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &34810021
 MonoBehaviour:
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38758c36766d61641b85b9b62bbd6d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taxaDeVariacao: 2
+  taxaDeVariacao: 3
 --- !u!114 &34810022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,18 +290,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 65ef4c9870e2caf41b596f6efb026e0b, type: 3}
-    m_FontSize: 56
+    m_FontSize: 48
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.85
-  m_Text: '*Feito usando o Google translate'
+  m_Text: '**Traduzido usando Google translate'
 --- !u!114 &34810023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +316,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
-  - '*Feito usando o Google translate'
+  - '**Translated using Google Translate'
+  - '**Traduzido usando Google Translate'
+  - '**Traducido usando Google Translate'
+  - '**Tradotto tramite Google Translate'
+  - '**Traduit en utilisant Google Translate'
+  - "**\xDCbersetzt mit Google Translate"
+  - "**\u041F\u0435\u0440\u0435\u0432\u0435\u0434\u0435\u043D\u043E \u0441 \u043F\u043E\u043C\u043E\u0449\u044C\u044E
+    Google Translate"
 --- !u!222 &34810024
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -753,6 +760,12 @@ MonoBehaviour:
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
   - Arte
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!222 &479725115
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -797,8 +810,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: -630}
-  m_SizeDelta: {x: 880, y: 200}
+  m_AnchoredPosition: {x: 56, y: -480}
+  m_SizeDelta: {x: 880, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &553560576
 MonoBehaviour:
@@ -812,7 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38758c36766d61641b85b9b62bbd6d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taxaDeVariacao: 3
+  taxaDeVariacao: 1.5
 --- !u!114 &553560577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,7 +874,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
+  - English
   - "Ingl\xEAs"
+  - 
+  - Inglese
+  - 
+  - Englisch
+  - 
 --- !u!222 &553560579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -906,7 +925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: -270}
+  m_AnchoredPosition: {x: 56, y: -170}
   m_SizeDelta: {x: 880, y: 200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &666178423
@@ -970,7 +989,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
+  - France*, Italian*, Portugese, Russian*
   - "Franc\xEAs*, Italiano*, Portugu\xEAs, Russo*"
+  - 
+  - 
+  - 
+  - "Franz\xF6sisch*, Italienisch*, Portugiesisch, Russisch*"
+  - 
 --- !u!222 &666178426
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1225,6 +1250,12 @@ MonoBehaviour:
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
   - "programa\xE7\xE3o"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!222 &866300812
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1243,6 +1274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 987801978}
   - component: {fileID: 987801981}
+  - component: {fileID: 987801982}
   - component: {fileID: 987801980}
   - component: {fileID: 987801979}
   m_Layer: 5
@@ -1326,6 +1358,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987801977}
   m_CullTransparentMesh: 0
+--- !u!114 &987801982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987801977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bf6253506da10409a445e973f88e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
+  traducoes:
+  - Special Thenks
+  - Agradecimentos especiais
+  - 
+  - 
+  - 
+  - Besonderen Dank an
+  - 
 --- !u!1 &1016140689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,6 +1389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1016140690}
   - component: {fileID: 1016140693}
+  - component: {fileID: 1016140694}
   - component: {fileID: 1016140692}
   - component: {fileID: 1016140691}
   m_Layer: 5
@@ -1376,7 +1430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38758c36766d61641b85b9b62bbd6d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taxaDeVariacao: 1.3
+  taxaDeVariacao: 1.4
 --- !u!114 &1016140692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,6 +1473,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016140689}
   m_CullTransparentMesh: 0
+--- !u!114 &1016140694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016140689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bf6253506da10409a445e973f88e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
+  traducoes:
+  - Main team
+  - Equipe principal
+  - 
+  - 
+  - 
+  - Hauptteam
+  - 
 --- !u!1 &1040243483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,7 +1697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: -470}
+  m_AnchoredPosition: {x: 56, y: -370}
   m_SizeDelta: {x: 880, y: 120}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1123793577
@@ -1767,7 +1842,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
+  - Main programmer, Unity  Dev,  Game design, Models 3D
   - Programador    principal, Unity  Dev,  Game design, Modelos 3D
+  - 
+  - 
+  - 
+  - Hauptprogrammer, Unity  Dev,  Game design, Modellle 3D
+  - 
 --- !u!222 &1201049762
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2184,7 +2265,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
+  - Musics
   - "M\xFAsicas"
+  - 
+  - 
+  - 
+  - Musik
+  - 
 --- !u!222 &1267387783
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2280,7 +2367,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
+  - Main artist, Art 2D, Models 3D, Game design, Level design
   - Artista  principal, Arte 2D, Modelos 3D, Game design, Level design
+  - 
+  - 
+  - 
+  - Hauptdesigner, Designs 2D, Modelle 3D, Game design, Level design
+  - 
 --- !u!222 &1268703969
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2631,8 +2724,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: 370}
-  m_SizeDelta: {x: 880, y: 200}
+  m_AnchoredPosition: {x: 56, y: 420}
+  m_SizeDelta: {x: 880, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1456063460
 MonoBehaviour:
@@ -2646,7 +2739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38758c36766d61641b85b9b62bbd6d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taxaDeVariacao: 3
+  taxaDeVariacao: 1.5
 --- !u!114 &1456063461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2695,7 +2788,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
+  - Spanish
   - Espanhol
+  - "Espa\xF1ol"
+  - Spagnolo
+  - 
+  - Spanisch
+  - 
 --- !u!222 &1456063463
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2876,7 +2975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: 210}
+  m_AnchoredPosition: {x: 56, y: 250}
   m_SizeDelta: {x: 880, y: 120}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1500007683
@@ -2925,7 +3024,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Minmin:'
+  m_Text: 'Minmin0x:'
 --- !u!222 &1500007685
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3325,7 +3424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: -110}
+  m_AnchoredPosition: {x: 56, y: -10}
   m_SizeDelta: {x: 880, y: 120}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1774699018
@@ -3563,7 +3662,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
+  - Programmer,  Unity  Dev, Game design, Level design, Models 3D
   - Programador,  Unity  Dev, Game design, Level design, Modelos 3D
+  - 
+  - 
+  - 
+  - Programmer,  Unity  Dev, Game design, Level design, Modelle 3D
+  - 
 --- !u!222 &1841068204
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3727,6 +3832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047509290}
   - component: {fileID: 2047509293}
+  - component: {fileID: 2047509294}
   - component: {fileID: 2047509292}
   - component: {fileID: 2047509291}
   m_Layer: 5
@@ -3810,6 +3916,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047509289}
   m_CullTransparentMesh: 0
+--- !u!114 &2047509294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047509289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bf6253506da10409a445e973f88e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
+  traducoes:
+  - Localization team
+  - "Equipe de localiza\xE7\xE3o"
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1 &2063603478
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,8 +3973,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: 50}
-  m_SizeDelta: {x: 880, y: 200}
+  m_AnchoredPosition: {x: 56, y: 150}
+  m_SizeDelta: {x: 880, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2063603480
 MonoBehaviour:
@@ -3861,7 +3988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38758c36766d61641b85b9b62bbd6d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taxaDeVariacao: 3
+  taxaDeVariacao: 1.5
 --- !u!114 &2063603481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3910,7 +4037,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
+  - Germany
   - "Alem\xE3o"
+  - 
+  - Tedesco
+  - 
+  - Deutsch
+  - 
 --- !u!222 &2063603483
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4095,6 +4228,12 @@ MonoBehaviour:
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
   - "Programa\xE7\xE3o"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!222 &2118455238
 CanvasRenderer:
   m_ObjectHideFlags: 0

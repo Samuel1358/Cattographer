@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38758c36766d61641b85b9b62bbd6d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taxaDeVariacao: 1.2
+  taxaDeVariacao: 1.4
 --- !u!114 &375905820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ MonoBehaviour:
   - Como Jugar
   - Come Giocare
   - Comment Jouer
-  - Spielanleitung
+  - Wie's funktioniert
   - "\u041A\u0430\u043A \u0418\u0433\u0440\u0430\u0442\u044C"
 --- !u!1 &405505673
 GameObject:
