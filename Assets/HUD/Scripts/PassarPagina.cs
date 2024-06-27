@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ComoJogar : MonoBehaviour
+public class PassarPagina : MonoBehaviour
 {
     [SerializeField] GameObject[] paineis;
-    [SerializeField] int pagina = 0;
-    Text texto;
+    int pagina = 0;
 
     private void Start()
     {
-        texto = GetComponent<Text>();
         AtualizarPagina();
     }
 
@@ -28,7 +26,6 @@ public class ComoJogar : MonoBehaviour
                 paineis[i].SetActive(false);
             }
         }
-        texto.text = (pagina + 1).ToString() + " / " + paineis.Length.ToString();
     }
 
     public void Anterior()
@@ -47,5 +44,15 @@ public class ComoJogar : MonoBehaviour
             pagina += 1;
         }
         AtualizarPagina();
+    }
+
+    public GameObject[] GetPaineis()
+    {
+        return paineis;
+    }
+
+    public int GetPagina()
+    {
+        return this.pagina;
     }
 }

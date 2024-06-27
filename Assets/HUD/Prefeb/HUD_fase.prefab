@@ -973,9 +973,9 @@ MonoBehaviour:
   SetaDireita: {fileID: 1800219044953698419}
   SetaBaixo: {fileID: 7749917360431571617}
   SetaEsquerda: {fileID: 5999539313882924380}
-  bomba: {fileID: 21300000, guid: 73a214d50573c4f41895938804f8f56c, type: 3}
-  tabua: {fileID: 21300000, guid: c89e9135fe1a177489106761be66c7d4, type: 3}
-  kyrozene: {fileID: 21300000, guid: 5f9d61d093f7a334aabe9f7cbe74c293, type: 3}
+  bomba: {fileID: 21300000, guid: f58b98b60bceeed4ebbaa8760800f666, type: 3}
+  tabua: {fileID: 21300000, guid: 9d34e27cf19b1d442aeee0c158e78bc5, type: 3}
+  kyrozene: {fileID: 21300000, guid: 610a00af000137f4eb4d9d9126c0deca, type: 3}
 --- !u!1 &7914447802518774763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,9 +1924,9 @@ MonoBehaviour:
   SetaDireita: {fileID: 1800219044953698419}
   SetaBaixo: {fileID: 7749917360431571617}
   SetaEsquerda: {fileID: 5999539313882924380}
-  bomba: {fileID: 21300000, guid: 73a214d50573c4f41895938804f8f56c, type: 3}
-  tabua: {fileID: 21300000, guid: c89e9135fe1a177489106761be66c7d4, type: 3}
-  kyrozene: {fileID: 21300000, guid: 5f9d61d093f7a334aabe9f7cbe74c293, type: 3}
+  bomba: {fileID: 21300000, guid: f58b98b60bceeed4ebbaa8760800f666, type: 3}
+  tabua: {fileID: 21300000, guid: 9d34e27cf19b1d442aeee0c158e78bc5, type: 3}
+  kyrozene: {fileID: 21300000, guid: 610a00af000137f4eb4d9d9126c0deca, type: 3}
 --- !u!1 &7914447803068833210
 GameObject:
   m_ObjectHideFlags: 0
@@ -4572,9 +4572,9 @@ MonoBehaviour:
   SetaDireita: {fileID: 1800219044953698419}
   SetaBaixo: {fileID: 7749917360431571617}
   SetaEsquerda: {fileID: 5999539313882924380}
-  bomba: {fileID: 21300000, guid: 73a214d50573c4f41895938804f8f56c, type: 3}
-  tabua: {fileID: 21300000, guid: c89e9135fe1a177489106761be66c7d4, type: 3}
-  kyrozene: {fileID: 21300000, guid: 5f9d61d093f7a334aabe9f7cbe74c293, type: 3}
+  bomba: {fileID: 21300000, guid: f58b98b60bceeed4ebbaa8760800f666, type: 3}
+  tabua: {fileID: 21300000, guid: 9d34e27cf19b1d442aeee0c158e78bc5, type: 3}
+  kyrozene: {fileID: 21300000, guid: 610a00af000137f4eb4d9d9126c0deca, type: 3}
 --- !u!1 &7914447804512474702
 GameObject:
   m_ObjectHideFlags: 0
