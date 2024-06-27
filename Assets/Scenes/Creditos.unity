@@ -316,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
-  - "programa\xE7\xE3o"
+  - '*Feito usando o Google translate'
 --- !u!222 &34810024
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1752,7 +1752,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.85
-  m_Text: Programador    principal, Unity  Dev,  Game design, Modelos 3D
+  m_Text: Programador   principal,  Unity  Dev, Game design, Modelos 3D
 --- !u!114 &1201049761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2719,7 +2719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1469230953
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3073,7 +3073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1636948269
 RectTransform:
   m_ObjectHideFlags: 0
