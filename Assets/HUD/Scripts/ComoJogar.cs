@@ -6,9 +6,16 @@ using UnityEngine.UI;
 public class ComoJogar : MonoBehaviour
 {
     [SerializeField] GameObject[] paineis;
-    int pagina = 0;
+    [SerializeField] int pagina = 0;
+    Text texto;
 
-    public void AtualizarPagina()
+    private void Start()
+    {
+        texto = GetComponent<Text>();
+        AtualizarPagina();
+    }
+
+    void AtualizarPagina()
     {
         for (int i = 0; i < paineis.Length; i++)
         {
@@ -21,6 +28,7 @@ public class ComoJogar : MonoBehaviour
                 paineis[i].SetActive(false);
             }
         }
+        texto.text = (pagina + 1).ToString() + " / " + paineis.Length.ToString();
     }
 
     public void Anterior()

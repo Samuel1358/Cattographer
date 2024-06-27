@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52df800eebd1ac4a8d0836bbdfae4cd, type: 3}
   m_Name: LinguageManager
   m_EditorClassIdentifier: 
-  lingua: 2
+  lingua: 1
