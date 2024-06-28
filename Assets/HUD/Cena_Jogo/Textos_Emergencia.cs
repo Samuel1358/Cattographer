@@ -10,8 +10,12 @@ public class Textos_Emergencia : MonoBehaviour
     Emergencia emer;
     public RectTransform canvas;
 
-    public Text textoPortas;
-    public Text textoTesouro;
+    public Text textoPortas1;
+    public Text textoTesouro1;
+
+    public Text textoPortas2;
+    public Text textoTesouro2;
+    
     public Text textoBotaoMensagem;
     float timerBotao = 20f;
     bool botao = true, posBotao = true;
@@ -27,8 +31,11 @@ public class Textos_Emergencia : MonoBehaviour
         player = FindObjectOfType<Player_Final>();
         emer = FindObjectOfType<Emergencia>();
 
-        textoPortas.gameObject.SetActive(true);
-        textoTesouro.gameObject.SetActive(true);
+        textoPortas1.gameObject.SetActive(true);
+        textoTesouro1.gameObject.SetActive(true);
+        textoPortas2.gameObject.SetActive(true);
+        textoTesouro2.gameObject.SetActive(true);
+
         textoBotaoMensagem.gameObject.SetActive(false);
         textoEmergencia.gameObject.SetActive(false);
         textoEmergenciaAlerta.gameObject.SetActive(false);
@@ -42,8 +49,10 @@ public class Textos_Emergencia : MonoBehaviour
     {
         if (player.fuga == false)
         {
-            textoPortas.gameObject.SetActive(true);
-            textoTesouro.gameObject.SetActive(true);
+            textoPortas1.gameObject.SetActive(true);
+            textoTesouro1.gameObject.SetActive(true);
+            textoPortas2.gameObject.SetActive(true);
+            textoTesouro2.gameObject.SetActive(true);
 
             if (posBotao == true)
             {
@@ -57,14 +66,18 @@ public class Textos_Emergencia : MonoBehaviour
             textoEmergencia.gameObject.SetActive(false);
             textoEmergenciaAlerta.gameObject.SetActive(false);
 
-            textoPortas.text = player.portas.ToString();
-            textoTesouro.text = player.coletados.ToString() + " / 2";
+            textoPortas1.text = player.portas.ToString();
+            textoTesouro1.text = player.coletados.ToString();
+            textoPortas2.text = player.portas.ToString();
+            textoTesouro2.text = player.coletados.ToString();
         }
 
         if (player.fuga == true)
         {
-            textoPortas.gameObject.SetActive(false);
-            textoTesouro.gameObject.SetActive(false);
+            textoPortas1.gameObject.SetActive(false);
+            textoTesouro1.gameObject.SetActive(false);
+            textoPortas2.gameObject.SetActive(false);
+            textoTesouro2.gameObject.SetActive(false);
 
             if (posBotao == false)
             {
