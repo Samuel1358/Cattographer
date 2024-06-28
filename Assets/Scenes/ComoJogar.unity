@@ -222,7 +222,7 @@ MonoBehaviour:
   - 'Itens:'
   - 'Items:'
   - 'Articoli:'
-  - 
+  - 'Articles:'
   - "Gegenst\xE4nde:"
   - 
 --- !u!114 &69874233
@@ -388,7 +388,9 @@ MonoBehaviour:
   - "Ogni fase \xE8 divisa in 5 piani, completali tutti per vincere. Per avanzare
     al piano successivo, premi semplicemente il pulsante nascosto sul piano attuale
     e vai verso l'uscita."
-  - 
+  - "Chaque \xE9tape est divis\xE9e en 5 \xE9tages, compl\xE9tez-les tous pour gagner.
+    Pour passer \xE0 l'\xE9tage suivant, appuyez simplement sur le bouton cach\xE9
+    \xE0 l'\xE9tage actuel et dirigez-vous vers la sortie."
   - "Jede Stufe ist in 5 Etagen unterteilt. Schlie\xDFe alle ab, um zu gewinnen.
     Um zur n\xE4chsten Etage zu gelangen, dr\xFCcke die versteckte Taste auf der
     aktuellen Etage und gehe zum Ausgang."
@@ -620,7 +622,7 @@ MonoBehaviour:
   - 'Fase:'
   - 'Fase:'
   - 'Fase:'
-  - 
+  - 'Phase:'
   - 'Phasen:'
   - 
 --- !u!114 &405505678
@@ -827,7 +829,7 @@ MonoBehaviour:
   - 'Bloco:'
   - 'Caja:'
   - 'Scatola:'
-  - 
+  - "Bo\xEEte:"
   - 'Box:'
   - 
 --- !u!114 &532049807
@@ -947,7 +949,8 @@ MonoBehaviour:
     se encogen demasiado puerdes el juego.
   - "Attorno al personaggio ci sono delle ombre che si faranno sempre pi\xF9 vicine
     col passare del tempo. Se si avvicinano troppo, perdi."
-  - 
+  - Autour du personnage se trouvent des ombres qui se rapprochent au fil du temps.
+    S'ils se rapprochent trop, vous perdez.
   - "Um die Figur herum liegen Schatten, die mit der Zeit n\xE4herkommen. Wenn sie
     zu nahe kommen, ist das Spiel verloren."
   - 
@@ -1068,7 +1071,8 @@ MonoBehaviour:
     personaje se moverse al presionarla."
   - "Nella parte inferiore dello schermo ci sono delle frecce che indicano la direzione
     in cui si muover\xE0 il personaggio quando viene premuto."
-  - 
+  - "Au bas de l'\xE9cran, des fl\xE8ches indiquent la direction dans laquelle le
+    personnage se d\xE9placera lorsqu'il sera enfonc\xE9."
   - Die Pfeile am unteren Bildschirm geben die Richtung an, in die sich der Charakter
     bewegt.
   - 
@@ -1334,7 +1338,8 @@ MonoBehaviour:
     a los dos jefes y obt\xE9n los artefactos."
   - "Inizialmente \xE8 disponibile solo la fase 1, per sbloccare la fase 2 basta
     sconfiggere i due boss della fase 1 e raccogliere gli artefatti."
-  - 
+  - "Au d\xE9part seule la phase 1 est disponible, pour d\xE9bloquer la phase 2 il
+    suffit de vaincre les deux boss de la phase 1 et de r\xE9cup\xE9rer les artefacts."
   - "Zun\xE4chst ist nur Phase 1 spielbar. Um Phase 2 freizuschalten, besiege die
     zwei Bosse aus Phase 1 und sammel alle Artefakte ein."
   - 
@@ -1765,7 +1770,7 @@ MonoBehaviour:
   - 'Sombra:'
   - 'Sombra: '
   - 'Ombra:'
-  - 
+  - 'Ombre:'
   - 'Schatten:'
   - 
 --- !u!114 &1242293516
@@ -2094,7 +2099,10 @@ MonoBehaviour:
     utilizzarlo \xE8 sufficiente premerlo, se occorre indicare dove verr\xE0 applicato
     l'effetto baster\xE0 premere una delle frecce nella direzione desiderata, altrimenti
     l'articolo verr\xE0 utilizzato automaticamente."
-  - 
+  - "En collectant un objet, il appara\xEEtra dans l'un des emplacements d'objet,
+    pour l'utiliser appuyez simplement dessus, si vous devez indiquer o\xF9 l'effet
+    sera appliqu\xE9, appuyez simplement sur l'une des fl\xE8ches dans la direction
+    souhait\xE9e, sinon l'objet sera utilis\xE9 automatiquement."
   - "Eingesammelte Gegenst\xE4nde erscheinen in einem der item slots und k\xF6nnen
     durch drauftippen aktiviert werden. Tippe einen der Pfeile um anzugeben, in welche
     Richtung der Effekt angewendet werden soll. Andernfalls wird der Gegenstand automatisch
@@ -2548,7 +2556,7 @@ MonoBehaviour:
   - "Movimenta\xE7\xE3o:"
   - 'Movimiento:'
   - 'Movimento:'
-  - 
+  - 'Mouvement:'
   - 'Steuerung:'
   - 
 --- !u!114 &1745939184
@@ -2672,7 +2680,9 @@ MonoBehaviour:
   - "In alcune stanze saranno presenti delle scatole che potranno essere spinte e
     utilizzate per coprire i fori che permettono il passaggio sopra di esse; Questa
     \xE8 la base degli enigmi del gioco."
-  - 
+  - "Dans plusieurs pi\xE8ces, il y aura des bo\xEEtes qui pourront \xEAtre pouss\xE9es
+    et utilis\xE9es pour boucher les trous permettant le passage dessus ; C'est la
+    base des \xE9nigmes du jeu."
   - "In manchen R\xE4umen befinden sich K\xE4sten, die verschoben werden k\xF6nnen
     um L\xF6cher abzudecken und einen Durchgang zu erm\xF6glichen. Dies ist die Grundlage
     der R\xE4tsel des Spiels."
@@ -2789,7 +2799,7 @@ MonoBehaviour:
   - "Progress\xE3o:"
   - 'Progreso:'
   - 'Progressione:'
-  - 
+  - 'Progression:'
   - 'Fortschritt:'
   - 
 --- !u!114 &1888700146

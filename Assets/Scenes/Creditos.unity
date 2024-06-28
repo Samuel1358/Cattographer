@@ -425,7 +425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &252083427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -878,7 +878,7 @@ MonoBehaviour:
   - "Ingl\xEAs"
   - Ingles
   - Inglese
-  - 
+  - Anglaise
   - Englisch
   - 
 --- !u!222 &553560579
@@ -993,7 +993,7 @@ MonoBehaviour:
   - "Franc\xEAs*, Italiano*, Portugu\xEAs, Russo*"
   - "Frances*, Italiano*, Portugu\xE9s, Ruso*"
   - Francese*, Italiano*, Portoghese, Russo*
-  - 
+  - France*, Italien*, Portugais, Russe*
   - "Franz\xF6sisch*, Italienisch*, Portugiesisch, Russisch*"
   - 
 --- !u!222 &666178426
@@ -1491,7 +1491,7 @@ MonoBehaviour:
   - Equipe principal
   - Equipo principal
   - Equipo principale
-  - 
+  - "\xC9quipe principale"
   - Hauptteam
   - 
 --- !u!1 &1040243483
@@ -1578,7 +1578,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Libny Kelvin
+  m_Text: 'Libny Kelvin:'
 --- !u!222 &1040243487
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1827,7 +1827,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.85
-  m_Text: Programador   principal,  Unity  Dev, Game design, Modelos 3D
+  m_Text: Programador principal, Unity Dev, Game design, Modelos 3D
 --- !u!114 &1201049761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1842,11 +1842,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
-  - Main programmer, Unity  Dev,  Game design, Models 3D
-  - Programador    principal, Unity  Dev,  Game design, Modelos 3D
-  - Programador    principal, Unity  Dev,  Game design, Modelos 3D
+  - Main programmer, Unity Dev, Game design, Models 3D
+  - Programador principal, Unity Dev, Game design, Modelos 3D
+  - Programador principal, Unity Dev, Game design, Modelos 3D
   - Programatore principale, Unity Dev, Game design, Modeli 3D
-  - 
+  - "Programmeur principal, Unity Dev, Game design, Des mod\xE8les 3D"
   - Hauptprogrammer, Unity  Dev,  Game design, Modellle 3D
   - 
 --- !u!222 &1201049762
@@ -2269,7 +2269,7 @@ MonoBehaviour:
   - "M\xFAsicas"
   - "M\xFAsicas"
   - Musiche
-  - 
+  - Musiques
   - Musik
   - 
 --- !u!222 &1267387783
@@ -2352,7 +2352,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.85
-  m_Text: Artista  principal, Arte 2D, Modelos 3D, Game design, Level design
+  m_Text: Artista principal, Arte 2D, Modelos 3D, Game design, Level design
 --- !u!114 &1268703968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2368,10 +2368,10 @@ MonoBehaviour:
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
   - Main artist, Art 2D, Models 3D, Game design, Level design
-  - Artista  principal, Arte 2D, Modelos 3D, Game design, Level design
-  - Artista  principal, Arte 2D, Modelos 3D, Game design, Level design
+  - Artista principal, Arte 2D, Modelos 3D, Game design, Level design
+  - Artista principal, Arte 2D, Modelos 3D, Game design, Level design
   - Artista principale, Arte 2D, Modeli 3D, Game design, Level design
-  - 
+  - "Artiste principal, Art 2D, Des mod\xE8les 3D, Game design, Level design"
   - Hauptdesigner, Designs 2D, Modelle 3D, Game design, Level design
   - 
 --- !u!222 &1268703969
@@ -2792,7 +2792,7 @@ MonoBehaviour:
   - Espanhol
   - "Espa\xF1ol"
   - Spagnolo
-  - 
+  - Espagnol
   - Spanisch
   - 
 --- !u!222 &1456063463
@@ -2818,7 +2818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1469230953
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3439,7 +3439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38758c36766d61641b85b9b62bbd6d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taxaDeVariacao: 1.5
+  taxaDeVariacao: 1.55
 --- !u!114 &1774699019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3574,7 +3574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38758c36766d61641b85b9b62bbd6d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taxaDeVariacao: 1.5
+  taxaDeVariacao: 1.55
 --- !u!1 &1841068200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,7 +3647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.85
-  m_Text: Programador,  Unity  Dev, Game design, Level design, Modelos 3D
+  m_Text: Programador, Unity Dev, Game design, Level design, Modelos 3D
 --- !u!114 &1841068203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3662,12 +3662,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
-  - Programmer,  Unity  Dev, Game design, Level design, Models 3D
-  - Programador,  Unity  Dev, Game design, Level design, Modelos 3D
-  - Programador,  Unity  Dev, Game design, Level design, Modelos 3D
+  - Programmer, Unity Dev, Game design, Level design, Models 3D
+  - Programador, Unity Dev, Game design, Level design, Modelos 3D
+  - Programador, Unity Dev, Game design, Level design, Modelos 3D
   - Programatore, Unity Dev, Game design, Level design, Modeli 3D
-  - 
-  - Programmer,  Unity  Dev, Game design, Level design, Modelle 3D
+  - "Programmeur, Unity Dev, Game design, Level design, Des mod\xE8les 3D"
+  - Programmer, Unity Dev, Game design, Level design, Modelle 3D
   - 
 --- !u!222 &1841068204
 CanvasRenderer:
@@ -3934,7 +3934,7 @@ MonoBehaviour:
   - "Equipe de localiza\xE7\xE3o"
   - "Equipo de localizaci\xF3n"
   - Equipo di localizzazione
-  - 
+  - "\xC9quipe de localisation"
   - 
   - 
 --- !u!1 &2063603478
@@ -4041,7 +4041,7 @@ MonoBehaviour:
   - "Alem\xE3o"
   - "Alem\xE1n"
   - Tedesco
-  - 
+  - Allemand
   - Deutsch
   - 
 --- !u!222 &2063603483

@@ -292,7 +292,7 @@ MonoBehaviour:
   - Voltar ao menu
   - Regresar al menu
   - Regredire allo menu
-  - 
+  - Retour au menu
   - Titelbildschirm
   - 
 --- !u!222 &643860761
@@ -755,7 +755,7 @@ MonoBehaviour:
   - Jogar novamente
   - Jugar de nuevo
   - Giocare di nuovo
-  - 
+  - Rejouer
   - Nochmal spielen
   - 
 --- !u!222 &1406070025
@@ -878,7 +878,7 @@ MonoBehaviour:
   - "Voc\xEA ganhou"
   - Ganaste
   - Hai vinto
-  - 
+  - "Tu as gagn\xE9"
   - Gewonnen
   - 
 --- !u!1 &1488159321
@@ -1644,7 +1644,7 @@ MonoBehaviour:
   - Sair do jogo
   - Abandonar juego
   - Lascia il gioco
-  - 
+  - Quitter jeu*
   - Verlassen
   - 
 --- !u!222 &2109005121

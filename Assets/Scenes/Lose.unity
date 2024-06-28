@@ -235,7 +235,7 @@ MonoBehaviour:
   - Voltar ao menu
   - Regresar al menu
   - Regredire allo menu
-  - 
+  - Retour au menu
   - Titelbildschirm
   - 
 --- !u!1 &531657620
@@ -616,7 +616,7 @@ MonoBehaviour:
   - Sair do jogo
   - Abandonar juego
   - Lascia il gioco
-  - 
+  - Quitter jeu
   - Verlassen
   - 
 --- !u!1 &1072819274
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   - Jogar novamente
   - Jugar de nuevo
   - Giocare di nuovo
-  - 
+  - Rejouer
   - Nochmal spielen
   - 
 --- !u!1 &1416473007
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   - "Voc\xEA perdeu"
   - Perdiste
   - Hai Perso
-  - 
+  - Tu as perdu
   - Verloren
   - 
 --- !u!1 &1488159321
