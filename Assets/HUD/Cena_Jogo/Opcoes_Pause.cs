@@ -49,18 +49,18 @@ public class Opcoes_Pause : MonoBehaviour
 
     public void VidaInfinita()
     {
-        if (sombra.active == true)
+        if (sombra.ivencivel == true)
         {
-            sombra.ivencivel = true;
-            marcadorCheat.SetActive(true);
-        }
-        else if (sombra.active == false)
-        {
+            Debug.Log("1");
             sombra.ivencivel = false;
             marcadorCheat.SetActive(false);
         }
-        
-        //FecharPause();
+        else if(sombra.ivencivel == false)
+        {
+            Debug.Log("3");
+            sombra.ivencivel = true;
+            marcadorCheat.SetActive(true);
+        }
     }
 
     public void Sair()
