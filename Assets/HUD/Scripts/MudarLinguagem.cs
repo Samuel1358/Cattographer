@@ -55,7 +55,7 @@ public class MudarLinguagem : MonoBehaviour
 
     public void Proximo()
     {
-        if (valor < 6)
+        if (valor < 5)
         {
             valor += 1;
         }
