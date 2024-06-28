@@ -290,7 +290,7 @@ MonoBehaviour:
   traducoes:
   - Back to the menu
   - Voltar ao menu
-  - 
+  - Regresar al menu
   - Regredire allo menu
   - 
   - Titelbildschirm
@@ -753,7 +753,7 @@ MonoBehaviour:
   traducoes:
   - Play again
   - Jogar novamente
-  - 
+  - Jugar de nuevo
   - Giocare di nuovo
   - 
   - Nochmal spielen
@@ -876,7 +876,7 @@ MonoBehaviour:
   traducoes:
   - You win
   - "Voc\xEA ganhou"
-  - 
+  - Ganaste
   - Hai vinto
   - 
   - Gewonnen
@@ -1642,7 +1642,7 @@ MonoBehaviour:
   traducoes:
   - Leave game
   - Sair do jogo
-  - 
+  - Abandonar juego
   - Lascia il gioco
   - 
   - Verlassen
