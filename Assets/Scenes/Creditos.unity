@@ -992,7 +992,7 @@ MonoBehaviour:
   - France*, Italian*, Portugese, Russian*
   - "Franc\xEAs*, Italiano*, Portugu\xEAs, Russo*"
   - 
-  - 
+  - Francese*, Italiano*, Portoghese, Russo*
   - 
   - "Franz\xF6sisch*, Italienisch*, Portugiesisch, Russisch*"
   - 
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   - Special Thenks
   - Agradecimentos especiais
   - 
-  - 
+  - Ringraziamenti speciali
   - 
   - Besonderen Dank an
   - 
@@ -1490,7 +1490,7 @@ MonoBehaviour:
   - Main team
   - Equipe principal
   - 
-  - 
+  - Equipo principale
   - 
   - Hauptteam
   - 
@@ -1845,7 +1845,7 @@ MonoBehaviour:
   - Main programmer, Unity  Dev,  Game design, Models 3D
   - Programador    principal, Unity  Dev,  Game design, Modelos 3D
   - 
-  - 
+  - Programatore principale, Unity Dev, Game design, Modeli 3D
   - 
   - Hauptprogrammer, Unity  Dev,  Game design, Modellle 3D
   - 
@@ -2268,7 +2268,7 @@ MonoBehaviour:
   - Musics
   - "M\xFAsicas"
   - 
-  - 
+  - Musiche
   - 
   - Musik
   - 
@@ -2370,7 +2370,7 @@ MonoBehaviour:
   - Main artist, Art 2D, Models 3D, Game design, Level design
   - Artista  principal, Arte 2D, Modelos 3D, Game design, Level design
   - 
-  - 
+  - Artista principale, Arte 2D, Modeli 3D, Game design, Level design
   - 
   - Hauptdesigner, Designs 2D, Modelle 3D, Game design, Level design
   - 
@@ -2818,7 +2818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1469230953
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3172,7 +3172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1636948269
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3665,7 +3665,7 @@ MonoBehaviour:
   - Programmer,  Unity  Dev, Game design, Level design, Models 3D
   - Programador,  Unity  Dev, Game design, Level design, Modelos 3D
   - 
-  - 
+  - Programatore, Unity Dev, Game design, Level design, Modeli 3D
   - 
   - Programmer,  Unity  Dev, Game design, Level design, Modelle 3D
   - 
@@ -3873,7 +3873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38758c36766d61641b85b9b62bbd6d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taxaDeVariacao: 1.35
+  taxaDeVariacao: 1.5
 --- !u!114 &2047509292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3896,7 +3896,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d1a5f5a20e33dc349bba77628b2ecf78, type: 3}
-    m_FontSize: 88
+    m_FontSize: 80
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -3933,7 +3933,7 @@ MonoBehaviour:
   - Localization team
   - "Equipe de localiza\xE7\xE3o"
   - 
-  - 
+  - Equipo di localizzazione
   - 
   - 
   - 
