@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FasesLiberadas
   m_EditorClassIdentifier: 
   Fase1: 1
-  Fase2: 1
+  Fase2: 0

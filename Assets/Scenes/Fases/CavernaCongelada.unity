@@ -855,7 +855,6 @@ MonoBehaviour:
     - {fileID: 7889454781266075897, guid: 673116974770f634ea3ac672fa0fc4bc, type: 3}
     - {fileID: 7889454781266075897, guid: 11d5759e07a2aff41b7bf2f89d4b076e, type: 3}
     Obstaculo_3:
-    - {fileID: 6313128348287606143, guid: 52da5cf75ec83c8418662b8745670e45, type: 3}
     - {fileID: 6313128348287606143, guid: 63c47f423545ea04aaec5d41dfcde3be, type: 3}
     - {fileID: 6707971882657769524, guid: 9344a51b7f77b3c478247ba44158b3ef, type: 3}
     - {fileID: 6313128348287606143, guid: 1fe0ac473da4618438cd1f45e72f618e, type: 3}
