@@ -915,7 +915,6 @@ MonoBehaviour:
     - {fileID: 7889454781266075897, guid: 673116974770f634ea3ac672fa0fc4bc, type: 3}
     - {fileID: 7889454781266075897, guid: bf2a68e9344091a4f8cdcf83ff016510, type: 3}
     NPC_3:
-    - {fileID: 6313128348287606143, guid: 52da5cf75ec83c8418662b8745670e45, type: 3}
     - {fileID: 6313128348287606143, guid: 63c47f423545ea04aaec5d41dfcde3be, type: 3}
     - {fileID: 6313128348287606143, guid: 84f3c5c86b234a242aaee75a05ad1466, type: 3}
     NPC_4:

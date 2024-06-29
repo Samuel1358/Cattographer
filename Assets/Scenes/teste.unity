@@ -2011,6 +2011,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2582743463978797445, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4253081408313386164, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11
@@ -2867,6 +2871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca0d9c02aa405c49a3acf0e14267235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  replace: {fileID: 0}
   timerSombra: 35
   ttSombra: 0
   taxaQueda: 1
