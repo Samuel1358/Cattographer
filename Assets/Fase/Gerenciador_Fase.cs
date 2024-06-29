@@ -13,10 +13,13 @@ public class Gerenciador_Fase : MonoBehaviour
 
     bool original = false;
 
+    public int idFase;
+
     public bool boss = true;
     public int nivel = 1;
     public int moedas = 0;
     public int chaves = 0;
+    public int reliquias = 0;
     public int[] listaItens = new int[3];
     public float timerSombra, maxSombra;
 
@@ -43,6 +46,7 @@ public class Gerenciador_Fase : MonoBehaviour
         player = FindAnyObjectByType<Player_Final>();
         moedas = player.moedas;
         chaves = player.portas;
+        reliquias = player.coletados;
 
         // lista itens
         lista = FindObjectOfType<Lista_Itens>();
@@ -52,20 +56,5 @@ public class Gerenciador_Fase : MonoBehaviour
         sombra = FindAnyObjectByType<Timer_Sombra>();
         timerSombra = sombra.timerSombra;
         maxSombra = sombra.timerSombra;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {        
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (FindObjectOfType<Spawn_Player>() == null)
-        {
-            Destroy(gameObject);
-        }
     }
 }

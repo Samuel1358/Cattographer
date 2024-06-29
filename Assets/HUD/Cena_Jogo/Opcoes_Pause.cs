@@ -38,12 +38,22 @@ public class Opcoes_Pause : MonoBehaviour
     public void Menu()
     {
         Time.timeScale = 1f;
+        var gr = FindObjectOfType<Gerenciador_Fase>();
+        if (gr != null)
+        {
+            Destroy(gr.gameObject);
+        }
         SceneManager.LoadScene(0);
     }
 
     public void NovaSala()
     {
         Time.timeScale = 1f;
+        var gr = FindObjectOfType<Gerenciador_Fase>();
+        if (gr != null)
+        {
+            Destroy(gr.gameObject);
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

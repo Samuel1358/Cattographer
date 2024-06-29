@@ -43,6 +43,9 @@ public class Saida_Fuga : MonoBehaviour
             // chaves
             fase.chaves = player.portas;
 
+            // reliquias
+            fase.reliquias = player.coletados;
+
             // lista itens
             fase.listaItens = lista.listaItens;
 
