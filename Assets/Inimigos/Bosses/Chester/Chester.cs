@@ -6,13 +6,14 @@ using UnityEngine;
 public class Chester : MonoBehaviour
 {
     [SerializeField] private Sala_Controller controller;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private int vida = 3;
 
     [SerializeField] private float tempoInicioBatalha = 2f;
     [SerializeField] private float velocidade = 5f;
-    [SerializeField] private float cooldownPulo = 2f;
-    [SerializeField] private float tempoAtordoado = 1.5f;
+    [SerializeField] private float tempoIndefeso = 4f;
+    [SerializeField] private float tempoDefendendo = 3f;
 
     [SerializeField] private float alturaBlocos = 5f;
     [SerializeField] private float tempoQuedaBlocos = 1f;
@@ -24,9 +25,12 @@ public class Chester : MonoBehaviour
     private float cooldownBatalha;
     private Mov_Player player;
     private float defaultY;
+    private Quaternion defaultRotation;
     private void Start()
     {
         defaultY = transform.position.y;
+        defaultRotation = transform.rotation;
+
         player = FindObjectOfType<Mov_Player>();
         cooldownBatalha = tempoInicioBatalha;
     }
@@ -43,12 +47,15 @@ public class Chester : MonoBehaviour
                 }
                 else
                 {
+                    animator.SetBool("Ativo", true);
                     cooldownBatalha = 0;
                 }
             }
-            else // if (isAtivo)
+            else
             {
-                if (!isPulando && !IsIndefeso)
+                ProcessarRotacao(Time.deltaTime);
+
+                if (!isPulando && !IsIndefeso && !isDefendendo)
                 {
                     Vector3 alvo = new(
                         player.transform.position.x,
@@ -62,8 +69,27 @@ public class Chester : MonoBehaviour
         else if (cooldownBatalha == 0)
         {
             if (Pular(controller.transform.position))
-            { cooldownBatalha = tempoInicioBatalha; }
+            {
+                cooldownBatalha = tempoInicioBatalha;
+                transform.rotation = defaultRotation;
+            }
         }
+    }
+
+    private bool rotacionar = false;
+    private void ProcessarRotacao(float delta)
+    {
+        if (!rotacionar) return;
+
+        const float fatorRotacao = 4f;
+
+        transform.rotation = Quaternion.Lerp(
+            Quaternion.LookRotation(
+                Utilitarios.IgnoreY(player.transform.position - transform.position)
+            ),
+            transform.rotation,
+            Mathf.Exp(-fatorRotacao * delta)
+        );
     }
 
     bool isPulando = false;
@@ -90,7 +116,10 @@ public class Chester : MonoBehaviour
             Mathf.Round(alvo.z) - Mathf.Sign(direcao.z) * .5f
         );
 
-        yield return Utilitarios.Parabola(gameObject, transform.position, 1, 0.6f);
+        animator.SetBool("Ativo", true);
+        rotacionar = true;
+        yield return Utilitarios.Parabola(gameObject, transform.position, 1, 2/3f);
+        rotacionar = false;
 
         float distanciaDoPulo = (alvo - transform.position).magnitude;
         float tempoDoPulo = distanciaDoPulo / velocidade;
@@ -114,29 +143,39 @@ public class Chester : MonoBehaviour
             bloco.Pula(offset, alturaBlocos, tempoDoPulo + tempoQuedaBlocos);
         }
 
+        animator.SetBool("Pulando", true);
         yield return Utilitarios.Parabola(gameObject, alvo, 2, tempoDoPulo);
+        animator.SetBool("Pulando", false);
 
-        yield return TempoIndefeso();
-
+        yield return CooldownPulo();
+        animator.SetBool("Ativo", false);
         isPulando = false;
     }
 
     private float tempoIndefesoRestante = 0;
-    private IEnumerator TempoIndefeso()
+    private IEnumerator CooldownPulo()
     {
-        tempoIndefesoRestante = cooldownPulo;
+        isDefendendo = false;
+        tempoIndefesoRestante = tempoIndefeso;
         while (tempoIndefesoRestante > Time.deltaTime)
         {
             tempoIndefesoRestante -= Time.deltaTime;
             yield return null;
         }
         tempoIndefesoRestante = 0;
-    }
-    public bool IsIndefeso => tempoIndefesoRestante > 0;
 
+        isDefendendo = true;
+        animator.SetBool("Ativo", false);
+        yield return new WaitForSeconds(tempoDefendendo);
+        animator.SetBool("Ativo", true);
+        isDefendendo = false;
+    }
+    public bool IsIndefeso => tempoIndefesoRestante > 0 && !isDefendendo;
+
+    private bool isDefendendo = false;
     private void LevarDano()
     {
-        tempoIndefesoRestante += tempoAtordoado;
+        tempoIndefesoRestante = tempoDefendendo;
 
         if (vida > 0)
         {
@@ -145,6 +184,11 @@ public class Chester : MonoBehaviour
             {
                 premio.SetActive(true);
                 Destroy(gameObject, 0.2f);
+            }
+            else
+            {
+                isDefendendo = true;
+                animator.SetBool("Ativo", false);
             }
         }
     }
