@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Gerenciador_Audio : MonoBehaviour
 {
@@ -8,23 +9,23 @@ public class Gerenciador_Audio : MonoBehaviour
 
     [SerializeField] private AudioClip musica;
 
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource gerenciadorMusicas;
+    [SerializeField] private AudioSource gerenciadorSFX;
+    [SerializeField] private AudioMixer audioMixer;
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-
-            audioSource = GetComponent<AudioSource>();
         }
         else Destroy(gameObject);
 
-        TocarMusica(musica);
+        TocarMusicaDeFundo(musica);
     }
 
 
-    [SerializeField] private SFX sFX;
+    [SerializeField] private SFX _SFX;
     [System.Serializable]
     public class SFX
     {
@@ -56,22 +57,40 @@ public class Gerenciador_Audio : MonoBehaviour
     static public void TocarSFX(AudioClip sfx)
     => instance._TocarSFX(sfx);
     private void _TocarSFX(AudioClip sfx)
-    => audioSource.PlayOneShot(sfx);
+    => gerenciadorSFX.PlayOneShot(sfx);
 
 
-
-    static public void TocarMusica(AudioClip sfx)
-    => instance._TocarMusica(sfx);
-    private void _TocarMusica(AudioClip musica)
+    static public void TocarMusicaUmaVez(AudioClip musica)
+    => instance._TocarMusicaUmaVez(musica);
+    private void _TocarMusicaUmaVez(AudioClip musica)
     {
-        audioSource.clip = musica;
-        audioSource.Play();
+        gerenciadorMusicas.PlayOneShot(musica);
+        _PararMusica();
+    }
+
+    static public void TocarMusicaDeFundo(AudioClip musica)
+    => instance._TocarMusicaDeFundo(musica);
+    private void _TocarMusicaDeFundo(AudioClip musica)
+    {
+        gerenciadorMusicas.clip = musica;
+        gerenciadorMusicas.Play();
     }
 
     static public void PararMusica()
     => instance._PararMusica();
     private void _PararMusica()
     {
-        audioSource.clip = null;
+        gerenciadorMusicas.clip = null;
+    }
+
+    static public void Volume(float valor)
+    => instance._Volume(valor);
+    private void _Volume(float valor)
+    {
+        // o humano escuta em uma escala logarítmica
+        // a conta abaixo converte o valor linear para a escala humana
+        float valorHumano = Mathf.Log10(valor) * 20;
+
+        audioMixer.SetFloat("Volume", valorHumano);
     }
 }
