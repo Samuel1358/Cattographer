@@ -7,6 +7,8 @@ public class GerenciadorResultado : MonoBehaviour
     [HideInInspector] [SerializeField] FasesLiberadas fases;
     Gerenciador_Fase resultado;
 
+    public int idFase;
+
     public enum Resultado
     {
         Win,
@@ -19,7 +21,8 @@ public class GerenciadorResultado : MonoBehaviour
     {
         if ((resultado = FindObjectOfType<Gerenciador_Fase>()) != null)
         {
-            if (resultado.idFase == 1)
+            idFase = resultado.idFase;
+            if (idFase == 1)
             {
                 if (resultado.reliquias >= 3 && tipo == Resultado.Win)
                 {

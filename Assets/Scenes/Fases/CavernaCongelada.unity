@@ -887,7 +887,7 @@ MonoBehaviour:
     - {fileID: 2356453783725169772, guid: 47ec4c93bd1468947ad7ecf6988565d3, type: 3}
   unicas:
     NPC_1:
-    - {fileID: 6539611974125032862, guid: a8b31912832362845b7f1e0e6ecf7fe7, type: 3}
+    - {fileID: 6539611974125032862, guid: f3eb5ee25ea4bf2478c94610ed9373ac, type: 3}
     Trancada_1:
     - {fileID: 6539611974125032862, guid: 13a76d283975f9646a98e7d052c01007, type: 3}
   botoes:

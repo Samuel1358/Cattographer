@@ -29,10 +29,20 @@ public class Opcoes_Botoes : MonoBehaviour
         SceneManager.LoadScene("Creditos");
     }
 
-    /*public void Config()
+    public void JogarNovamente()
     {
-        SceneManager.LoadScene(2);
-    }*/
+        GerenciadorResultado gerenciador = FindObjectOfType<GerenciadorResultado>();
+        switch (gerenciador.idFase)
+        {
+            case 1:
+                TorreMagica();
+                break;
+            case 2:
+                CavernaCongelada();
+                break;
+
+        }
+    }
 
     public void Sair()
     {

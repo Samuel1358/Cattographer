@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Botao_Saidas : MonoBehaviour
 {
+    [SerializeField] PressBotao_Saida press;
     Player_Final player;
 
     // Start is called before the first frame update
@@ -24,9 +25,11 @@ public class Botao_Saidas : MonoBehaviour
         {
             if (FindObjectsOfType<Botao_Saidas>().Length == 1)
             {
+                Collider collider = GetComponent<Collider>();
+                collider.enabled = false;
+                press.Precionar(1f);
                 player.aberto = true;
             }
-            Destroy(gameObject);
         }
     }
 }
