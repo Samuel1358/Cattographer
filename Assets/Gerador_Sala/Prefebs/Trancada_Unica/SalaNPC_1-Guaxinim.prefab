@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4253081408313386164}
   - component: {fileID: 6539611974125032862}
   m_Layer: 0
-  m_Name: SalaNPC_1-shop
+  m_Name: SalaNPC_1-Guaxinim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
