@@ -34,6 +34,7 @@ Transform:
   - {fileID: 833427517446046022}
   - {fileID: 6085965477505911172}
   - {fileID: 5649394130383426990}
+  - {fileID: 7318827092953568739}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7558572519294569269
@@ -242,6 +243,39 @@ MonoBehaviour:
   altura: 0
   escala: 10
   escalaM: 10
+--- !u!1 &8745093717514365355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7318827092953568739}
+  m_Layer: 0
+  m_Name: LuzesDeSaidas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7318827092953568739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8745093717514365355}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7060412229405142056}
+  - {fileID: 8921293840240267286}
+  m_Father: {fileID: 4253081408313386164}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &597342128710522727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -542,6 +576,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saida_Fuga
       objectReference: {fileID: 0}
+    - target: {fileID: 3839509518583146153, guid: a17a072a0c0779f408c1a672afb9f634, type: 3}
+      propertyPath: listaLuz.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839509518583146153, guid: a17a072a0c0779f408c1a672afb9f634, type: 3}
+      propertyPath: listaLuz.Array.data[0]
+      value: 
+      objectReference: {fileID: 4256633897151705677}
+    - target: {fileID: 3839509518583146153, guid: a17a072a0c0779f408c1a672afb9f634, type: 3}
+      propertyPath: listaLuz.Array.data[1]
+      value: 
+      objectReference: {fileID: 2389101340207844979}
     - target: {fileID: 5611016020622751068, guid: a17a072a0c0779f408c1a672afb9f634, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -673,6 +719,152 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4442842031723026598, guid: b3a8832e9e35eed4ebc85ed3d7938735, type: 3}
   m_PrefabInstance: {fileID: 6784835888047051335}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8038247716877727571
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7318827092953568739}
+    m_Modifications:
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223564938824799968, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_Name
+      value: LuzSaida (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+--- !u!114 &2389101340207844979 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5668445022289721632, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+  m_PrefabInstance: {fileID: 8038247716877727571}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499dd26d6b9568f4c84e639cd56f57cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8921293840240267286 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+  m_PrefabInstance: {fileID: 8038247716877727571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8482746833141353325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7318827092953568739}
+    m_Modifications:
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223564938824799968, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+      propertyPath: m_Name
+      value: LuzSaida
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+--- !u!114 &4256633897151705677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5668445022289721632, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+  m_PrefabInstance: {fileID: 8482746833141353325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499dd26d6b9568f4c84e639cd56f57cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &7060412229405142056 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1460110548387604293, guid: d67f3d541cb8d0a4699e66705ce58b9a, type: 3}
+  m_PrefabInstance: {fileID: 8482746833141353325}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8757186825518083278
 PrefabInstance:
