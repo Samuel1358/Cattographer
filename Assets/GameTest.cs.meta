@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: cb5c4afffd84e064b9baea3b91b58c48
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - fasesLiberadas: {fileID: 11400000, guid: 2e09726f8e5768d4ab8a7722fcbf4d12, type: 2}
+  - caixa: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

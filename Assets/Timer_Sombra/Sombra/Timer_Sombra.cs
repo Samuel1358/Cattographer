@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Timer_Sombra : MonoBehaviour
 {
+    //GemeTest (DELETAR)
+    [SerializeField] VelocidadeSombra_Replace replace;
+
     Gerenciador_Fase fase;
 
     public float timerSombra = 20f, ttSombra, taxaQueda = 1f;
@@ -32,7 +35,16 @@ public class Timer_Sombra : MonoBehaviour
         {
             if (active == true && ivencivel == false)
             {
-                timerSombra -= Time.deltaTime * taxaQueda * 0.1f;
+                //timerSombra -= Time.deltaTime * taxaQueda * 0.1f;
+                //GemeTest (DELETAR)
+                if (replace != null)
+                {
+                    timerSombra -= Time.deltaTime * taxaQueda * (replace.velocidade / 100f);
+                }
+                else
+                {
+                    timerSombra -= Time.deltaTime * taxaQueda * 0.1f;
+                }
             }
         }
     }

@@ -1404,6 +1404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca0d9c02aa405c49a3acf0e14267235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  replace: {fileID: 11400000, guid: 428db831e07e68446accd45c6e2af640, type: 2}
   timerSombra: 20
   ttSombra: 0
   taxaQueda: 1

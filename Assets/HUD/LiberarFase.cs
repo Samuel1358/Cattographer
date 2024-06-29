@@ -9,7 +9,7 @@ public class LiberarFase : MonoBehaviour
     [SerializeField] GameObject botao;
     [SerializeField] GameObject locked;
 
-    private void Start()
+    private void Update()
     {
         if (fases.Fase2)
         {
