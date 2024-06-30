@@ -24,7 +24,7 @@ public class Gerenciador_Audio : MonoBehaviour
         TocarMusicaDeFundo(musica);
     }
 
-
+    /*
     [SerializeField] private SFX _SFX;
     [System.Serializable]
     public class SFX
@@ -53,6 +53,7 @@ public class Gerenciador_Audio : MonoBehaviour
             [SerializeField] private AudioClip andar;
         }
     }
+    */
 
     static public void TocarSFX(AudioClip sfx)
     => instance._TocarSFX(sfx);
@@ -72,6 +73,8 @@ public class Gerenciador_Audio : MonoBehaviour
     => instance._TocarMusicaDeFundo(musica);
     private void _TocarMusicaDeFundo(AudioClip musica)
     {
+        if (gerenciadorMusicas.clip == musica) return;
+
         gerenciadorMusicas.clip = musica;
         gerenciadorMusicas.Play();
     }
@@ -80,6 +83,7 @@ public class Gerenciador_Audio : MonoBehaviour
     => instance._PararMusica();
     private void _PararMusica()
     {
+        gerenciadorMusicas.Stop();
         gerenciadorMusicas.clip = null;
     }
 
