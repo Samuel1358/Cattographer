@@ -208,7 +208,6 @@ public class Chester : MonoBehaviour
 
         if (vida > 0)
         {
-            Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.crack);
             Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.lever);
             vida--;
             if (vida == 0)
@@ -241,6 +240,9 @@ public class Chester : MonoBehaviour
     public void DestroiBloco(GameObject empurravel)
     {
         if (blocosAfetados.RemoveAll(bloco => bloco.gameObject == empurravel) > 0)
-        { Destroy(empurravel, 0.2f); }
+        {
+            Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.crack);
+            Destroy(empurravel, 0.2f);
+        }
     }
 }

@@ -128,10 +128,8 @@ public class Empurrao : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Fundo") || hit.collider.gameObject.CompareTag("Freckles"))
             {
-                Debug.Log("oiii");
                 Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.fall);
 
-                Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
                 caindo = true;
                 box.isTrigger = false;
                 rb.useGravity = true;

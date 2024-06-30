@@ -27,6 +27,7 @@ public class Ferramenta_Freckles : MonoBehaviour
             if (other.CompareTag("Player"))
             {
                 other.gameObject.GetComponent<Hit_Timer>().CausarDano(1f);
+                Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.clank);
             }
             Destroy(gameObject);
         }
