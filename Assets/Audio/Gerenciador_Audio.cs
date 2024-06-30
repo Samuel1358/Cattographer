@@ -27,6 +27,7 @@ public class Gerenciador_Audio : MonoBehaviour
         else
         {
             instance.musica = musica;
+            instance.ApenasUmaVez = ApenasUmaVez;
             TocarPredefinida();
             Destroy(gameObject);
         }
