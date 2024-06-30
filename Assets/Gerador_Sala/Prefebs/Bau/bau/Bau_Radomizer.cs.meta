@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7d894d1260df7354f9552a91363f0dfd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - chave: {fileID: 9138704182242775112, guid: 5607ecb527530024da3ebe1f8a8c402b, type: 3}
+  - bomba: {fileID: 9138704182242775112, guid: 21cb4f45d0bc70546bab954c2cf0cf4d, type: 3}
+  - tabua: {fileID: 9138704182242775112, guid: bdf201b1106cd4347a0cf3c4c9811a96, type: 3}
+  - kyrozene: {fileID: 9138704182242775112, guid: cca4388a46053984ab2ce5ae26ef7dee, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

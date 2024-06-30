@@ -11,6 +11,10 @@ TagManager:
   - LimitadorSala
   - Gelo
   - Empurravel
+  - Bau
+  - Freckles
+  - Chester
+  - Alavanca
   layers:
   - Default
   - TransparentFX
@@ -22,7 +26,7 @@ TagManager:
   - Bloqueio
   - Fundo
   - Chao
-  - 
+  - Buraco
   - 
   - 
   - 

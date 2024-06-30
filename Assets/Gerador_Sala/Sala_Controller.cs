@@ -4,55 +4,17 @@ using UnityEngine;
 
 public class Sala_Controller : MonoBehaviour
 {
-    Gride grid;
-    Gerador gerador;
+    static public Sala_Controller salaAtual;
+    static private Saidas_Ativador ultimaPorta;
+    static private Mov_Player player;
+    
+    private const float spawnHeight = 1.5f;
 
-    Mov_Player player;
-
-    // ID & INFOS
-    public int id;
-    public int[] infos = new int[3];
-
-    // SAIDAS
-    public Saidas_Ativador saida1;
-    public Saidas_Ativador saida2;
-    public Saidas_Ativador saida3;
-    public Saidas_Ativador saida4;
-
-    public bool spawnSeted = false;
-    Vector3 salaSpaw;
-    public float timerSpawn = 1.5f, ttSpawn = 1.5f;
+    public Gride.Sala_Def definicao;
 
     // Start is called before the first frame update
     void Start()
     {
-        grid = FindObjectOfType<Gride>();
-        gerador = FindObjectOfType<Gerador>();
-        player = FindObjectOfType<Mov_Player>();
-
-        #region // ID & INFOS
-        // (atribui as intormações da sala)
-
-        for (int i = 0; i < gerador.POS.GetLength(0); i++)
-        {
-            for (int j = 0; j < gerador.POS.GetLength(1); j++)
-            {
-                if (gerador.POS[i, j, 0] == transform.position.x && gerador.POS[i, j, 1] == transform.position.z)
-                {
-                    id = gerador.ID[i, j];
-
-                    // Infos[tipo, forma, rotacao]
-                    for (int k = 0; k < 2; k++)
-                    {
-                        infos[k] = grid.grid[i, j, k];
-                    }
-                    break;
-                }
-            }
-        }
-
-        #endregion
-
         /*#region // SAIDAS
 
         switch (infos[1])
@@ -75,103 +37,6 @@ public class Sala_Controller : MonoBehaviour
         }
 
         #endregion*/
-
-
-        ttSpawn = timerSpawn;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        #region // SetSpawn
-        // (verifica por qual saida o jogador entrou para setar o spaw, para caso ele caia em um buraco)
-
-        if (player.sala == id)
-        {
-            if (spawnSeted == false)
-            {
-
-                if (saida1 != null)
-                {
-                    if (saida1.playerPassed == true)
-                    {
-                        spawnSeted = true;
-                        salaSpaw = new Vector3(saida1.transform.position.x, 2f, saida1.transform.position.z);
-                    }
-                }
-                if (saida2 != null)
-                {
-                    if (saida2.playerPassed == true)
-                    {
-                        spawnSeted = true;
-                        salaSpaw = new Vector3(saida2.transform.position.x, 1.5f, saida2.transform.position.z);
-                    }
-                }
-                if (saida3 != null)
-                {
-                    if (saida3.playerPassed == true)
-                    {
-                        spawnSeted = true;
-                        salaSpaw = new Vector3(saida3.transform.position.x, 1.5f, saida3.transform.position.z);
-                    }
-                }
-                if (saida4 != null)
-                {
-                    if (saida4.playerPassed == true)
-                    {
-                        spawnSeted = true;
-                        salaSpaw = new Vector3(saida4.transform.position.x, 1.5f, saida4.transform.position.z);
-                    }
-                }
-            }
-        }
-
-        #endregion
-
-        #region // SPAWN
-        // (tira o player do buraco e spawna-o na saida pelo qual ele entrou)
-
-        if (player.caiuBuraco == true && player.sala == id)
-        {
-            if (timerSpawn <= 0)
-            {
-                player.transform.position = salaSpaw;
-                player.canMove = true;
-                player.caiuBuraco = false;
-                timerSpawn = ttSpawn;
-            }
-            if (timerSpawn > 0)
-            {
-                timerSpawn -= Time.deltaTime;
-            }
-        }
-
-        #endregion
-
-        #region // RESET
-
-        if (player.sala != id)
-        {
-            spawnSeted = false;
-            if (saida1 != null)
-            {
-                saida1.playerPassed = false;
-            }
-            if (saida2 != null)
-            {
-                saida2.playerPassed = false;
-            }
-            if (saida3 != null)
-            {
-                saida3.playerPassed = false;
-            }
-            if (saida4 != null)
-            {
-                saida4.playerPassed = false;
-            }
-        }
-
-        #endregion
     }
 
     private void OnTriggerEnter(Collider other)
@@ -180,18 +45,32 @@ public class Sala_Controller : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                player.sala = id;
+                salaAtual = this;
+                Camera_Player.Reposicionar(transform.position);
             }
         }
     }
-    private void OnTriggerExit(Collider other)
+
+    static public IEnumerator RespawnPlayerCoroutine()
     {
-        if (player != null)
-        {
-            if (other.CompareTag("Player"))
-            {
-                spawnSeted = false;
-            }
-        }
+        // (manda o player spawnar na saida pelo qual ele entrou)
+        yield return player.SpawnCoroutine(ultimaPorta.transform.position + new Vector3(0, spawnHeight, 0));
+    }
+
+    static public Sala_Controller SalaAtual => salaAtual;
+    static public void SetPlayer(Mov_Player player)
+    { Sala_Controller.player = player; }
+
+    static public void SetUltimaPorta(Saidas_Ativador porta)
+    { ultimaPorta = porta; }
+
+    public Saidas_Ativador GetUltimaPorta()
+    {
+        return ultimaPorta;
+    }
+
+    public Sala_Controller GetSalaAtual()
+    {
+        return salaAtual;   
     }
 }

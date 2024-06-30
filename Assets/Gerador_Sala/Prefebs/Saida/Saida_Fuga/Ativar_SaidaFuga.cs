@@ -6,6 +6,7 @@ using UnityEngine;
 public class Ativar_SaidaFuga : MonoBehaviour
 {
     Player_Final player;
+    [SerializeField] LuzDeSaida[] listaLuz;
     public GameObject saidaFuga;
     bool ativar = true;
 
@@ -23,6 +24,18 @@ public class Ativar_SaidaFuga : MonoBehaviour
         {
             if (player.aberto)
             {
+                Vector3 pos = Vector3.zero;
+                for(int i = 0; i < listaLuz.Length; i++)
+                {
+                    if ((pos = listaLuz[i].Verificar()) != Vector3.zero)
+                    {
+                        break;
+                    }
+                }
+                if (pos != Vector3.zero)
+                {
+                    saidaFuga.transform.position = pos;
+                }
                 saidaFuga.SetActive(true);
                 ativar = false;
             }

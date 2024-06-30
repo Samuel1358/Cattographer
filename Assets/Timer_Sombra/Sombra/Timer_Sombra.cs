@@ -5,14 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class Timer_Sombra : MonoBehaviour
 {
-    public float timerSombra = 15f, ttSombra;
-    public bool active = true;
+    //GemeTest (DELETAR)
+    [SerializeField] VelocidadeSombra_Replace replace;
+
+    Gerenciador_Fase fase;
+
+    public float timerSombra = 20f, ttSombra, taxaQueda = 1f;
+    public bool active = true, ivencivel = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        // resgate das infos do gride anterior(caso tenha)
+        fase = FindObjectOfType<Gerenciador_Fase>();
 
-        ttSombra = timerSombra;
+        timerSombra = fase.timerSombra;
+        ttSombra = fase.maxSombra;
     }
 
     // Update is called once per frame
@@ -20,14 +28,23 @@ public class Timer_Sombra : MonoBehaviour
     {
         if (timerSombra <= 0)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("Lose");
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (timerSombra > 0)
         {
-            if (active == true)
+            if (active == true && ivencivel == false)
             {
-                timerSombra -= Time.deltaTime;
+                //timerSombra -= Time.deltaTime * taxaQueda * 0.1f;
+                //GemeTest (DELETAR)
+                if (replace != null)
+                {
+                    timerSombra -= Time.deltaTime * taxaQueda * (replace.velocidade / 100f);
+                }
+                else
+                {
+                    timerSombra -= Time.deltaTime * taxaQueda * 0.1f;
+                }
             }
         }
     }

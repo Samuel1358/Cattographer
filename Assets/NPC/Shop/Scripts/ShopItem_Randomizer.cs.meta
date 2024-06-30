@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b2310858ce68c2c408edee2bc168a062
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shopKeeper: {fileID: 2250529105351512188, guid: ba1b0a01b6b43fc4b833ac941ad9adf8, type: 3}
+  - chave: {fileID: 9138704182242775112, guid: 867820b9b3342dd47ae679e3e5849730, type: 3}
+  - bomba: {fileID: 9138704182242775112, guid: b2fe008965b309b4db94715bcbd88bbd, type: 3}
+  - kyrozene: {fileID: 9138704182242775112, guid: fcd74e05c16e52a4da46cedd188f3620, type: 3}
+  - tabua: {fileID: 9138704182242775112, guid: a11feb5ed00981f40aec3b7efdec5bdf, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

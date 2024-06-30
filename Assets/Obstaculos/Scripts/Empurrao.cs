@@ -1,27 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
+using static Mov_Inimigo_PassoAPasso;
 
 public class Empurrao : MonoBehaviour
 {
-
-    Mov_Player player;
-
-    RaycastHit hit;
     public LayerMask bloqueio;
     public LayerMask chao;
-    public Vector3 x = new Vector3(0, 0, 0);
+    //public Vector3 x = new Vector3(0, 0, 0);
 
     // QUEDA
     Rigidbody rb;
     Collider box;
-
-    private void Awake()
-    {
-        player = FindObjectOfType<Mov_Player>();
-    }
+    bool noFundo = false;
+    [HideInInspector] public bool caindo = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,63 +32,57 @@ public class Empurrao : MonoBehaviour
         box = GetComponent<Collider>();
     }
 
-    private void Update()
-    {
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // (gravidade é ativada quando empurado para um buraco)
-        if (other.CompareTag("Buraco"))
-        {
-            if (Physics.Raycast(new Ray(transform.position, Vector2.down), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
-            {
-
-            }
-            else
-            {
-                box.isTrigger = false;
-                rb.useGravity = true;
-                player.canMove = false;
-            }            
-        }
-
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Fundo"))
+        if (collision.collider.CompareTag("Fundo"))
         {
-            //box.isTrigger = false;
-            player.canMove = true;
+            noFundo = true;
+            caindo = false;
+            gameObject.layer = LayerMask.NameToLayer("Chao");
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 
-    public bool Empurrar(Vector3 direcao)
+    public bool MovimentoObstruido(Vector3 direcao)
     {
-        bool empurrou = false;
+        if (caindo || pulando) return true;
 
+        if (Physics.Raycast(
+            ray: new Ray(transform.position, direcao),
+            hitInfo: out RaycastHit obstaculo,
+            maxDistance: 1f,
+            layerMask: bloqueio,
+            QueryTriggerInteraction.Collide
+        ))
+        {
+            if (obstaculo.collider.TryGetComponent(out Chester chester))
+            { return !chester.IsIndefeso; }
+
+            return true;
+        }
+
+        return false;
+    }
+    public IEnumerator EmpurraoCoroutine(Vector3 direcao)
+    {
         bool movimentoObstruido;
         // Loop para caso o piso seja de gelo
         do
         {
             // Verifica se tem um obstáculo
-            movimentoObstruido = Physics.Raycast(
-                ray: new Ray(transform.position, direcao),
-                // hitInfo: out RaycastHit obstaculo,
-                maxDistance: 1f,
-                layerMask: bloqueio,
-                QueryTriggerInteraction.Collide
-            );
+            movimentoObstruido = MovimentoObstruido(direcao);
 
             // Se não tiver, movimenta o bloco
             if (!movimentoObstruido)
             {
+                Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.slide);
                 transform.position += direcao;
-                // Marca que empurrou com sucesso
-                empurrou = true;
+
+                // Queda no buraco
+                if (!Physics.Raycast(new Ray(transform.position, -transform.up), out _, 1f))
+                {
+                    yield return QuedaCoroutine();
+                }
             }
 
         } while (
@@ -107,7 +97,58 @@ public class Empurrao : MonoBehaviour
             && !movimentoObstruido
         );
 
-        // Retorna se empurrou o bloco com sucesso
-        return empurrou;
+        yield return !movimentoObstruido;
+    }
+
+    private IEnumerator QuedaCoroutine()
+    {
+        caindo = true;
+
+        box.isTrigger = false;
+        rb.useGravity = true;
+
+        const float tempoMaximoDaQueda = 4f;
+
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.fall);
+
+        float timer = tempoMaximoDaQueda;
+        while (timer > Time.deltaTime && !noFundo)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        caindo = false;
+    }
+
+    public void Queda()
+    {
+        if (caindo || noFundo) return;
+        RaycastHit hit;
+        if (Physics.Raycast(new Ray(transform.position, -transform.up), out hit, 23f))
+        {
+            if (hit.collider.gameObject.CompareTag("Fundo") || hit.collider.gameObject.CompareTag("Freckles"))
+            {
+                Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.fall);
+
+                caindo = true;
+                box.isTrigger = false;
+                rb.useGravity = true;
+            } 
+        }
+    }
+
+    bool pulando = false;
+    public void Pula(Vector3 offset, float altura, float tempo)
+    {
+        if (!pulando)
+        { StartCoroutine(PuloCoroutine(Utilitarios.IgnoreY(offset), altura, tempo)); }
+    }
+
+    private IEnumerator PuloCoroutine(Vector3 offset, float altura, float tempo)
+    {
+        pulando = true;
+        yield return Utilitarios.Parabola(gameObject, transform.position + offset, altura, tempo);
+        pulando = false;
     }
 }

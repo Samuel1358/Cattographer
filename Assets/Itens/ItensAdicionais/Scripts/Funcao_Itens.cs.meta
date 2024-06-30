@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 3ccf9af3e22d08f4cbe202703b694a50
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bomba: {fileID: 1303248762645176447, guid: 901ee469ca3567140b1416367f36171d, type: 3}
+  - tabua: {fileID: 684298692848955116, guid: 3525b8132148ef845adca51def819ed0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

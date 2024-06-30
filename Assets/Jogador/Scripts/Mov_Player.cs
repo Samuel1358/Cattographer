@@ -1,98 +1,107 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static Mov_Inimigo_PassoAPasso;
+using static UnityEngine.GraphicsBuffer;
 
 public class Mov_Player : MonoBehaviour
 {
+    // COMPONENTES
+    [SerializeField] private Animator animator;
+
+    // CONSTANTES
+    const float cooldownMovimentacao = 0.16f;
+    const float movimentacaoBuffer = cooldownMovimentacao;
+    public const float holdTimeMovimentacao = 0.4f;
+    const float tempoDaQueda = 1.5f;
+    const float tempoDeRespawn = 0.5f;
+
     // MOVE
     //Rigidbody rb;
     //private float spd = 1f;
     public bool canMove = true;
-    public bool caiuBuraco = false;
-    private float timerMove;
-    static private readonly float moveCooldown = 0.16f;
-
-    private int movX = 0, movZ = 0;
 
     // RAY
-    RaycastHit hit;
     public LayerMask bloqueio;
     public LayerMask fundo;
     public LayerMask chao;
 
-    public int sala;
-
     void Start()
     {
         //rb = GetComponent<Rigidbody>();
-
-        timerMove = moveCooldown;
+        Sala_Controller.SetPlayer(this);
     }
 
+    private float holdTime = 0;
     void Update()
     {
-        #region // MOVE
-        // (movimentacao em gride, quadrado por quadrado, com timer para movimentação [precionando o botão uma vez de cada ou segurando])
-        // (o player vira para a direção desejada e então se movimenta [importante para o sistema de colisão de Raycast])
+        bool inputCima = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+        bool inputDireita = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+        bool inputBaixo = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+        bool inputEsquerda = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
 
-        if (canMove == true)
+        Vector3 movimento = Vector3.zero;
+        if (inputCima && !(inputDireita || inputBaixo || inputEsquerda))
         {
-            if (timerMove <= 0f)
-            {
-                /*float xInput = Input.GetAxisRaw("Horizontal");
-                float zInput = Input.GetAxisRaw("Vertical");*/
-                float xInput = movX;
-                float zInput = movZ;
-                movX = 0;
-                movZ = 0;          
-                
-                if (xInput != 0 || zInput != 0)
-                {
-                    // Prioriza o eixo X para movimentar somente em um eixo por vez
-                    if (xInput != 0) { zInput = 0; }
-
-                    Vector3 direction = new Vector3(xInput, 0, zInput);
-                    Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
-
-                    transform.rotation = rotation;
-                    StartCoroutine(MovimentacaoCoroutine(direction));
-                    timerMove = moveCooldown;
-                }
-            }
-
-            if (timerMove > 0f)
-            {
-                timerMove -= Time.deltaTime;
-            }
+            movimento = Vector3.forward;
+        }
+        else if (inputDireita && !(inputCima || inputBaixo || inputEsquerda))
+        {
+            movimento = Vector3.right;
+        }
+        if (inputBaixo && !(inputCima || inputDireita || inputEsquerda))
+        {
+            movimento = Vector3.back;
+        }
+        if (inputEsquerda && !(inputCima || inputDireita || inputBaixo))
+        {
+            movimento = Vector3.left;
         }
 
-        #endregion
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Buraco"))
+        if (inputCima || inputDireita || inputBaixo || inputEsquerda)
         {
-            // (não pode se mexer se cair no buraco)
-            if (Physics.Raycast(new Ray(transform.position, transform.up * -1f), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
-            {
+            if (movimento != Vector3.zero && (holdTime > holdTimeMovimentacao || holdTime == 0))
+            { 
+                Movimentar(movimento); 
+            }
 
-            }
-            else
-            {
-                canMove = false;
-                caiuBuraco = true;
-            }
+            holdTime += Time.deltaTime;
+        }
+        else
+        {
+            animator.SetBool("Andando", false);
+            holdTime = 0;
+        }
+
+        if (cooldownAtualMovimentacao > Time.deltaTime)
+        {
+            cooldownAtualMovimentacao -= Time.deltaTime;
+        }
+        else
+        {
+            cooldownAtualMovimentacao = 0f;
         }
     }
 
+    public void Movimentar(Vector3 direcao) => StartCoroutine(MovimentacaoCoroutine(direcao));
+
+    private float cooldownAtualMovimentacao = 0;
     private IEnumerator MovimentacaoCoroutine(Vector3 direcao)
     {
+        if (!canMove) yield break;
+
+        // Só permite movimentos dentro de um tempo buffer
+        if (cooldownAtualMovimentacao > movimentacaoBuffer) yield break;
+
         canMove = false;
+        // Para tratar o buffer, espera pelo fim do movimento atual
+        while (cooldownAtualMovimentacao > 0) yield return null;
+
+        cooldownAtualMovimentacao = cooldownMovimentacao;
+
+        Quaternion rotacao = Quaternion.LookRotation(direcao, Vector3.up);
+        transform.rotation = rotacao;
 
         // Força a direção a ter magnitude 1
         direcao.Normalize();
@@ -112,7 +121,7 @@ public class Mov_Player : MonoBehaviour
                 QueryTriggerInteraction.Collide
             ))
             {
-                // Se for uma parede, obstrui o movimento
+                // Se for uma parede, só obstrui o movimento
                 if (obstaculo.collider.CompareTag("Parede"))
                 {
                     movimentoObstruido = true;
@@ -121,23 +130,77 @@ public class Mov_Player : MonoBehaviour
                 else if (obstaculo.collider.CompareTag("Empurravel"))
                 {
                     Empurrao bloco = obstaculo.collider.GetComponent<Empurrao>();
-                    bool conseguiuEmpurrar = bloco.Empurrar(direcao);
+                    movimentoObstruido = bloco.MovimentoObstruido(direcao);
+                    
+                    if (!movimentoObstruido) animator.SetTrigger("Empurrar");
 
-                    // Se não conseguiu empurrar, obstrui o movimento
-                    movimentoObstruido = !conseguiuEmpurrar;
+                    StartCoroutine(bloco.EmpurraoCoroutine(direcao));
+                    yield return null;
+                }
+                // Se for um baú, o abre
+                else if (obstaculo.collider.CompareTag("Bau"))
+                {
+                    animator.SetTrigger("Empurrar");
+                    Bau_Radomizer bau = obstaculo.collider.GetComponent<Bau_Radomizer>();
+                    yield return bau.AbrirCoroutine(direcao);
+
+                    movimentoObstruido = true;
+                }
+                // Se for uma alavanca e não estiver acionada, acione-a
+                else if (obstaculo.collider.CompareTag("Alavanca"))
+                {
+                    Alavanca alavanca = obstaculo.collider.GetComponent<Alavanca>();
+
+                    if (!alavanca.GetAcionada())
+                    {
+                        animator.SetTrigger("Empurrar");
+                        yield return alavanca.AcionarCoroutine(direcao);
+                    }
+
+                    movimentoObstruido = true;
+                }
+                else if (obstaculo.collider.CompareTag("Chester"))
+                {
+                    movimentoObstruido = true;
                 }
             }
+            // pra ter certeza, verifica se tem um bloco caindo
+            else if (Physics.Raycast(
+                ray: new Ray(transform.position + direcao + Vector3.up, Vector3.down),
+                hitInfo: out RaycastHit obstaculoBloco,
+                maxDistance: 23f,
+                layerMask: bloqueio,
+                QueryTriggerInteraction.Collide)
+                && obstaculoBloco.collider.TryGetComponent(out Empurrao bloco)
+            )
+            { movimentoObstruido = bloco.caindo; }
 
             // Se não for obstruído, movimenta
             if (!movimentoObstruido)
             {
-                transform.position += direcao;
+                animator.SetBool("Andando", true);
+                yield return Utilitarios.Parabola(gameObject, transform.position + direcao, 0.2f, cooldownMovimentacao);
+                Gerenciador_Audio.TocarSFX(Random.value > .5 ? Gerenciador_Audio.SFX.step1 : Gerenciador_Audio.SFX.step2);
+
+                // Queda no buraco
+                RaycastHit[] abaixo = Physics.RaycastAll(transform.position, -transform.up, 1f);
+                if (!abaixo.Any(hit => false // false só existe pras linhas de baixo ficarem alinhadas
+                    || hit.collider.gameObject.layer == LayerMask.NameToLayer("Chao")
+                    || hit.collider.gameObject.layer == LayerMask.NameToLayer("Bloqueio")))
+                {
+                    yield return QuedaCoroutine();
+                }
+            }
+            else
+            {
+                animator.SetBool("Andando", false);
+                yield return Utilitarios.Parabola(gameObject, transform.position, 0.2f, cooldownMovimentacao);
             }
 
-            yield return null;            
+            yield return null;
 
         } while (
-            // Repete enquanto o piso for de gelo e o movimento não estiver obstruído
+            // Repete enquanto o piso for de gelo e se o movimento não estiver obstruído
             Physics.Raycast(
                 ray: new Ray(transform.position, -transform.up),
                 hitInfo: out RaycastHit piso,
@@ -151,24 +214,19 @@ public class Mov_Player : MonoBehaviour
         canMove = true;
     }
 
-    #region // GET - botoes
+    private IEnumerator QuedaCoroutine()
+    {
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.fall);
+        yield return new WaitForSeconds(tempoDaQueda);
 
-    public void Cima()
-    {
-        movZ = 1;
-    }
-    public void Direita()
-    {
-        movX = 1;
-    }
-    public void Baixo()
-    {
-        movZ = -1;
-    }
-    public void Esquerda()
-    {
-        movX = -1;
+        yield return Sala_Controller.RespawnPlayerCoroutine();
     }
 
-    #endregion
+    public IEnumerator SpawnCoroutine(Vector3 posicao)
+    {
+        transform.position = posicao;
+        Camera_Player.Reposicionar(transform.position);
+
+        yield return new WaitForSeconds(tempoDeRespawn);
+    }
 }

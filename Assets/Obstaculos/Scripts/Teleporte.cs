@@ -5,6 +5,7 @@ using UnityEngine;
 public class Teleporte : MonoBehaviour
 {
     public Teleporte gemeo;
+    ParticleSystem efeito;
     
     RaycastHit hit;
     public LayerMask bloqueio;
@@ -15,6 +16,12 @@ public class Teleporte : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        efeito = transform.GetChild(2).GetComponent<ParticleSystem>();
+        if (ColorUtility.TryParseHtmlString(transform.GetChild(1).GetComponent<SetEmissão>().hex, out Color cor))
+        {
+            #pragma warning disable CS0618 // O tipo ou membro é obsoleto
+            efeito.startColor = cor - (new Color(1, 1, 1, 0) * 0.1f);
+        }
         
     }
 
@@ -45,6 +52,8 @@ public class Teleporte : MonoBehaviour
                 if (gemeo.ocupado == false)
                 {
                     hit.collider.gameObject.transform.position = new Vector3(gemeo.transform.position.x, hit.collider.gameObject.transform.position.y, gemeo.transform.position.z);
+                    Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.magic);
+                    efeito.Play();
                     gemeo.ocupado = true;
                     ocupado = true;
                 }

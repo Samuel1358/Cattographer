@@ -10,28 +10,41 @@ public class Porta_Tesouro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player_Final>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.portas >= 3)
+        if (player == null)
         {
-            gameObject.layer = 0;
+            player = FindObjectOfType<Player_Final>();
         }
         else
         {
-            gameObject.layer = 7;
-        }
+            if (player.portas >= 1)
+            {
+                gameObject.layer = 0;
+            }
+            else
+            {
+                gameObject.layer = 7;
+            }
+        }  
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            player.portas -= 3;
+            player.portas -= 1;
             Destroy(gameObject);
         }
+        if (other.CompareTag("LimitadorSala"))
+        {
+            Destroy(other.gameObject);
+        }
     }
+
+    //private void OnTriger
 }

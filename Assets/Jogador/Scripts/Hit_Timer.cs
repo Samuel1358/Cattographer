@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class Hit_Timer : MonoBehaviour
 {
-    Timer_Dungeon timer;
+    [SerializeField] private Animator animator;
+
+    Timer_Sombra sombra;
     public float dano = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        timer = FindObjectOfType<Timer_Dungeon>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        sombra = FindObjectOfType<Timer_Sombra>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Inimigo"))
         {
-            timer.timerDD -= dano;
+            CausarDano(dano);
         }
+    }
+
+    public void CausarDano(float dano)
+    {
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.cat);
+        animator.SetTrigger("TomarDano");
+        sombra.timerSombra -= dano;
     }
 }

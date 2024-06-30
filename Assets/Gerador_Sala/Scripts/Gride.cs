@@ -1,233 +1,379 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Gride : MonoBehaviour
 {
-    // (matriz para armazenar os prefebs respectivos a cada sala)
-    public GameObject[,] obj = new GameObject[5, 5];
+    Gerenciador_Fase fase;
+
+    public const int nLinhas = 4;
+    public const int nColunas = 3;
+
+    public const float DistanciaEntreSalas = 11f;
+
+    [SerializeField] int[] idGrids = new int[4];
+
+    public enum Tipo
+    {
+        Entrada = 1, // Entrada
+        Vazia = 2,
+        Obstaculo = 3,
+        Bau = 4,
+        NPC = 5,
+        Unica = 6, // Sala Trancada + Shop
+        Botao = 7,
+        Saida = 8,
+        Secreto = 9,
+    }
+    public enum Formato
+    {
+        Unica = 1,
+        Linha = 2,
+        L = 3,
+        T = 4,
+        Cruz = 5,
+    }
+    public enum Rotacao
+    {
+        Normal,
+        Direita,
+        Invertida,
+        Esquerda,
+    }
 
     #region //Salas
     // (prefebs de todas as salas disponiveis)
 
-    // Saída
-    public GameObject Saida_2;
-    public GameObject Saida_3;
-    public GameObject Saida_4;
+    // Entrada
+    public Entrada entradas;
+    [System.Serializable]
+    public class Entrada
+    {
+        public Sala_Prefab[] Entrada_2;
+        public Sala_Prefab[] Entrada_3;
+        public Sala_Prefab[] Entrada_4;
+    }
 
     // Vazio
-    public GameObject Vazio_2;
-    public GameObject Vazio_3;
-    public GameObject Vazio_4;
+    public Vazio vazios;
+    [System.Serializable]
+    public class Vazio
+    {
+        public Sala_Prefab[] Vazio_2;
+        public Sala_Prefab[] Vazio_3;
+        public Sala_Prefab[] Vazio_4;
+        public Sala_Prefab[] Vazio_5;
+    }
 
     // Obstáculo
-    public GameObject Obsc_1;
-    public GameObject Obsc_2;
-    public GameObject Obsc_3;
-    public GameObject Obsc_4_1;
-    public GameObject Obsc_4_2;
-    public GameObject Obsc_5;
-
-    // NPC
-    public GameObject NPC_2;
-    public GameObject NPC_3;
-    public GameObject NPC_4;
+    public Obstaculo obstaculos;
+    [System.Serializable]
+    public class Obstaculo
+    {
+        public Sala_Prefab[] Obstaculo_2;
+        public Sala_Prefab[] Obstaculo_3;
+        public Sala_Prefab[] Obstaculo_4;
+        public Sala_Prefab[] Obstaculo_5;
+    }
 
     // Baú
-    public GameObject Bau_1;
+    public Bau baus;
+    [System.Serializable]
+    public class Bau
+    {
+        public Sala_Prefab[] Bau_1;
+    }
 
-    // Trancada
-    public GameObject Trancada_1;
+    // NPC
+    public NPC npcs;
+    [System.Serializable]
+    public class NPC
+    {
+        public Sala_Prefab[] NPC_2;
+        public Sala_Prefab[] NPC_3;
+        public Sala_Prefab[] NPC_4;
+    }
+
+    // Unica
+    public Unica unicas;
+    [System.Serializable]
+    public class Unica
+    {
+        public Sala_Prefab[] NPC_1;
+        public Sala_Prefab[] Trancada_1;
+    }
 
     // Botão
-    public GameObject Botao_1;
+    public Botao botoes;
+    [System.Serializable]
+    public class Botao
+    {
+        public Sala_Prefab[] Botao_1;
+    }
+
+    // Saída
+    public Saida saidas;
+    [System.Serializable]
+    public class Saida
+    {
+        public Sala_Prefab[] Saida_2;
+        public Sala_Prefab[] Saida_3;
+        public Sala_Prefab[] Saida_4;
+    }
 
     #endregion
 
-    public int[,] rotacao = new int[5, 5];
+    public class Sala_Def
+    {
+        private Tipo tipo;
+        private Formato formato;
+        private Rotacao rotacao;
 
-    #region // Grides [tipo, forma, rotacao]
+        private void Init(Tipo tipo, Formato formato, Rotacao rotacao)
+        {
+            this.tipo = tipo;
+            this.formato = formato;
+            this.rotacao = rotacao;
+        }
+        public Sala_Def(Tipo tipo, Formato formato, Rotacao rotacao)
+        => Init(tipo, formato, rotacao);
+
+        public Sala_Def(int tipo, int formato, int rotacao)
+        => Init((Tipo)tipo, (Formato)formato, (Rotacao)rotacao);
+
+        public Tipo Tipo => tipo;
+        public Formato Formato => formato;
+        public Rotacao Rotacao => rotacao;
+        public float RotacaoEmGraus => 90f * (int)rotacao;
+    }
+
+    #region // Grides (tipo, forma, rotacao)
     // (templats dos grides disponiveis)
+    private readonly Sala_Def[][,] grids = new[]
+    {
+        // 0
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(3, 3, 1), new Sala_Def(3, 4, 2), new Sala_Def(4, 1, 3) },    // 1
+        { new Sala_Def(8, 3, 3), new Sala_Def(2, 2, 1), new Sala_Def(6, 1, 2) },    // 2
+        { new Sala_Def(5, 3, 1), new Sala_Def(3, 5, 0), new Sala_Def(3, 4, 3) },    // 3
+        { new Sala_Def(4, 1, 0), new Sala_Def(1, 2, 1), new Sala_Def(7, 1, 0) }, }, // 4
 
-    private int[,,] grid1 = new int[5, 5, 3] { {  /*1*/{3, 3, 1},  /*2*/{7, 1, 3},  /*3*/{5, 1, 2},  /*4*/{1, 2, 1},  /*5*/{7, 1, 2} },
-                                               {  /*6*/{1, 4, 0},  /*7*/{3, 2, 1},  /*8*/{4, 4, 0},  /*9*/{3, 5, 0}, /*10*/{3, 4, 3} },
-                                               { /*11*/{3, 3, 1}, /*12*/{4, 3, 2}, /*13*/{5, 1, 1}, /*14*/{2, 4, 3}, /*15*/{1, 4, 1} },
-                                               { /*16*/{6, 1, 0}, /*17*/{2, 4, 1}, /*18*/{3, 4, 2}, /*19*/{3, 4, 3}, /*20*/{2, 2, 1} },
-                                               { /*21*/{1, 2, 0}, /*22*/{3, 3, 3}, /*23*/{7, 1, 0}, /*24*/{5, 1, 0}, /*25*/{6, 1, 0} } };
+        // 1
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(4, 1, 2), new Sala_Def(3, 3, 1), new Sala_Def(4, 1, 3) },    // 1
+        { new Sala_Def(3, 4, 1), new Sala_Def(3, 5, 0), new Sala_Def(8, 2, 0) },    // 2
+        { new Sala_Def(5, 2, 1), new Sala_Def(2, 4, 1), new Sala_Def(3, 3, 2) },    // 3
+        { new Sala_Def(7, 1, 0), new Sala_Def(6, 1, 0), new Sala_Def(1, 2, 1) }, }, // 4
 
-    private int[,,] grid2 = new int[5, 5, 3] { {  /*1*/{2, 3, 1},  /*2*/{6, 1, 3},  /*3*/{7, 1, 2},  /*4*/{5, 1, 1},  /*5*/{3, 3, 2} },
-                                               {  /*6*/{1, 4, 0},  /*7*/{3, 4, 2},  /*8*/{3, 4, 3},  /*9*/{6, 1, 2}, /*10*/{1, 4, 1} },
-                                               { /*11*/{5, 1, 1}, /*12*/{4, 3, 3}, /*13*/{2, 4, 1}, /*14*/{3, 4, 0}, /*15*/{3, 4, 3} },
-                                               { /*16*/{2, 3, 1}, /*17*/{3, 4, 2}, /*18*/{3, 5, 0}, /*19*/{3, 4, 2}, /*20*/{4, 4, 3} },
-                                               { /*21*/{7, 1, 0}, /*22*/{1, 2, 1}, /*23*/{5, 1, 0}, /*24*/{1, 2, 1}, /*25*/{7, 1, 0} } };
+        // 2
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(8, 2, 1), new Sala_Def(4, 1, 1), new Sala_Def(3, 3, 2) },    // 1
+        { new Sala_Def(3, 2, 1), new Sala_Def(7, 1, 1), new Sala_Def(5, 4, 3) },    // 2
+        { new Sala_Def(3, 4, 1), new Sala_Def(2, 4, 2), new Sala_Def(3, 4, 3) },    // 3
+        { new Sala_Def(4, 1, 0), new Sala_Def(1, 2, 1), new Sala_Def(6, 1, 0) }, }, // 4
 
-    private int[,,] grid3 = new int[5, 5, 3] { {  /*1*/{3, 3, 1},  /*2*/{5, 1, 3},  /*3*/{1, 4, 1},  /*4*/{2, 2, 0},  /*5*/{6, 1, 3} },
-                                               {  /*6*/{3, 4, 1},  /*7*/{3, 4, 2},  /*8*/{3, 5, 0},  /*9*/{4, 2, 0}, /*10*/{7, 1, 3} },
-                                               { /*11*/{1, 3, 3}, /*12*/{7, 1, 0}, /*13*/{2, 4, 1}, /*14*/{3, 4, 2}, /*15*/{1, 4, 2} },
-                                               { /*16*/{6, 1, 1}, /*17*/{2, 4, 2}, /*18*/{3, 5, 0}, /*19*/{3, 4, 3}, /*20*/{3, 2, 0} },
-                                               { /*21*/{5, 1, 1}, /*22*/{4, 3, 3}, /*23*/{1, 2, 1}, /*24*/{7, 1, 0}, /*25*/{5, 1, 0} } };
+        // 3
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(3, 3, 1), new Sala_Def(8, 3, 3), new Sala_Def(4, 1, 2) },    // 1
+        { new Sala_Def(3, 4, 1), new Sala_Def(6, 1, 3), new Sala_Def(5, 2, 1) },    // 2
+        { new Sala_Def(3, 4, 1), new Sala_Def(3, 4, 2), new Sala_Def(2, 4, 3) },    // 3
+        { new Sala_Def(1, 2, 1), new Sala_Def(4, 1, 0), new Sala_Def(7, 1, 0) }, }, // 4
 
-    private int[,,] grid4 = new int[5, 5, 3] { {  /*1*/{1, 3, 0},  /*2*/{3, 4, 2},  /*3*/{4, 4, 2},  /*4*/{3, 4, 2},  /*5*/{1, 3, 3} },
-                                               {  /*6*/{6, 1, 2},  /*7*/{5, 1, 0},  /*8*/{7, 1, 0},  /*9*/{2, 2, 1}, /*10*/{6, 1, 2} },
-                                               { /*11*/{2, 4, 1}, /*12*/{4, 2, 0}, /*13*/{3, 4, 2}, /*14*/{3, 4, 0}, /*15*/{2, 4, 3} },
-                                               { /*16*/{3, 2, 0}, /*17*/{7, 1, 2}, /*18*/{5, 1, 0}, /*19*/{7, 1, 2}, /*20*/{3, 2, 0} },
-                                               { /*21*/{1, 4, 1}, /*22*/{3, 4, 0}, /*23*/{5, 1, 3}, /*24*/{3, 3, 0}, /*25*/{1, 4, 3} } };
+        // 4
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(6, 1, 1), new Sala_Def(3, 4, 2), new Sala_Def(3, 3, 2) },    // 1
+        { new Sala_Def(4, 1, 1), new Sala_Def(2, 4, 3), new Sala_Def(8, 3, 0) },    // 2
+        { new Sala_Def(1, 4, 2), new Sala_Def(3, 5, 0), new Sala_Def(4, 1, 3) },    // 3
+        { new Sala_Def(3, 3, 0), new Sala_Def(5, 4, 0), new Sala_Def(7, 1, 3) }, }, // 4
+
+        // 5
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(8, 2, 1), new Sala_Def(6, 1, 2), new Sala_Def(4, 1, 2) },    // 1
+        { new Sala_Def(2, 4, 1), new Sala_Def(3, 4, 0), new Sala_Def(3, 3, 3) },    // 2
+        { new Sala_Def(3, 4, 1), new Sala_Def(3, 4, 2), new Sala_Def(1, 2, 0) },    // 3
+        { new Sala_Def(4, 1, 0), new Sala_Def(5, 3, 0), new Sala_Def(7, 1, 3) }, }, // 4
+
+        // 6
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(6, 1, 1), new Sala_Def(3, 4, 2), new Sala_Def(4, 1, 3) },    // 1
+        { new Sala_Def(8, 2, 0), new Sala_Def(2, 4, 0), new Sala_Def(3, 3, 2) },    // 2
+        { new Sala_Def(1, 2, 0), new Sala_Def(3, 4, 2), new Sala_Def(3, 4, 3) },    // 3
+        { new Sala_Def(4, 1, 1), new Sala_Def(5, 3, 3), new Sala_Def(7, 1, 0) }, }, // 4
+
+        // 7
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(6, 1, 1), new Sala_Def(3, 4, 2), new Sala_Def(8, 3, 3) },    // 1
+        { new Sala_Def(7, 1, 2), new Sala_Def(2, 4, 1), new Sala_Def(4, 1, 3) },    // 2
+        { new Sala_Def(3, 3, 0), new Sala_Def(3, 5, 0), new Sala_Def(3, 3 ,2) },    // 3
+        { new Sala_Def(1, 3, 1), new Sala_Def(5, 3, 3), new Sala_Def(4, 1, 0) }, }, // 4
+
+
+
+        /*
+               
+        */
+
+        /*
+        new[,] { //       1                      2                      3              
+        { new Sala_Def(, , ), new Sala_Def(, , ), new Sala_Def(, , ) },    // 1
+        { new Sala_Def(, , ), new Sala_Def(, , ), new Sala_Def(, , ) },    // 2
+        { new Sala_Def(, , ), new Sala_Def(, , ), new Sala_Def(, , ) },    // 3
+        { new Sala_Def(, , ), new Sala_Def(, , ), new Sala_Def(, , ) }, }, // 4
+        */
+
+        // dedsculpa gatinho juro nao mexer mais no gride <3
+    };
 
     #endregion
-    public int[,,] grid = new int[5, 5, 3];
+
+    public Sala_Def[,] grid = new Sala_Def[nLinhas, nColunas];
 
 
-    // Start is called before the first frame update
+    // Shop NPC
+    /*bool shopSetted = false;
+    int countNPC = 0;*/
+
+    public GameObject ShopKeeper1;
+
     void Awake()
     {
-        
+        fase = FindObjectOfType<Gerenciador_Fase>();
 
         // Randomizer
         // (aleatoriza qual gride será usada)
-        switch (Random.Range(1, 5))
-        {
-            case 1:
-                grid = grid1;
-                break;
-            case 2:
-                grid = grid2;
-                break;
-            case 3:
-                grid = grid3;
-                break;
-            case 4:
-                grid = grid4;
-                break;
-        }
+        grid = grids[idGrids[Random.Range(0, idGrids.Length)]];
 
         // Salas
         // (atribui os prevebs de cada salas à matriz 'obj')
-        for (int i = 0; i < obj.GetLength(0); i++)
+        for (int linha = 0; linha < grid.GetLength(0); linha++)
         {
-            for (int j = 0; j < obj.GetLength(1); j++)
+            for (int coluna = 0; coluna < grid.GetLength(1); coluna++)
             {
-                switch(grid[i, j, 0])
+                Sala_Def definicao = grid[linha, coluna];
+
+                Vector3 posicaoNoGrid = IndicesCentralizados(linha, coluna);
+                Vector3 posicaoNoMundo = PosicaoNoMundo(posicaoNoGrid);
+
+                switch (definicao.Tipo)
                 {
-                    // Saida
-                    case 1:                      
-                        switch(grid[i, j, 1])
+                    case Tipo.Entrada:
+                        switch (definicao.Formato)
                         {
-                            case 2:
-                                obj[i, j] = Saida_2;
+                            case Formato.Linha:
+                                entradas.Entrada_2[Random.Range(0, entradas.Entrada_2.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
-                            case 3:
-                                obj[i, j] = Saida_3;
+                            case Formato.L:
+                                entradas.Entrada_3[Random.Range(0, entradas.Entrada_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
-                            case 4:
-                                obj[i, j] = Saida_4;
+                            case Formato.T:
+                                entradas.Entrada_4[Random.Range(0, entradas.Entrada_4.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;
-                    // Vazio
-                    case 2:
-                        switch (grid[i, j, 1])
+
+                    case Tipo.Vazia:
+                        switch (definicao.Formato)
                         {
-                            case 2:
-                                obj[i, j] = Vazio_2;
+                            case Formato.Linha:
+                                vazios.Vazio_2[Random.Range(0, vazios.Vazio_2.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
-                            case 3:
-                                obj[i, j] = Vazio_3;
+                            case Formato.L:
+                                vazios.Vazio_3[Random.Range(0, vazios.Vazio_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
-                            case 4:
-                                obj[i, j] = Vazio_4;
+                            case Formato.T:
+                                vazios.Vazio_4[Random.Range(0, vazios.Vazio_4.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                            case Formato.Cruz:
+                                vazios.Vazio_5[Random.Range(0, vazios.Vazio_5.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;
-                    // Obstaculo
-                    case 3:
-                        switch (grid[i, j, 1])
+
+                    case Tipo.Obstaculo:
+                        switch (definicao.Formato)
                         {
-                            case 1:
-                                obj[i, j] = Obsc_1;
+                            case Formato.Linha:
+                                obstaculos.Obstaculo_2[Random.Range(0, obstaculos.Obstaculo_2.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
-                            case 2:
-                                obj[i, j] = Obsc_2;
+                            case Formato.L:
+                                obstaculos.Obstaculo_3[Random.Range(0, obstaculos.Obstaculo_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
-                            case 3:
-                                obj[i, j] = Obsc_3;
+                            case Formato.T:
+                                obstaculos.Obstaculo_4[Random.Range(0, obstaculos.Obstaculo_4.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
-                            case 4:
-
-                                //GameObject[] Obsc_4 = { Obsc_4_1, Obsc_4_2 };
-                                //obj[i, j] = Obsc_4[Random.Range(0, 2)];
-
-                                // obsc_4
-                                switch (Random.Range(1, 3))
-                                {
-                                    case 1:
-                                        obj[i, j] = Obsc_4_1;
-                                        break;
-                                    case 2:
-                                        obj[i, j] = Obsc_4_2;
-                                        break;
-                                }
-
-                                break;
-                            case 5:
-                                obj[i, j] = Obsc_5;
+                            case Formato.Cruz:
+                                obstaculos.Obstaculo_5[Random.Range(0, obstaculos.Obstaculo_5.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;
                     // NPC
-                    case 4:
-                        switch (grid[i, j, 1])
+                    case Tipo.Bau:
+                        baus.Bau_1[Random.Range(0, baus.Bau_1.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
+                        break;
+                    // Bau
+                    case Tipo.NPC:
+                        switch (definicao.Formato)
                         {
-                            case 2:
-                                obj[i, j] = NPC_2;
+                            case Formato.Linha:
+                                npcs.NPC_2[Random.Range(0, npcs.NPC_2.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
-                            case 3:
-                                obj[i, j] = NPC_3;
+                            case Formato.L:
+                                npcs.NPC_3[Random.Range(0, npcs.NPC_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
-                            case 4:
-                                obj[i, j] = NPC_4;
+                            case Formato.T:
+                                npcs.NPC_4[Random.Range(0, npcs.NPC_4.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
                                 break;
                         }
                         break;
-                    // Bau
-                    case 5:
-                        obj[i, j] = Bau_1;
-                        break;
                     // Trancada
-                    case 6:
-                        obj[i, j] = Trancada_1;
+                    case Tipo.Unica:
+                        switch (fase.boss)
+                        {
+                            case true:
+                                unicas.Trancada_1[Random.Range(0, unicas.Trancada_1.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                            case false:
+                                unicas.NPC_1[Random.Range(0, unicas.NPC_1.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                        }                       
                         break;
                     // Botao
-                    case 7:
-                        obj[i, j] = Botao_1;
+                    case Tipo.Botao:
+                        botoes.Botao_1[Random.Range(0, botoes.Botao_1.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
+                        break;
+                    // Saida
+                    case Tipo.Saida:
+                        switch (definicao.Formato)
+                        {
+                            case Formato.Linha:
+                                saidas.Saida_2[Random.Range(0, saidas.Saida_2.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                            case Formato.L:
+                                saidas.Saida_3[Random.Range(0, saidas.Saida_3.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                            case Formato.T:
+                                saidas.Saida_4[Random.Range(0, saidas.Saida_4.Length)].Create(definicao, posicaoNoMundo, Quaternion.identity);
+                                break;
+                        }
                         break;
                 }
             }
         }
-
-        // Rotacao
-        // (atribui o indicie de rotacao de cada sala à matriz 'rotacao')
-        for (int i = 0; i < rotacao.GetLength(0); i++)
-        {
-            for (int j = 0; j < rotacao.GetLength(1); j++)
-            {
-                rotacao[i, j] = grid[i, j, 2];
-            }
-        }
     }
 
-    // Update is called once per frame
-    void Update()
+    static public Vector3 PosicaoNoGrid(Vector3 posicao)
+    => new(Mathf.Round(posicao.x / DistanciaEntreSalas), Mathf.Round(posicao.y / DistanciaEntreSalas), Mathf.Round(posicao.z / DistanciaEntreSalas));
+    static public Vector3 PosicaoNoMundo(Vector3 posicao)
+    => posicao * DistanciaEntreSalas;
+    static public Vector3 PosicaoNoMundo(int linha, int coluna)
+    => PosicaoNoMundo(new Vector3(coluna, 0, linha));
+    static public Vector3 IndicesCentralizados(int linha, int coluna)
     {
-        
-    }
+        linha = (nLinhas - 1) / 2 - linha;
+        coluna -= (nColunas - 1) / 2;
 
-    public int[] infos(int i, int j)
-    {
-        int[] m = new int[3];
-        for (int k = 0; k < 2; k++)
-        {
-            m[k] = grid[i, j, k];
-        }
-        return m;
+        return new(coluna, 0, linha);
     }
 }
