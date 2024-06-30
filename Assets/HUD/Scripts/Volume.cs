@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Volume : MonoBehaviour
+public class Volume : LoadSave.Listener
 {
 
     [SerializeField] private Tipo tipo;
@@ -19,7 +19,7 @@ public class Volume : MonoBehaviour
         slider = GetComponent<Slider>();
     }
 
-    public void Atualizar(SaveData saveData)
+    public override void Atualizar(SaveData saveData)
     {
         switch (tipo)
         {

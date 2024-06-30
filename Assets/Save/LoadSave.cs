@@ -15,7 +15,7 @@ public class LoadSave : MonoBehaviour
 
     public Acao acao;
 
-    [SerializeField] private Volume[] volumeListeners;
+    [SerializeField] private Listener[] listeners;
     void Start()
     {
         Debug.Log(Application.persistentDataPath);
@@ -41,9 +41,15 @@ public class LoadSave : MonoBehaviour
         AnunciaVolume();
     }
 
+
+    public abstract class Listener : MonoBehaviour
+    {
+        public abstract void Atualizar(SaveData data);
+    }
+
     private void AnunciaVolume()
     {
-        foreach (Volume listener in volumeListeners)
+        foreach (Listener listener in listeners)
         {
             listener.Atualizar(data);
         }

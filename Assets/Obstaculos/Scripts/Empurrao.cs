@@ -39,6 +39,7 @@ public class Empurrao : MonoBehaviour
             noFundo = true;
             caindo = false;
             gameObject.layer = LayerMask.NameToLayer("Chao");
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 
