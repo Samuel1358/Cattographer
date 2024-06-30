@@ -107,8 +107,11 @@ public class Freckles_Escavar : MonoBehaviour
                     {
                         // deu sinal
                         //escavaveis[linha][coluna].transform.GetChild(0).transform.eulerAngles += Vector3.up * 0.5f;
-                        var sinal = escavaveis[linha][coluna].transform.GetChild(0).GetComponent<MeshRenderer>().material;
-                        sinal.color = Color.red;
+                        //var sinal = escavaveis[linha][coluna].transform.GetChild(0).GetComponent<MeshRenderer>().material;
+                        //sinal.color = Color.red;
+                        var sinal = escavaveis[linha][coluna];
+                        sinal.GetComponent<Escavavel>().DarSinal();
+                        
                     }
                     break;
 

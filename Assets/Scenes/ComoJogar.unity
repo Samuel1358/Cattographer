@@ -376,7 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
-  - Each stage is divided into 5 floors, complete them all to win. To advance to
+  - Each level is divided into 5 floors, complete them all to win. To advance to
     the next floor, simply press the button hidden on the current floor and go to
     the exit.
   - "Cada fase \xE9 dividida em 5 andares, conclua todos para ganhar. Para avan\xE7ar
@@ -388,7 +388,7 @@ MonoBehaviour:
   - "Ogni fase \xE8 divisa in 5 piani, completali tutti per vincere. Per avanzare
     al piano successivo, premi semplicemente il pulsante nascosto sul piano attuale
     e vai verso l'uscita."
-  - "Chaque \xE9tape est divis\xE9e en 5 \xE9tages, compl\xE9tez-les tous pour gagner.
+  - "Chaque phase est divis\xE9e en 5 \xE9tages, compl\xE9tez-les tous pour gagner.
     Pour passer \xE0 l'\xE9tage suivant, appuyez simplement sur le bouton cach\xE9
     \xE0 l'\xE9tage actuel et dirigez-vous vers la sortie."
   - "Jede Stufe ist in 5 Etagen unterteilt. Schlie\xDFe alle ab, um zu gewinnen.
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seletor: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
   traducoes:
-  - 'Phase:'
+  - 'Level:'
   - 'Fase:'
   - 'Fase:'
   - 'Fase:'
