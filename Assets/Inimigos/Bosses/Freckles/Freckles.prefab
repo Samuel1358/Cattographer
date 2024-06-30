@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a492dd4497ffd7d499c980e481c73c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musica: {fileID: 8300000, guid: a76183bd908c02f4cae1fb4d33ebeac4, type: 3}
   animator: {fileID: 605185755388425815}
   controller: {fileID: 0}
   linhaA:
@@ -119,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00478109b829461459645ac7ca890517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   hits: 0
 --- !u!65 &4629113223522941881
 BoxCollider:

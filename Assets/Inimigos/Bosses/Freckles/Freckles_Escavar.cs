@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Freckles_Escavar : MonoBehaviour
 {
+    [SerializeField] private AudioClip musica;
+
     [SerializeField] private Animator animator;
     public Sala_Controller controller;
     Transform player;
@@ -65,6 +67,7 @@ public class Freckles_Escavar : MonoBehaviour
     {
         if (controller.GetSalaAtual() == controller)
         {
+            Gerenciador_Audio.TocarMusicaEmLoop(musica);
 
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
@@ -215,6 +218,7 @@ public class Freckles_Escavar : MonoBehaviour
                 case 7:
                     premio.SetActive(true);
                     Destroy(gameObject);
+                    Gerenciador_Audio.TocarPredefinida();
                     break;
                 case 8:
                     Debug.Log("acabou");
@@ -226,6 +230,10 @@ public class Freckles_Escavar : MonoBehaviour
                 estado = 8;
             }
 
+        }
+        else
+        {
+            Gerenciador_Audio.TocarPredefinida();
         }
     }
 
