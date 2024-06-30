@@ -20,7 +20,7 @@ public class PressBotao_Saida : MonoBehaviour
     {
         if (press > 0)
         {
-            transform.Translate(0, 0, -(((posINI.y - posFIN.y) * (press / referncia))/2), Space.Self);
+            transform.Translate(0, -(((posINI.y - posFIN.y) * (press / referncia))/2), 0, Space.Self);
             press -= Time.deltaTime;
         } 
         else if (press != -1)
