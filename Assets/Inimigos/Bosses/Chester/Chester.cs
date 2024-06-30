@@ -7,13 +7,15 @@ public class Chester : MonoBehaviour
 {
     [SerializeField] private Sala_Controller controller;
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip musica;
+    private bool isTocando = false;
 
     [SerializeField] private int vida = 3;
 
     [SerializeField] private float tempoInicioBatalha = 2f;
     [SerializeField] private float velocidade = 5f;
-    [SerializeField] private float tempoIndefeso = 4f;
-    [SerializeField] private float tempoDefendendo = 3f;
+    [SerializeField] private float tempoIndefeso = 3f;
+    [SerializeField] private float tempoDefendendo = 2f;
 
     [SerializeField] private float alturaBlocos = 5f;
     [SerializeField] private float tempoQuedaBlocos = 1f;
@@ -24,11 +26,11 @@ public class Chester : MonoBehaviour
 
     private float cooldownBatalha;
     private Mov_Player player;
-    private float defaultY;
+    private Vector3 defaultPosition;
     private Quaternion defaultRotation;
     private void Start()
     {
-        defaultY = transform.position.y;
+        defaultPosition = transform.position;
         defaultRotation = transform.rotation;
 
         player = FindObjectOfType<Mov_Player>();
@@ -39,8 +41,10 @@ public class Chester : MonoBehaviour
     {
         if (controller.GetSalaAtual() == controller)
         {
+            isTocando = true;
             if (cooldownBatalha > 0)
             {
+                Gerenciador_Audio.PararMusica();
                 if (cooldownBatalha > Time.deltaTime)
                 {
                     cooldownBatalha -= Time.deltaTime;
@@ -49,6 +53,7 @@ public class Chester : MonoBehaviour
                 {
                     animator.SetBool("Ativo", true);
                     cooldownBatalha = 0;
+                    Gerenciador_Audio.TocarMusicaEmLoop(musica);
                 }
             }
             else
@@ -59,19 +64,33 @@ public class Chester : MonoBehaviour
                 {
                     Vector3 alvo = new(
                         player.transform.position.x,
-                        defaultY,
+                        defaultPosition.y,
                         player.transform.position.z
                     );
                     Pular(alvo);
                 }
             }
         }
-        else if (cooldownBatalha == 0)
+        else
         {
-            if (Pular(controller.transform.position))
+            if (isTocando)
             {
-                cooldownBatalha = tempoInicioBatalha;
+                Gerenciador_Audio.TocarPredefinida();
+                isTocando = false;
+            }
+            if (cooldownBatalha == 0)
+            {
+                StopAllCoroutines();
+                rotacionar = false;
+                isPulando = false;
+                tempoIndefesoRestante = 0;
+                isDefendendo = false;
+                animator.SetBool("Ativo", false);
+                animator.SetBool("Pulando", false);
+                EmpurraBlocos(defaultPosition, 0.1f);
+                transform.position = defaultPosition;
                 transform.rotation = defaultRotation;
+                cooldownBatalha = tempoInicioBatalha;
             }
         }
     }
@@ -123,9 +142,22 @@ public class Chester : MonoBehaviour
 
         float distanciaDoPulo = (alvo - transform.position).magnitude;
         float tempoDoPulo = distanciaDoPulo / velocidade;
+        EmpurraBlocos(alvo, tempoDoPulo + tempoQuedaBlocos);
+
+        animator.SetBool("Pulando", true);
+        yield return Utilitarios.Parabola(gameObject, alvo, 2, tempoDoPulo);
+        animator.SetBool("Pulando", false);
+
+        yield return CooldownPulo();
+        animator.SetBool("Ativo", false);
+        isPulando = false;
+    }
+
+    private void EmpurraBlocos(Vector3 de, float tempo)
+    {
         foreach (var bloco in blocosAfetados)
         {
-            Vector3 distanciaBloco = Utilitarios.IgnoreY(bloco.transform.position - alvo);
+            Vector3 distanciaBloco = Utilitarios.IgnoreY(bloco.transform.position - de);
             Vector3 offset = Vector3.zero;
             Vector3 movimentoBloco;
 
@@ -140,16 +172,8 @@ public class Chester : MonoBehaviour
                 { offset += movimentoBloco; }
             }
 
-            bloco.Pula(offset, alturaBlocos, tempoDoPulo + tempoQuedaBlocos);
+            bloco.Pula(offset, alturaBlocos, tempo);
         }
-
-        animator.SetBool("Pulando", true);
-        yield return Utilitarios.Parabola(gameObject, alvo, 2, tempoDoPulo);
-        animator.SetBool("Pulando", false);
-
-        yield return CooldownPulo();
-        animator.SetBool("Ativo", false);
-        isPulando = false;
     }
 
     private float tempoIndefesoRestante = 0;
@@ -164,9 +188,12 @@ public class Chester : MonoBehaviour
         }
         tempoIndefesoRestante = 0;
 
-        isDefendendo = true;
-        animator.SetBool("Ativo", false);
-        yield return new WaitForSeconds(tempoDefendendo);
+        if (!isDefendendo)
+        {
+            isDefendendo = true;
+            animator.SetBool("Ativo", false);
+            yield return new WaitForSeconds(tempoDefendendo);
+        }
         animator.SetBool("Ativo", true);
         isDefendendo = false;
     }
@@ -195,7 +222,7 @@ public class Chester : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (tempoIndefesoRestante > 0)
+        if (tempoIndefesoRestante > 0 && !isDefendendo)
         {
             if (other.CompareTag("Empurravel"))
             {
@@ -203,6 +230,11 @@ public class Chester : MonoBehaviour
                 DestroiBloco(other.gameObject);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        Gerenciador_Audio.TocarPredefinida();
     }
 
     public void DestroiBloco(GameObject empurravel)

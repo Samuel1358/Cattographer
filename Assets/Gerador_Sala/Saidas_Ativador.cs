@@ -34,10 +34,12 @@ public class Saidas_Ativador : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (!hit.collider.CompareTag("Empurravel")) return;
+
         if (Physics.Raycast(new Ray(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), -transform.up), out hit, 1f, bloqueio, QueryTriggerInteraction.Collide))
         {
             if (timerDestruir <= 0)
-            {
+            { 
                 Destroy(hit.collider.gameObject);
                 timerDestruir = ttDestruir;
             }

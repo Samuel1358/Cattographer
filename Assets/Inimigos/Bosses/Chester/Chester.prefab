@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6480257769003918680}
-  - component: {fileID: 4629113223522941881}
+  - component: {fileID: 7674603464759658639}
   - component: {fileID: 8805466222725160902}
   - component: {fileID: 1222216801002201789}
   m_Layer: 7
@@ -36,8 +36,8 @@ Transform:
   - {fileID: 5643936975269216125}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4629113223522941881
-BoxCollider:
+--- !u!136 &7674603464759658639
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -54,8 +54,10 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  serializedVersion: 2
+  m_Radius: 0.9
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &8805466222725160902
 MonoBehaviour:
@@ -71,11 +73,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   animator: {fileID: 3318829947193657151}
+  musica: {fileID: 8300000, guid: d1f853ba8d313374b9490788220f1e99, type: 3}
   vida: 3
   tempoInicioBatalha: 2
   velocidade: 5
-  cooldownPulo: 2
-  tempoAtordoado: 1
+  tempoIndefeso: 4
+  tempoDefendendo: 3
   alturaBlocos: 5
   tempoQuedaBlocos: 1
   raioEmpurrao: 1

@@ -138,7 +138,11 @@ PrefabInstance:
     - target: {fileID: 3426876452970139833, guid: 38bc855d0d2facd49852af7ee4316b75, type: 3}
       propertyPath: musica
       value: 
-      objectReference: {fileID: 8300000, guid: 9d4d82afa5da22442b633f0e7dc88df2, type: 3}
+      objectReference: {fileID: 8300000, guid: bc978bf9356212144b2a163a88a752d7, type: 3}
+    - target: {fileID: 3426876452970139833, guid: 38bc855d0d2facd49852af7ee4316b75, type: 3}
+      propertyPath: ApenasUmaVez
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3705114319077927448, guid: 38bc855d0d2facd49852af7ee4316b75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -8,6 +8,7 @@ public class Gerenciador_Audio : MonoBehaviour
     static private Gerenciador_Audio instance;
 
     [SerializeField] private AudioClip musica;
+    [SerializeField] private bool ApenasUmaVez;
 
     [SerializeField] private AudioSource gerenciadorMusicas;
     [SerializeField] private AudioSource gerenciadorSFX;
@@ -21,7 +22,8 @@ public class Gerenciador_Audio : MonoBehaviour
         }
         else Destroy(gameObject);
 
-        TocarMusicaDeFundo(musica);
+        instance.musica = musica;
+        TocarPredefinida();
     }
 
     /*
@@ -61,20 +63,30 @@ public class Gerenciador_Audio : MonoBehaviour
     => gerenciadorSFX.PlayOneShot(sfx);
 
 
+    static public void TocarPredefinida()
+    => instance._TocarPredefinida();
+    private void _TocarPredefinida()
+    {
+        if (ApenasUmaVez) TocarMusicaUmaVez(musica);
+        else TocarMusicaEmLoop(musica);
+    }
+
     static public void TocarMusicaUmaVez(AudioClip musica)
     => instance._TocarMusicaUmaVez(musica);
     private void _TocarMusicaUmaVez(AudioClip musica)
     {
-        gerenciadorMusicas.PlayOneShot(musica);
-        _PararMusica();
+        gerenciadorMusicas.loop = false;
+        gerenciadorMusicas.clip = musica;
+        gerenciadorMusicas.Play();
     }
 
-    static public void TocarMusicaDeFundo(AudioClip musica)
+    static public void TocarMusicaEmLoop(AudioClip musica)
     => instance._TocarMusicaDeFundo(musica);
     private void _TocarMusicaDeFundo(AudioClip musica)
     {
-        if (gerenciadorMusicas.clip == musica) return;
+        if (gerenciadorMusicas.clip == musica && gerenciadorMusicas.isPlaying) return;
 
+        gerenciadorMusicas.loop = true;
         gerenciadorMusicas.clip = musica;
         gerenciadorMusicas.Play();
     }
@@ -82,10 +94,7 @@ public class Gerenciador_Audio : MonoBehaviour
     static public void PararMusica()
     => instance._PararMusica();
     private void _PararMusica()
-    {
-        gerenciadorMusicas.Stop();
-        gerenciadorMusicas.clip = null;
-    }
+    { gerenciadorMusicas.Stop(); }
 
     static public void Volume(float valor)
     => instance._Volume(valor);
