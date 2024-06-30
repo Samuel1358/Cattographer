@@ -29,36 +29,34 @@ public class Gerenciador_Audio : MonoBehaviour
         }
     }
 
-    /*
-    [SerializeField] private SFX _SFX;
+
+    static public _SFX SFX => instance.sFX;
+    [SerializeField] public _SFX sFX;
     [System.Serializable]
-    public class SFX
+    public class _SFX
     {
-        public Jogador jogador;
-        [System.Serializable]
-        public class Jogador
-        {
-            public AudioClip Andar => andar;
-            [SerializeField] private AudioClip andar;
-        }
+        [SerializeField] public AudioClip page;
 
-        public Ambiente ambiente;
-        [System.Serializable]
-        public class Ambiente
-        {
-            public AudioClip Bloco => bloco;
-            [SerializeField] private AudioClip bloco;
-        }
+        [SerializeField] public AudioClip fall;
+        [SerializeField] public AudioClip slide;
+        [SerializeField] public AudioClip magic;
 
-        public Inimigo inimigo;
-        [System.Serializable]
-        public class Inimigo
-        {
-            public AudioClip Andar => andar;
-            [SerializeField] private AudioClip andar;
-        }
+        [SerializeField] public AudioClip cat;
+        [SerializeField] public AudioClip step1;
+        [SerializeField] public AudioClip step2;
+        [SerializeField] public AudioClip collect;
+        [SerializeField] public AudioClip revelation;
+        [SerializeField] public AudioClip lever;
+
+        [SerializeField] public AudioClip dig;
+        [SerializeField] public AudioClip cry;
+        [SerializeField] public AudioClip clank;
+        [SerializeField] public AudioClip soil;
+
+        [SerializeField] public AudioClip crack;
+        [SerializeField] public AudioClip stomp;
     }
-    */
+
 
     static public void TocarSFX(AudioClip sfx)
     => instance._TocarSFX(sfx);

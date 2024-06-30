@@ -32,6 +32,7 @@ public class ItensAdicionais : MonoBehaviour
                     if (lista.listaItens[i] == 0)
                     {
                         lista.listaItens[i] = tipo;
+                        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.collect);
                         Destroy(gameObject);
                         break;
                     }

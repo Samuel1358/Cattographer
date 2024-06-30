@@ -25,6 +25,7 @@ public class Hit_Timer : MonoBehaviour
 
     public void CausarDano(float dano)
     {
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.cat);
         animator.SetTrigger("TomarDano");
         sombra.timerSombra -= dano;
     }

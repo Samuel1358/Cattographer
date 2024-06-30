@@ -27,7 +27,8 @@ public class Freckles_Hit : MonoBehaviour
     {
         if (other.CompareTag("Empurravel"))
         {
-            animator.SetTrigger("Atordoado");
+            animator.SetTrigger("Atordoar");
+            Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.cry);
             hits += 1;
             escavar.estado = 6;
             escavar.AjusteAtordoado();

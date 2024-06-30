@@ -5,6 +5,7 @@ using UnityEngine;
 public class Freckles_Escavar : MonoBehaviour
 {
     [SerializeField] private AudioClip musica;
+    private bool isTocando = false;
 
     [SerializeField] private Animator animator;
     public Sala_Controller controller;
@@ -67,7 +68,11 @@ public class Freckles_Escavar : MonoBehaviour
     {
         if (controller.GetSalaAtual() == controller)
         {
-            Gerenciador_Audio.TocarMusicaEmLoop(musica);
+            if (!isTocando)
+            {
+                Gerenciador_Audio.TocarMusicaEmLoop(musica);
+                isTocando = true;
+            }
 
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
@@ -105,6 +110,7 @@ public class Freckles_Escavar : MonoBehaviour
                         else
                         {
                             estado = 2;
+                            Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.dig);
                         }
                     }
                     else
@@ -149,6 +155,7 @@ public class Freckles_Escavar : MonoBehaviour
                             animator.SetBool("Atacando", true);
                             if (Arremessar())
                             {
+                                Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.cry);
                                 Vector3 pos = (transform.position + transform.forward);
                                 Instantiate(this.ferramenta, new Vector3(pos.x, player.position.y, pos.z), transform.rotation);
                                 //Debug.Log("atacou " + (3 - projeteis));
@@ -178,6 +185,7 @@ public class Freckles_Escavar : MonoBehaviour
                     if (Mover())
                     {
                         estado = 1;
+                        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.soil);
                     }
                     else
                     {
@@ -218,6 +226,7 @@ public class Freckles_Escavar : MonoBehaviour
                 case 7:
                     premio.SetActive(true);
                     Destroy(gameObject);
+                    Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.revelation);
                     Gerenciador_Audio.TocarPredefinida();
                     break;
                 case 8:
@@ -231,9 +240,10 @@ public class Freckles_Escavar : MonoBehaviour
             }
 
         }
-        else
+        else if (isTocando)
         {
             Gerenciador_Audio.TocarPredefinida();
+            isTocando = false;
         }
     }
 

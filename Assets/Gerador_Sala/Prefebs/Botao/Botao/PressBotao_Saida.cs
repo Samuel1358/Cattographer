@@ -33,6 +33,7 @@ public class PressBotao_Saida : MonoBehaviour
 
     public void Precionar(float timer)
     {
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.revelation);
         press = timer;
         referncia = timer;
     }

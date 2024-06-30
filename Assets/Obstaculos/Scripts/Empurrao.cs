@@ -13,10 +13,6 @@ public class Empurrao : MonoBehaviour
     public LayerMask chao;
     //public Vector3 x = new Vector3(0, 0, 0);
 
-    // SFX
-    public AudioClip sfxEmpurrao;
-    public AudioClip sfxQueda;
-
     // QUEDA
     Rigidbody rb;
     Collider box;
@@ -78,7 +74,7 @@ public class Empurrao : MonoBehaviour
             // Se não tiver, movimenta o bloco
             if (!movimentoObstruido)
             {
-                Gerenciador_Audio.TocarSFX(sfxEmpurrao);
+                Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.slide);
                 transform.position += direcao;
 
                 // Queda no buraco
@@ -112,7 +108,7 @@ public class Empurrao : MonoBehaviour
 
         const float tempoMaximoDaQueda = 4f;
 
-        Gerenciador_Audio.TocarSFX(sfxQueda);
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.fall);
 
         float timer = tempoMaximoDaQueda;
         while (timer > Time.deltaTime && !noFundo)
@@ -132,10 +128,8 @@ public class Empurrao : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Fundo") || hit.collider.gameObject.CompareTag("Freckles"))
             {
-                Debug.Log("oiii");
-                Gerenciador_Audio.TocarSFX(sfxQueda);
+                Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.fall);
 
-                Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
                 caindo = true;
                 box.isTrigger = false;
                 rb.useGravity = true;

@@ -12,12 +12,6 @@ public class Item_Tesouro : MonoBehaviour
         player = FindObjectOfType<Player_Final>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -31,6 +25,8 @@ public class Item_Tesouro : MonoBehaviour
             {
                 player.coletados += 1;
             }
+
+            Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.collect);
             Destroy(gameObject);
         }
     }

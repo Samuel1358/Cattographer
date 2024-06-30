@@ -138,6 +138,7 @@ public class Chester : MonoBehaviour
         animator.SetBool("Ativo", true);
         rotacionar = true;
         yield return Utilitarios.Parabola(gameObject, transform.position, 1, 2/3f);
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.stomp);
         rotacionar = false;
 
         float distanciaDoPulo = (alvo - transform.position).magnitude;
@@ -146,6 +147,7 @@ public class Chester : MonoBehaviour
 
         animator.SetBool("Pulando", true);
         yield return Utilitarios.Parabola(gameObject, alvo, 2, tempoDoPulo);
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.stomp);
         animator.SetBool("Pulando", false);
 
         yield return CooldownPulo();
@@ -206,11 +208,13 @@ public class Chester : MonoBehaviour
 
         if (vida > 0)
         {
+            Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.lever);
             vida--;
             if (vida == 0)
             {
                 premio.SetActive(true);
                 Destroy(gameObject, 0.2f);
+                Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.revelation);
                 Gerenciador_Audio.TocarPredefinida();
             }
             else
@@ -236,6 +240,9 @@ public class Chester : MonoBehaviour
     public void DestroiBloco(GameObject empurravel)
     {
         if (blocosAfetados.RemoveAll(bloco => bloco.gameObject == empurravel) > 0)
-        { Destroy(empurravel, 0.2f); }
+        {
+            Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.crack);
+            Destroy(empurravel, 0.2f);
+        }
     }
 }
