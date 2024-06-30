@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d4f77f0eb53ff43a9805b144fdb2c8, type: 3}
   m_Name: SaveData
   m_EditorClassIdentifier: 
-  seletorLinguagem: {fileID: 0}
-  fasesLiberadas: {fileID: 0}
-  lingua: 0
-  progrecao: 0000
+  seletorLinguagem: {fileID: 11400000, guid: b420a6806c7172549bfc815da5f03183, type: 2}
+  fasesLiberadas: {fileID: 11400000, guid: 2e09726f8e5768d4ab8a7722fcbf4d12, type: 2}
+  lingua: 1
+  volume: 1
+  progrecao: 0100

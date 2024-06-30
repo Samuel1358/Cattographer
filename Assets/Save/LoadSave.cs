@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class LoadSave : MonoBehaviour
 {
-    [HideInInspector] [SerializeField] SaveData data;
+    [SerializeField] SaveData data;
 
     public enum Acao
     {
         Save, 
         Load,
+        Reset,
     }
 
     public Acao acao;
@@ -23,9 +24,12 @@ public class LoadSave : MonoBehaviour
                 SaveSystem.Save(data);
                 break;
             case Acao.Load:
-                //SaveSystem.Load(data);
+                SaveSystem.Load(data);
                 break;
-        }
-       
+            case Acao.Reset:
+                data.Resetar();
+                //SaveSystem.Save(data);
+                break;
+        } 
     }
 }
