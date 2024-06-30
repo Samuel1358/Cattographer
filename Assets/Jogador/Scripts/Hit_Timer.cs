@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Hit_Timer : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+
     Timer_Sombra sombra;
     public float dano = 1f;
 
@@ -17,12 +19,13 @@ public class Hit_Timer : MonoBehaviour
     {
         if (other.CompareTag("Inimigo"))
         {
-            sombra.timerSombra -= dano;
+            CausarDano(dano);
         }
     }
 
     public void CausarDano(float dano)
     {
+        animator.SetTrigger("TomarDano");
         sombra.timerSombra -= dano;
     }
 }

@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class Mov_Player : MonoBehaviour
 {
+    // COMPONENTES
+    [SerializeField] private Animator animator;
+
     // CONSTANTES
     const float cooldownMovimentacao = 0.16f;
     const float movimentacaoBuffer = cooldownMovimentacao;
@@ -66,8 +70,18 @@ public class Mov_Player : MonoBehaviour
             holdTime += Time.deltaTime;
         }
         else
-        { 
-            holdTime = 0; 
+        {
+            animator.SetBool("Andando", false);
+            holdTime = 0;
+        }
+
+        if (cooldownAtualMovimentacao > Time.deltaTime)
+        {
+            cooldownAtualMovimentacao -= Time.deltaTime;
+        }
+        else
+        {
+            cooldownAtualMovimentacao = 0f;
         }
     }
 
@@ -118,6 +132,8 @@ public class Mov_Player : MonoBehaviour
                 {
                     Empurrao bloco = obstaculo.collider.GetComponent<Empurrao>();
                     movimentoObstruido = bloco.MovimentoObstruido(direcao);
+                    
+                    if (!movimentoObstruido) animator.SetTrigger("Empurrar");
 
                     StartCoroutine(bloco.EmpurraoCoroutine(direcao));
                     yield return null;
@@ -125,6 +141,7 @@ public class Mov_Player : MonoBehaviour
                 // Se for um baú, o abre
                 else if (obstaculo.collider.CompareTag("Bau"))
                 {
+                    animator.SetTrigger("Empurrar");
                     Bau_Radomizer bau = obstaculo.collider.GetComponent<Bau_Radomizer>();
                     yield return bau.AbrirCoroutine(direcao);
 
@@ -137,6 +154,7 @@ public class Mov_Player : MonoBehaviour
 
                     if (!alavanca.GetAcionada())
                     {
+                        animator.SetTrigger("Empurrar");
                         yield return alavanca.AcionarCoroutine(direcao);
                     }
 
@@ -151,7 +169,8 @@ public class Mov_Player : MonoBehaviour
             // Se não for obstruído, movimenta
             if (!movimentoObstruido)
             {
-                transform.position += direcao;
+                animator.SetBool("Andando", true);
+                yield return Utilitarios.Parabola(gameObject, transform.position + direcao, 0.2f, cooldownMovimentacao);
 
                 // Queda no buraco
                 RaycastHit[] abaixo = Physics.RaycastAll(transform.position, -transform.up, 1f);
@@ -161,6 +180,11 @@ public class Mov_Player : MonoBehaviour
                 {
                     yield return QuedaCoroutine();
                 }
+            }
+            else
+            {
+                animator.SetBool("Andando", false);
+                yield return Utilitarios.Parabola(gameObject, transform.position, 0.2f, cooldownMovimentacao);
             }
 
             yield return null;
@@ -177,12 +201,6 @@ public class Mov_Player : MonoBehaviour
             && !movimentoObstruido
         );
 
-        while (cooldownAtualMovimentacao > Time.deltaTime)
-        {
-            cooldownAtualMovimentacao -= Time.deltaTime;
-            yield return null;
-        }
-        cooldownAtualMovimentacao = 0f;
         canMove = true;
     }
 

@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c172835c3c5348847bb9e0337b15ca21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2570324841989660131}
   canMove: 1
   bloqueio:
     serializedVersion: 2
@@ -120,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d696c698a1a84e941a4ed0c98349193d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2570324841989660131}
   dano: 1
 --- !u!114 &5720864581750974270
 MonoBehaviour:
@@ -360,8 +362,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e60128314c7789f49b2e7b4e2a98375f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2570324841989660131}
   m_SourcePrefab: {fileID: 100100000, guid: e60128314c7789f49b2e7b4e2a98375f, type: 3}
+--- !u!1 &5836663201690107141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e60128314c7789f49b2e7b4e2a98375f, type: 3}
+  m_PrefabInstance: {fileID: 6646916761660162132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2570324841989660131
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836663201690107141}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4313ac66ddfac824796eb06f2bd4f28b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &6607958155427407807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e60128314c7789f49b2e7b4e2a98375f, type: 3}
