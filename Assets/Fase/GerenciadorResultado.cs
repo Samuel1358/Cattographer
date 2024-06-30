@@ -9,6 +9,7 @@ public class GerenciadorResultado : MonoBehaviour
 
     public int idFase;
 
+    [SerializeField] private LoadSave save;
     public enum Resultado
     {
         Win,
@@ -27,6 +28,7 @@ public class GerenciadorResultado : MonoBehaviour
                 if (resultado.reliquias >= 3 && tipo == Resultado.Win)
                 {
                     fases.Fase2 = true;
+                    save.FazerAcontecer(LoadSave.Acao.Save);
                 }
             }
 

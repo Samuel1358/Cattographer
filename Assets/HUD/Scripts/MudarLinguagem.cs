@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MudarLinguagem : MonoBehaviour
+public class MudarLinguagem : LoadSave.Listener
 {
     [HideInInspector][SerializeField] Seletor_Linguagem seletor;
     int valor;
+
+    [SerializeField] private SaveData saveData;
 
     private void Start()
     {
@@ -38,6 +40,7 @@ public class MudarLinguagem : MonoBehaviour
                 seletor.lingua = Seletor_Linguagem.Linguagem.Russo;
                 break;
         }
+        saveData.lingua = seletor.lingua;
         Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.page);
     }
 
@@ -64,6 +67,12 @@ public class MudarLinguagem : MonoBehaviour
         {
             valor = 0;
         }
+        AtualizarLinguagem();
+    }
+
+    public override void Atualizar(SaveData data)
+    {
+        valor = (int)data.lingua;
         AtualizarLinguagem();
     }
 }

@@ -18,8 +18,8 @@ public static class SaveSystem
 
         file.WriteLine("Lingua:");
         file.WriteLine((int)data.lingua);
-        //file.WriteLine("Volume:");
-        //file.WriteLine(data.volume.ToString());
+        file.WriteLine("Volume:");
+        file.WriteLine($"{data.volumeMusica},{data.volumeSFX}");
         file.WriteLine("Fases:");
         file.WriteLine(data.progrecao[0]);
         file.WriteLine(data.progrecao[1]);
@@ -35,28 +35,30 @@ public static class SaveSystem
             string linha, s = "";
             int c = 0;
 
-            while((linha = file.ReadLine()) != null)
+            while ((linha = file.ReadLine()) != null)
             {
-                switch(linha)
+                switch (linha)
                 {
                     case "Lingua:":
                         s = linha;
                         break;
-                   /* case "Volume:":
+                    case "Volume:":
                         s = linha;
-                        break;*/
+                        break;
                     case "Fases:":
                         s = linha;
                         break;
                     default:
-                        switch(s)
+                        switch (s)
                         {
                             case "Lingua:":
                                 data.lingua = (Seletor_Linguagem.Linguagem)int.Parse(linha);
                                 break;
-                            /*case "Volume:":
-                                data.volume = float.Parse(linha);
-                                break;*/
+                            case "Volume:":
+                                string[] volumes = linha.Split(',');
+                                data.volumeMusica = int.Parse(volumes[0]);
+                                data.volumeSFX = int.Parse(volumes[1]);
+                                break;
                             case "Fases:":
                                 if (c <= 1)
                                 {

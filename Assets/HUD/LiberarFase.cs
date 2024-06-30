@@ -9,12 +9,14 @@ public class LiberarFase : MonoBehaviour
     [SerializeField] GameObject botao;
     [SerializeField] GameObject locked;
 
+    [SerializeField] private SaveData saveData;
     private void Update()
     {
         if (fases.Fase2)
         {
             botao.SetActive(true);
             locked.SetActive(false);
+            saveData.progrecao[1] = true;
         }
         else
         {

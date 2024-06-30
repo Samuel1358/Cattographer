@@ -8,16 +8,23 @@ public class LoadSave : MonoBehaviour
 
     public enum Acao
     {
-        Save, 
+        Save,
         Load,
         Reset,
     }
 
     public Acao acao;
 
+    [SerializeField] private Listener[] listeners;
     void Start()
     {
         Debug.Log(Application.persistentDataPath);
+        FazerAcontecer(acao);
+    }
+
+    public void FazerAcontecer(int acao) => FazerAcontecer((Acao)acao);
+    public void FazerAcontecer(Acao acao)
+    {
         switch (acao)
         {
             case Acao.Save:
@@ -30,6 +37,21 @@ public class LoadSave : MonoBehaviour
                 data.Resetar();
                 //SaveSystem.Save(data);
                 break;
-        } 
+        }
+        AnunciaVolume();
+    }
+
+
+    public abstract class Listener : MonoBehaviour
+    {
+        public abstract void Atualizar(SaveData data);
+    }
+
+    private void AnunciaVolume()
+    {
+        foreach (Listener listener in listeners)
+        {
+            listener.Atualizar(data);
+        }
     }
 }

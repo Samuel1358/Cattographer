@@ -13,6 +13,9 @@ public class Gerenciador_Audio : MonoBehaviour
     [SerializeField] private AudioSource gerenciadorMusicas;
     [SerializeField] private AudioSource gerenciadorSFX;
     [SerializeField] private AudioMixer audioMixer;
+
+    [SerializeField] private SaveData saveData;
+
     private void Awake()
     {
         if (instance == null)
@@ -24,6 +27,7 @@ public class Gerenciador_Audio : MonoBehaviour
         else
         {
             instance.musica = musica;
+            instance.ApenasUmaVez = ApenasUmaVez;
             TocarPredefinida();
             Destroy(gameObject);
         }
@@ -97,14 +101,33 @@ public class Gerenciador_Audio : MonoBehaviour
     private void _PararMusica()
     { gerenciadorMusicas.Stop(); }
 
-    static public void Volume(float valor)
-    => instance._Volume(valor);
-    private void _Volume(float valor)
+    static private float ConverteVolume(float porcentagem)
     {
+        float valorDecimal = porcentagem / 100;
         // o humano escuta em uma escala logarítmica
         // a conta abaixo converte o valor linear para a escala humana
-        float valorHumano = Mathf.Log10(valor) * 20;
+        return Mathf.Log10(valorDecimal) * 20;
+    }
 
-        audioMixer.SetFloat("Volume", valorHumano);
+    static private int volumeMusica = 100;
+    static public int GetVolumeMusica() => volumeMusica;
+    static public void SetVolumeMusica(float porcentagem)
+    => instance._SetVolumeMusica(porcentagem);
+    private void _SetVolumeMusica(float porcentagem)
+    {
+        saveData.volumeMusica = Mathf.RoundToInt(porcentagem);
+        float volume = ConverteVolume(porcentagem);
+        audioMixer.SetFloat("VolumeMusica", volume);
+    }
+
+    static private int volumeSFX = 100;
+    static public int GetVolumeSFX() => volumeSFX;
+    static public void SetVolumeSFX(float porcentagem)
+    => instance._SetVolumeSFX(porcentagem);
+    private void _SetVolumeSFX(float porcentagem)
+    {
+        saveData.volumeSFX = Mathf.RoundToInt(porcentagem);
+        float volume = ConverteVolume(porcentagem);
+        audioMixer.SetFloat("VolumeSFX", volume);
     }
 }

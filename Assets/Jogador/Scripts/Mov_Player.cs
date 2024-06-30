@@ -164,6 +164,16 @@ public class Mov_Player : MonoBehaviour
                     movimentoObstruido = true;
                 }
             }
+            // pra ter certeza, verifica se tem um bloco caindo
+            else if (Physics.Raycast(
+                ray: new Ray(transform.position + direcao + Vector3.up, Vector3.down),
+                hitInfo: out RaycastHit obstaculoBloco,
+                maxDistance: 23f,
+                layerMask: bloqueio,
+                QueryTriggerInteraction.Collide)
+                && obstaculoBloco.collider.TryGetComponent(out Empurrao bloco)
+            )
+            { movimentoObstruido = bloco.caindo; }
 
             // Se não for obstruído, movimenta
             if (!movimentoObstruido)
