@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e71e5e7f769ea9489925a29f5156fad, type: 3}
   m_Name: VelocidadeSombra_Replace
   m_EditorClassIdentifier: 
-  velocidade: 10
+  velocidade: 8

@@ -258,7 +258,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Aba GameTester
+  m_Text: Aba dos prof.
 --- !u!222 &39468585
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -373,7 +373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &74051966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -856,7 +856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &179988648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,7 +1263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &260868069
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2499,8 +2499,8 @@ RectTransform:
   - {fileID: 915883955}
   m_Father: {fileID: 1075357042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4164556, y: 0.62967426}
-  m_AnchorMax: {x: 0.58515835, y: 0.70100003}
+  m_AnchorMin: {x: 0.41622782, y: 0.42916292}
+  m_AnchorMax: {x: 0.58400005, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4248,7 +4248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1482226675
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4539,8 +4539,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1075357042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.056613885, y: 0.7275815}
-  m_AnchorMax: {x: 0.94400007, y: 0.78700006}
+  m_AnchorMin: {x: 0.055000003, y: 0.5291629}
+  m_AnchorMax: {x: 0.9443861, y: 0.588}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
