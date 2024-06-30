@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LuzDeSaida : MonoBehaviour
 {
-    [SerializeField] GameObject luz;// braseiro1, braseiro2;
+    [SerializeField] GameObject luz, parede;
     [SerializeField] GameObject braseiro;
-    Braseiro bras1, bras2;
+    GameObject bras1, bras2;
 
 
     private void Start()
@@ -18,8 +18,9 @@ public class LuzDeSaida : MonoBehaviour
             {
                 //braseiro1.SetActive(true);
                 //braseiro2.SetActive(true);
-                bras1 = Instantiate(braseiro, transform.position - transform.forward - (transform.right * 2), Quaternion.identity, this.transform).GetComponent<Braseiro>();
-                bras2 = Instantiate(braseiro, transform.position - transform.forward + (transform.right * 2), Quaternion.identity, this.transform).GetComponent<Braseiro>();
+                parede = Instantiate(parede, transform.position, Quaternion.identity, this.transform);
+                bras1 = Instantiate(braseiro, transform.position - transform.forward - (transform.right * 2), Quaternion.identity, this.transform);
+                bras2 = Instantiate(braseiro, transform.position - transform.forward + (transform.right * 2), Quaternion.identity, this.transform);
             }
         }
     }
@@ -34,8 +35,11 @@ public class LuzDeSaida : MonoBehaviour
             {
                 //braseiro1.GetComponent<Braseiro>().Acender();
                 //braseiro2.GetComponent<Braseiro>().Acender();
-                bras1.Acender();
-                bras2.Acender();
+
+                Destroy(parede);
+                bras1.GetComponent<Braseiro>().Acender();
+                bras2.GetComponent<Braseiro>().Acender();
+                
                 luz.SetActive(true);
                 r = transform.position;
             }

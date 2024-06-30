@@ -8,7 +8,7 @@ public class Braseiro : MonoBehaviour
 
     private void Start()
     {
-        chama = transform.GetChild(1).gameObject;
+        chama = transform.GetChild(0).GetChild(1).gameObject;
     }
 
     public void Acender()
