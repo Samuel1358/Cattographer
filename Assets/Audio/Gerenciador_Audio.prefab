@@ -175,16 +175,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musica: {fileID: 0}
+  ApenasUmaVez: 0
   gerenciadorMusicas: {fileID: 6364720751893062287}
   gerenciadorSFX: {fileID: 6186566271559652255}
   audioMixer: {fileID: 24100000, guid: 48d0b742e4ddd4140a6971171b309341, type: 2}
-  _SFX:
-    jogador:
-      andar: {fileID: 0}
-    ambiente:
-      bloco: {fileID: 0}
-    inimigo:
-      andar: {fileID: 0}
+  sFX:
+    page: {fileID: 8300000, guid: 97ef0e50b3657ed499f7ee7c7a8508f7, type: 3}
+    fall: {fileID: 8300000, guid: 133f78e91376dbd43bdf53bbced4be50, type: 3}
+    slide: {fileID: 8300000, guid: f7ae1603096d458489fbf9ce05abfb98, type: 3}
+    magic: {fileID: 8300000, guid: df2a8074a4309ff47a48fe094178fa46, type: 3}
+    cat: {fileID: 8300000, guid: 6ab8700aa8544414eb35da7e03742745, type: 3}
+    step1: {fileID: 8300000, guid: 55dd07dc2ae472742bfa03462c191884, type: 3}
+    step2: {fileID: 8300000, guid: c6b7d83c24f380441a70fae07edef12e, type: 3}
+    collect: {fileID: 8300000, guid: 8c13287eabd9e5a4a9505598beb251ab, type: 3}
+    revelation: {fileID: 8300000, guid: fe59a384c9b686f4f9b026df4cdb33ef, type: 3}
+    lever: {fileID: 8300000, guid: ed9cddd8f6cb525499bba534ff28e26a, type: 3}
+    dig: {fileID: 8300000, guid: 809122a15c61f6f4680f529e234579dd, type: 3}
+    cry: {fileID: 8300000, guid: 65a56170bb17f564cbfe0185494bcd5e, type: 3}
+    clank: {fileID: 8300000, guid: ec28f382ba9f02b4eb84655c8808a103, type: 3}
+    soil: {fileID: 8300000, guid: 3185febd90e223c44a05925ddc508659, type: 3}
+    crack: {fileID: 8300000, guid: b65b6e180bae3fd4f85b64dff8b0ca79, type: 3}
+    stomp: {fileID: 8300000, guid: 90c0c78080a50384cacd61af5ecea8ee, type: 3}
 --- !u!1 &9076182306849637139
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Freckles_Escavar : MonoBehaviour
 {
     [SerializeField] private AudioClip musica;
+    private bool isTocando = false;
 
     [SerializeField] private Animator animator;
     public Sala_Controller controller;
@@ -67,7 +68,11 @@ public class Freckles_Escavar : MonoBehaviour
     {
         if (controller.GetSalaAtual() == controller)
         {
-            Gerenciador_Audio.TocarMusicaEmLoop(musica);
+            if (!isTocando)
+            {
+                Gerenciador_Audio.TocarMusicaEmLoop(musica);
+                isTocando = true;
+            }
 
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
@@ -231,9 +236,10 @@ public class Freckles_Escavar : MonoBehaviour
             }
 
         }
-        else
+        else if (isTocando)
         {
             Gerenciador_Audio.TocarPredefinida();
+            isTocando = false;
         }
     }
 

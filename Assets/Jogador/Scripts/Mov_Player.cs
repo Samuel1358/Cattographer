@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -171,6 +170,7 @@ public class Mov_Player : MonoBehaviour
             {
                 animator.SetBool("Andando", true);
                 yield return Utilitarios.Parabola(gameObject, transform.position + direcao, 0.2f, cooldownMovimentacao);
+                Gerenciador_Audio.TocarSFX(Random.value > .5 ? Gerenciador_Audio.SFX.step1 : Gerenciador_Audio.SFX.step2);
 
                 // Queda no buraco
                 RaycastHit[] abaixo = Physics.RaycastAll(transform.position, -transform.up, 1f);
@@ -206,6 +206,7 @@ public class Mov_Player : MonoBehaviour
 
     private IEnumerator QuedaCoroutine()
     {
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.fall);
         yield return new WaitForSeconds(tempoDaQueda);
 
         yield return Sala_Controller.RespawnPlayerCoroutine();

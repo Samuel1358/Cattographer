@@ -33,6 +33,8 @@ public class Alavanca : MonoBehaviour
         recarga.ConcluirSala();
         acionada = true;
         transform.Rotate(Vector3.up * 180);
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.revelation);
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.lever);
         return null;
         //Destroy(gameObject);
     }

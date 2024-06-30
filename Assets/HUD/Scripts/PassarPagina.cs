@@ -26,6 +26,7 @@ public class PassarPagina : MonoBehaviour
                 paineis[i].SetActive(false);
             }
         }
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.page);
     }
 
     public void Anterior()

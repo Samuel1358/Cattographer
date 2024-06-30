@@ -65,6 +65,7 @@ public class Bau_Radomizer : MonoBehaviour
             timer > 0f
         );
 
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.lever);
         Instantiate(item, transform.position, Quaternion.identity);
         recarga.ConcluirSala();
         Destroy(gameObject);

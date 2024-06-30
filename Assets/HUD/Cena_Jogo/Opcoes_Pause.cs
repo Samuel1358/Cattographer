@@ -20,19 +20,21 @@ public class Opcoes_Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void AbrirPause()
     {
         pause.SetActive(true);
         Time.timeScale = 0f;
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.page);
     }
 
     public void FecharPause()
     {
         Time.timeScale = 1f;
         pause.SetActive(false);
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.page);
     }
 
     public void Menu()
@@ -43,6 +45,7 @@ public class Opcoes_Pause : MonoBehaviour
         {
             Destroy(gr.gameObject);
         }
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.page);
         SceneManager.LoadScene(0);
     }
 
@@ -54,6 +57,7 @@ public class Opcoes_Pause : MonoBehaviour
         {
             Destroy(gr.gameObject);
         }
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.revelation);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -65,12 +69,13 @@ public class Opcoes_Pause : MonoBehaviour
             sombra.ivencivel = false;
             marcadorCheat.SetActive(false);
         }
-        else if(sombra.ivencivel == false)
+        else if (sombra.ivencivel == false)
         {
             Debug.Log("3");
             sombra.ivencivel = true;
             marcadorCheat.SetActive(true);
         }
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.magic);
     }
 
     public void Sair()

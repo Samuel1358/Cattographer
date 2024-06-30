@@ -38,6 +38,7 @@ public class MudarLinguagem : MonoBehaviour
                 seletor.lingua = Seletor_Linguagem.Linguagem.Russo;
                 break;
         }
+        Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.page);
     }
 
     public void Anterior()

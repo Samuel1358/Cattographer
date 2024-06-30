@@ -45,6 +45,7 @@ public class Teleporte : MonoBehaviour
                 if (gemeo.ocupado == false)
                 {
                     hit.collider.gameObject.transform.position = new Vector3(gemeo.transform.position.x, hit.collider.gameObject.transform.position.y, gemeo.transform.position.z);
+                    Gerenciador_Audio.TocarSFX(Gerenciador_Audio.SFX.magic);
                     gemeo.ocupado = true;
                     ocupado = true;
                 }
