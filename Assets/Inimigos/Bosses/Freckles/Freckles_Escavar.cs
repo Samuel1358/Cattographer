@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Freckles_Escavar : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
     public Sala_Controller controller;
     Transform player;
 
@@ -123,6 +124,7 @@ public class Freckles_Escavar : MonoBehaviour
                     }
                     else
                     {
+                        animator.SetBool("Subsolo", false);
                         Vector3 pos = new Vector3(0f, InterpolarDistancia(2f, ttAparece), 0f);
                         transform.position += pos;
                     }
@@ -135,11 +137,13 @@ public class Freckles_Escavar : MonoBehaviour
                         estado = 4;
                         projeteis = 3;
                         Sortiar();
+                        animator.SetBool("Atacando", false);
                     }
                     else
                     {
                         if (projeteis > 0)
                         {
+                            animator.SetBool("Atacando", true);
                             if (Arremessar())
                             {
                                 Vector3 pos = (transform.position + transform.forward);
@@ -160,6 +164,7 @@ public class Freckles_Escavar : MonoBehaviour
                     }
                     else
                     {
+                        animator.SetBool("Subsolo", true);
                         Vector3 pos = new Vector3(0f, InterpolarDistancia(3f, ttEntrar), 0f);
                         transform.position -= pos;
                     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Freckles_Hit : MonoBehaviour
 {
     Freckles_Escavar escavar;
+    [SerializeField] private Animator animator;
     public int hits;
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class Freckles_Hit : MonoBehaviour
     {
         if (other.CompareTag("Empurravel"))
         {
+            animator.SetTrigger("Atordoado");
             hits += 1;
             escavar.estado = 6;
             escavar.AjusteAtordoado();
