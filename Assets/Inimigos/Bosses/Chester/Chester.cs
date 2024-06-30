@@ -211,6 +211,7 @@ public class Chester : MonoBehaviour
             {
                 premio.SetActive(true);
                 Destroy(gameObject, 0.2f);
+                Gerenciador_Audio.TocarPredefinida();
             }
             else
             {
@@ -230,11 +231,6 @@ public class Chester : MonoBehaviour
                 DestroiBloco(other.gameObject);
             }
         }
-    }
-
-    private void OnDestroy()
-    {
-        Gerenciador_Audio.TocarPredefinida();
     }
 
     public void DestroiBloco(GameObject empurravel)

@@ -19,11 +19,14 @@ public class Gerenciador_Audio : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            TocarPredefinida();
         }
-        else Destroy(gameObject);
-
-        instance.musica = musica;
-        TocarPredefinida();
+        else
+        {
+            instance.musica = musica;
+            TocarPredefinida();
+            Destroy(gameObject);
+        }
     }
 
     /*
